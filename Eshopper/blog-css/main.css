@@ -1,4 +1,4 @@
-﻿
+
 /*************************
 *******Typography******
 **************************/
@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
+
   position: relative;
   font-weight:400px;
 }
@@ -115,7 +115,14 @@ a#scrollUp i{
   -webkit-transition: all 0.9s ease 0s;
   -o-transition: all 0.9s ease 0s;
 }
+#petlogo{
+	float: left;
+	margin-top: -20px;
+}
 
+#icon-bar{
+	margin-right:-85px;
+}
 
 .fa-facebook:hover {
   background: #0083C9;
@@ -145,12 +152,17 @@ a#scrollUp i{
   padding-top: 20px;
 }
 
+#mainmenu pull-left{
+	font-size:15px;
+	line-height:10px;
+}
+
 .header-middle .container .row .col-sm-4{
   padding-left: 0;
 }
 
 .header-middle .container .row .col-sm-8 {
-	padding-right:0;
+	padding-right:-2;
 }
 
 .usa {
@@ -1745,7 +1757,7 @@ h2.title {
 
 .user_info .single_field.zip-field input {
   background: transparent;
-  border: 1px solid#F0F0E9
+  border: 1px solid #F0F0E9;
 }
 
 .user_info > li {
@@ -2010,6 +2022,14 @@ h2.title {
   text-align: center;
 }
 
+#col-sm-12{
+	margin-right:300px;
+}
+
+#post-meta{
+	margin-right:160px;
+}
+
 .single-blog-post-list{
   display: inline-block;
   width: 40%;
@@ -2032,8 +2052,22 @@ div.single-blog-post-list:hover{
   100%{box-shadow: 0px 0px 10px 1px #5c5c5c;}
 }
 
-
+.media second-media{
+	margin-left:-20px;
+}
 .single-blog-post > a {
+}
+
+.single-blog-post,
+.rating-area{
+	margin-right:294px;
+} 
+
+#comment{
+	margin-right:294px;
+} 
+.text-area{
+	width:261px;
 }
 
 
@@ -2080,8 +2114,8 @@ div.single-blog-post-list:hover{
   background:#F0F0E9;
   float: left;
   margin-right: 10px;
-  padding: 0 5px;
-  font-size: 11px;
+  padding-left: 5px;
+  font-size: 8px;
   color: #393b3b;
   position: relative;
 }
@@ -2094,7 +2128,7 @@ div.single-blog-post-list:hover{
   color: #FFFFFF;
   margin-left: -4px;
   margin-right: 7px;
-  padding: 4px 7px;
+  padding: 4px 5px;
 }
 
 .blog-post-area-list 
@@ -2342,7 +2376,7 @@ div.single-blog-post-list:hover{
 
 .response-area .media {
   border: 1px solid #F7F7F0;
-  padding: 18px 18px 18px 0;
+  padding: 18px 18px 10px 0;
   margin-bottom: 27px
 }
 
@@ -2356,8 +2390,7 @@ div.single-blog-post-list:hover{
 }
 
 .response-area .second-media {
-  margin-left: 5%;
-  width: 95%;
+  width: 100%;
 }
 
 
