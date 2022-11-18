@@ -7,24 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home</title>
-     <% String pjName="/petdo"; %>
-            <link href="<%=pjName %>/resources/mCss/bootstrap.min.css" rel="stylesheet">
+    <title>toilet-shop.html</title>
+    <% String pjName="/petdo"; %>
+    <link href="<%=pjName %>/resources/mCss/bootstrap.min.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/mCss/font-awesome.min.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/mCss/prettyPhoto.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/mCss/price-range.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/mCss/animate.css" rel="stylesheet">
 	<link href="<%=pjName %>/resources/mCss/main.css" rel="stylesheet">
 	<link href="<%=pjName %>/resources/mCss/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <!--[if lt IE 9]>
-    <script src="<%=pjName %>/resources/js/html5shiv.js"></script>
-    <script src="<%=pjName %>/resources/js/respond.min.js"></script>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <link rel="shortcut icon" href="<%=pjName %>/resources/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<%=pjName %>/resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=pjName %>/resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=pjName %>/resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="<%=pjName %>/resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
 <body>
@@ -32,14 +33,13 @@
 		
 		<div class="container">
 			<div class="header-middle"><!--header-middle-->
-				<a href="../main.do"><img src="<%=pjName %>/resources/images/home/petdologo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
+				<a href="main.do"><img src="<%=pjName %>/resources/images/home/petdologo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
 						<div class="col-sm-8">
 							<div class="shop-menu pull-right">
 								<ul class="nav navbar-nav">
-									<li><a href="account.html"><i class="fa fa-user"></i></a></li>
-									<li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
-									<li><a href="#"><i class="fa fa-heart"></i></a></li>
-									<li><a href="login.html"><i class="fa fa-lock"></i></a></li>
+									<li><a href="account.do"><i class="fa fa-user"></i></a></li>
+									<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+									<li><a href="login.do"><i class="fa fa-lock"></i></a></li>
 								</ul>
 						
 						</div>
@@ -70,17 +70,17 @@
 							
 							<li class="dropdown"><a href="care-shop.do">케어<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
-									<li><a href="care1-shop.do">목욕</a></li>
-									<li><a href="care2-shop.do">미용</a></li> 
+									<li><a href=care-shop1.do">목욕</a></li>
+									<li><a href="closet1-shop.do">미용</a></li> 
 								</ul>
 							</li> 
-							<li classwn"><a href="toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
+							<li class="dropdown"><a href="toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
 									<li><a href="toilet1-shop.do">배변용품</a></li>
 									<li><a href="toilet2-shop.do">위생용품</a></li>
 								</ul>
 							</li> 
-							<li><a href="toy-shop.do">장난감</a></li>
+							<li><a href="toy-shop.html">장난감</a></li>
 							
 							<li class="dropdown"><a href="food-shop.do">식품<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" id="sub-menu-txt" class="sub-menu">
@@ -98,14 +98,15 @@
 									<li><a href="closet4-shop.do">악세사리</a></li>
 								</ul>
 							</li>
-							<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li> 
-							<li><a href="../blog/faq.do" style="color: #FF9933;" >FAQ</a></li>
-							<li><a href="../blog/qna.do" style="color: #FF9933;" >Q&A</a></li>
+							<li><a href="blog.do" style="color: #FF9933;">NOTICE</a></li> 
+							<li><a href="blog.do" style="color: #FF9933;" >FAQ</a></li>
+							<li><a href="blog.do" style="color: #FF9933;" >Q&A</a></li>
 						</ul>
 					</div>
-						<div class="search_box pull-right">
-							<input type="text" placeholder="검색"/>
-						</div>
+					<div>
+						<input type="text" class="inputsearch" style="appearance: inherit" placeholder="search"/>
+						<a href="searchpage.do"><i class="fa-solid fa-magnifying-glass" style="margin-left: -30px;"></i></a>
+					</div>
 						<div id="topHeader" class="appTopArea" style="top:0px;"></div>
 				</div>
 			
@@ -125,31 +126,37 @@
 		<div class="ec-base-tab typeMenu">
 			<ul class="menuCategory menu clearfix">
 		<hr/>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="care-shop.html" class="button">케어                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="care-shop.do" class="button">케어                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toilet-shop.html" style="font-weight: bold; font-size: 16px;" class="button">배변/위생                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toilet-shop.do" style="font-weight: bold; font-size: 16px;" class="button">배변/위생                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toy-shop.html" class="button">장난감                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toy-shop.do" class="button">장난감                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="food-shop.html" class="button">식품                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="food-shop.do" class="button">식품                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="living-shop.html " class="button">홈/리빙               
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="living-shop.do" class="button">홈/리빙               
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="closet-shop.html" class="button">의류
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="closet-shop.do" class="button">의류
 		</li>
 		
 		<hr/>
 			</ul></div>
 			<hr height='30px'/>
 				
+				
+			<section>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-3">			
+						</div>
+
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 		
-
 							<article class="cont-select">
 								<button class="btn-select">신상품</button>
 								<ul class="list-member">
-									<li><button type="button">상품명</button></li>
+									<li><button type="button">상품명/button></li>
 									<li><button type="button">낮은가격</button></li>
 									<li><button type="button">높은가격</button></li>
 								</ul>
@@ -157,232 +164,225 @@
 						<br/>
 						<br/>
 					
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-						<div class="col-sm-4" id="productimg">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg"alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-							<div class="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-							<div class="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-							<div class="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-							<div class="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/><img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-						
-							<div class="col-sm-4" >
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-						
-							<div class="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-						
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
+						</div>	
+
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="<%=pjName %>/resources/images/shop/019_브레드 베어 윈디 점퍼_2.jpg" alt="" />
+										<p style="margin-top: 6px;">테디 블라썸 져지</p>
+											<strong class="product_price"
+												<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+											</strong>
+											<strong class="sale_price">
+												<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
+											</strong><br/>
+											<div style="margin-left: 14px; margin-top: 5px;">
+										<a href="cart.do" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
+											</div>
+											<div style="margin-left: 13px;">
+												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" style="margin-top: -42px;" width="2px" height="auto" alt=""/>
+											</div>	
 									</div>
-								</div>	
+								</div>
 							</div>
-						
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
-									</div>
-								</div>	
-							</div>
-						
-						
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
-									</div>
-								</div>	
-							</div>
-						
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>테디 블라썸 져지</p>
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
-												</strong>
-												<strong class="sale_price">
-													<span style="font-size: 16px; color: #afafaf;text-decoration-line: line-through;">38,000원</span>
-												</strong><br/>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
-									</div>
-								</div>	
-							</div>
+						</div>	
 				
 					
-						</ul>
+						
 					</div><!--features_items-->
 				</div>
 			</div>

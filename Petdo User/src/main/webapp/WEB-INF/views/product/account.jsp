@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>toilet1-shop.html</title>
+    <title>account.html</title>
     <% String pjName="/petdo"; %>
     <link href="<%=pjName %>/resources/mCss/bootstrap.min.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/mCss/font-awesome.min.css" rel="stylesheet">
@@ -128,9 +129,9 @@
 		<hr/>
 		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="care-shop.do" class="button">케어                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toilet-shop.do" style="font-weight: bold; font-size: 16px;"  class="button">배변/위생                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toilet-shop.do" class="button">배변/위생                
 		</li>
-		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toy-shop.do" class="button">장난감                
+		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="toy-shop.do" style="font-weight: bold; font-size: 16px;" class="button">장난감                
 		</li>
 		<li style="display:inline-block;" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="food-shop.do" class="button">식품                
 		</li>
@@ -142,7 +143,6 @@
 		<hr/>
 			</ul></div>
 			<hr height='30px'/>
-				
 				
 			<section>
 				<div class="container">
@@ -472,4 +472,3 @@
     <script src="<%=pjName %>/resources/js/main.js"></script>
 </body>
 </html>
-
