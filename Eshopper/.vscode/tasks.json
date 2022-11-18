@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ChromeBuild",
+            "type": "shell",
+            "command": "ChromeBuild",
+            "windows": { 
+                "command": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" },
+            "args": [
+                "${file}"
+            ],
+            "group": "build"
+        }
+    ]
+}
