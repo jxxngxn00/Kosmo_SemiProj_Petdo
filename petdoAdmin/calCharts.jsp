@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
-
+    <link href="<%=pjName %>/resources/css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -89,7 +89,7 @@
                     <a class="nav-link" href="member.html">
                         <i class="fas fa-fw fa-table"></i>
                         <span>회원관리</span></a>
-            </li>  
+            </li>      
                 <!-- Divider -->
                 <hr class="sidebar-divider">
         
@@ -120,6 +120,12 @@
                 
         
                 <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="comm.html">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>광고관리</span></a>
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="orderList.html">
                             <i class="fas fa-fw fa-table"></i>
@@ -204,55 +210,72 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
-                    
-
-                    <!-- 상품목록 테이블 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">상품별 판매 통계</h1>
                     </div>
 
+                    <div class="card shadow mb-4" id="itemChartSearch">
+                        <!-- Card Header - Accordion -->
+                        <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse"
+                            role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                            <h6 class="m-0 font-weight-bold text-primary">기간 검색</h6>
+                        </a>
+                        <!-- Card Content - Collapse -->
+                        <div class="collapse show" id="collapseCardExample" style="text-align:center ;">
+                            <div class="card-body">
+                                <span class="date-picker"><input type="date"/></span>
+                                <span class="date-picker">~</span>
+                                <span class="date-picker"><input type="date"/></span>
+                            </div>
+                            <div style="padding-bottom: 10px;">
+                            
+                                <div class="searchOpt-itemCharts">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        전체
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">상품명</a>
+                                        <a class="dropdown-item" href="#">상품 사이즈</a>
+                                        <a class="dropdown-item" href="#">상품 번호</a>
+                                        <a class="dropdown-item" href="#">판매 가격</a>
+                                    </div>
+                                    <form
+                                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group" >
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                        aria-label="Search" aria-describedby="basic-addon2">
+                                    </div>
+                                </form>
+
+                            <!-- 검색 버튼 -->
+                            <div class="my-2"></div>
+                            <a href="#" class="btn btn-light btn-icon-split">
+                                <span class="icon text-gray-600">
+                                    <i class="fas fa-arrow-right"></i>
+                                </span>
+                                <span class="text">Search</span>
+                            </a>
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">정산 관리</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart-area">
+                                <canvas id="myAreaChart"></canvas>
+                            </div>
+                            <hr>
+                            Styling for the area chart can be found in the
+                            <code>/js/demo/chart-area-demo.js</code> file.
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->

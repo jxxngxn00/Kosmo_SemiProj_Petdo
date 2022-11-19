@@ -84,12 +84,12 @@
                 <a class="nav-link" href="calCharts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>정산관리</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="member.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>회원관리</span></a>
-            </li>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="member.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>회원관리</span></a>
+            </li>     
                 <!-- Divider -->
                 <hr class="sidebar-divider">
         
@@ -120,6 +120,7 @@
                 
         
                 <!-- Nav Item - Tables -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="orderList.html">
                             <i class="fas fa-fw fa-table"></i>
@@ -203,35 +204,36 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
+
                     <!-- Page Heading -->
                     
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
+                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>QnA</b></h1>
                     
-
                     <!-- 상품목록 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">QnA 게시판 글 관리</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
+                                            <th>글 번호</th>
+                                            <th>글 제목</th>
+                                            <th>게시일</th>
                                             <th>삭제</th>
+                                            <th>상태</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
+                                            <th>글 번호</th>
+                                            <th>글 제목</th>
+                                            <th>게시일</th>
                                             <th>삭제</th>
+                                            <th>상태</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -239,10 +241,35 @@
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
-                                            <td>Edinburgh</td>
                                             <td style="text-align:center;">
                                                 <a href="#" class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            <td style="width:15%; text-align:center;">
+                                                <a href="registAnswer.html" class="btn btn-warning btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-exclamation-triangle"></i>
+                                                    </span>
+                                                    <span class="text">미응답</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td style=" text-align:center;">
+                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            <td style=" text-align:center;">
+                                                <a href="#" class="btn btn-success btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-check"></i>
+                                                    </span>
+                                                    <span class="text">응답</span>
                                                 </a>
                                             </td>
                                         </tr>
@@ -252,7 +279,6 @@
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <!-- /.container-fluid -->

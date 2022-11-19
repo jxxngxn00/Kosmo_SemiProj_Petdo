@@ -203,34 +203,48 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
+
                     <!-- Page Heading -->
                     
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
-                    
+                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>FAQ</b></h1>
+                    <div style="text-align:right; margin-bottom: 10px;">
+                       
+                        <a href="registFAQ.html" class="btn btn-primary btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <span class="text">등록</span>
+                        </a>
+                        <a href="modifyFAQ.html" class="btn btn-info btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span class="text">수정</span>
+                        </a>
+                    </div>
 
                     <!-- 상품목록 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">FAQ 게시판 글 관리</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
+                                            <th>글 번호</th>
+                                            <th>글 제목</th>
+                                            <th>게시일</th>
                                             <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
+                                            <th>글 번호</th>
+                                            <th>글 제목</th>
+                                            <th>게시일</th>
                                             <th>삭제</th>
                                         </tr>
                                     </tfoot>
@@ -238,7 +252,6 @@
                                         <tr>
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
-                                            <td>Edinburgh</td>
                                             <td>Edinburgh</td>
                                             <td style="text-align:center;">
                                                 <a href="#" class="btn btn-danger btn-circle btn-sm">
@@ -252,7 +265,6 @@
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <!-- /.container-fluid -->

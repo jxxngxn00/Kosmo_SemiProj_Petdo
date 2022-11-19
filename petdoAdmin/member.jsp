@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,6 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<%=pjName %>/resources/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.do">
                 <div class="sidebar-brand-text mx-3">PetDo Admin</div>
             </a>
 
@@ -43,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -68,28 +70,28 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="itemList.html">상품 목록</a>
-                    <a class="collapse-item" href="itemRegister.html">상품 등록</a>
+                    <a class="collapse-item" href="itemList.do">상품 목록</a>
+                    <a class="collapse-item" href="itemRegister.do">상품 등록</a>
                 </div>
             </div>
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="itemCharts.html">
+            <a class="nav-link" href="itemCharts.do">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>상품별 판매통계</span></a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="calCharts.html">
+                <a class="nav-link" href="calCharts.do">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>정산관리</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="member.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>회원관리</span></a>
-            </li>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="member.do">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>회원관리</span></a>
+            </li>     
                 <!-- Divider -->
                 <hr class="sidebar-divider">
         
@@ -108,10 +110,10 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">홈페이지에 게시된 각종 글 관리</h6>
-                            <a class="collapse-item" href="FAQ.html">FAQ 관리</a>
-                            <a class="collapse-item" href="review.html">리뷰 관리</a>
-                            <a class="collapse-item" href="QnA.html">QnA 관리</a>
-                            <a class="collapse-item" href="notice.html">공지사항 관리</a>
+                            <a class="collapse-item" href="FAQ.do">FAQ 관리</a>
+                            <a class="collapse-item" href="review.do">리뷰 관리</a>
+                            <a class="collapse-item" href="QnA.do">QnA 관리</a>
+                            <a class="collapse-item" href="notice.do">공지사항 관리</a>
                         </div>
                     </div>
                 </li>
@@ -120,8 +122,9 @@
                 
         
                 <!-- Nav Item - Tables -->
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="orderList.html">
+                        <a class="nav-link" href="orderList.do">
                             <i class="fas fa-fw fa-table"></i>
                             <span>주문내역관리</span></a>
                 </li>
@@ -203,48 +206,76 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
+
                     <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
                     
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
-                    
+        
+                    <p class="mb-4">테이블 설명 ... <a target="_blank"
+                            href="https://datatables.net">(템플릿 테이블 자료 출처)</a>.</p>
+                        
+                    <!-- 카테고리 검색창 -->
+
+
+                    <div class="card shadow mb-4" id="memberSearch">
+                        <!-- Card Header -->
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">키워드 검색</h6>
+                        </div>
+                        <!-- Card Content -->
+                        <div class="searchOpt-member">
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Cate
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">상품명</a>
+                                <a class="dropdown-item" href="#">상품 사이즈</a>
+                                <a class="dropdown-item" href="#">상품 번호</a>
+                                <a class="dropdown-item" href="#">판매 가격</a>
+                            </div>
+                            <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group" >
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+
+                            
+
 
                     <!-- 상품목록 테이블 -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th>회원명</th>
+                                            <th>회원번호</th>
+                                            <th>가입날짜</th>
+                                            <th>회원등급</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th>회원명</th>
+                                            <th>회원번호</th>
+                                            <th>가입날짜</th>
+                                            <th>회원등급</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
+                                            <td><a href='member-detail.do'>Tiger Nixon</a></td>
+                                            <td><a href='member-detail.do'>System Architect</a></td>
+                                            <td><a href='member-detail.do'>Edinburgh</a></td>
+                                            <td><a href='member-detail.do'>61</a></td>
                                         </tr>
                                         
                                     </tbody>
@@ -253,8 +284,9 @@
                         </div>
                     </div>
 
-
                 </div>
+
+
                 <!-- /.container-fluid -->
 
             </div>

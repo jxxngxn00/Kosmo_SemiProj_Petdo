@@ -89,7 +89,7 @@
                     <a class="nav-link" href="member.html">
                         <i class="fas fa-fw fa-table"></i>
                         <span>회원관리</span></a>
-            </li>  
+            </li>     
                 <!-- Divider -->
                 <hr class="sidebar-divider">
         
@@ -120,6 +120,7 @@
                 
         
                 <!-- Nav Item - Tables -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="orderList.html">
                             <i class="fas fa-fw fa-table"></i>
@@ -203,35 +204,41 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
-                    
 
-                    <!-- 상품목록 테이블 -->
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">주문 내역 관리</h1>
+                    
+        
+                    <p class="mb-4">테이블 설명 ... <a target="_blank"
+                            href="https://datatables.net">(템플릿 테이블 자료 출처)</a>.</p>
+
+                    <!-- 주문내역 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">주문내역전체</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th>주문 번호</th>
+                                            <th>주문날짜</th>
+                                            <th>수량(개수)</th>
+                                            <th>상품번호</th>
+                                            <th>결제금액</th>
+                                            <th style="width:15%;">처리상태</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th>주문 번호</th>
+                                            <th>주문날짜</th>
+                                            <th>수량(개수)</th>
+                                            <th>상품번호</th>
+                                            <th>결제금액</th>
+                                            <th>처리상태</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -239,20 +246,82 @@
                                             <td>Tiger Nixon</td>
                                             <td>System Architect</td>
                                             <td>Edinburgh</td>
-                                            <td>Edinburgh</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
+                                            <td>61</td>
+                                            <td>61</td>
+                                            <td>
+                                                <a href="#" class="btn btn-success btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-check"></i>
+                                                    </span>
+                                                    <span class="text">배송완료</span>
                                                 </a>
                                             </td>
                                         </tr>
-                                        
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>61</td>
+                                            <td>
+                                                <a href="#" class="btn btn-warning btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-exclamation-triangle"></i>
+                                                    </span>
+                                                    <span class="text">환불/교환</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>61</td>
+                                            <td>
+                                                <a href="#" class="btn btn-secondary btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                    </span>
+                                                    <span class="text">상품 준비중</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>61</td>
+                                            <td>
+                                                <a href="#" class="btn btn-primary btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-flag"></i>
+                                                    </span>
+                                                    <span class="text">배송중</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>System Architect</td>
+                                            <td>Edinburgh</td>
+                                            <td>61</td>
+                                            <td>61</td>
+                                            <td>
+                                                <a href="#" class="btn btn-danger btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">취소</span>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <!-- /.container-fluid -->

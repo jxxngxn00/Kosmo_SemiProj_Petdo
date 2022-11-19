@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<%=pjName %>/resources/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -34,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.do">
                 <div class="sidebar-brand-text mx-3">PetDo Admin</div>
             </a>
 
@@ -43,7 +44,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -68,28 +69,28 @@
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Utilities:</h6>
-                    <a class="collapse-item" href="itemList.html">상품 목록</a>
-                    <a class="collapse-item" href="itemRegister.html">상품 등록</a>
+                    <a class="collapse-item" href="itemList.do">상품 목록</a>
+                    <a class="collapse-item" href="itemRegister.do">상품 등록</a>
                 </div>
             </div>
         </li>
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="itemCharts.html">
+            <a class="nav-link" href="itemCharts.do">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>상품별 판매통계</span></a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="calCharts.html">
+                <a class="nav-link" href="calCharts.do">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>정산관리</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="member.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>회원관리</span></a>
-            </li>  
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="member.do">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>회원관리</span></a>
+            </li>     
                 <!-- Divider -->
                 <hr class="sidebar-divider">
         
@@ -108,10 +109,10 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">홈페이지에 게시된 각종 글 관리</h6>
-                            <a class="collapse-item" href="FAQ.html">FAQ 관리</a>
-                            <a class="collapse-item" href="review.html">리뷰 관리</a>
-                            <a class="collapse-item" href="QnA.html">QnA 관리</a>
-                            <a class="collapse-item" href="notice.html">공지사항 관리</a>
+                            <a class="collapse-item" href="FAQ.do">FAQ 관리</a>
+                            <a class="collapse-item" href="review.do">리뷰 관리</a>
+                            <a class="collapse-item" href="QnA.do">QnA 관리</a>
+                            <a class="collapse-item" href="notice.do">공지사항 관리</a>
                         </div>
                     </div>
                 </li>
@@ -120,8 +121,9 @@
                 
         
                 <!-- Nav Item - Tables -->
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="orderList.html">
+                        <a class="nav-link" href="orderList.do">
                             <i class="fas fa-fw fa-table"></i>
                             <span>주문내역관리</span></a>
                 </li>
@@ -202,49 +204,50 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    
-                    <h1 class="h3 mb-2 text-gray-800" style="text-align:center;"><b>리뷰</b></h1>
-                    
-
-                    <!-- 상품목록 테이블 -->
-                    <div class="card shadow mb-4">
+                    <div id="memberInfo1" class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">쇼핑몰 리뷰 관리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">회원정보 상세보기</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                    
+                                    <tbody id="memberDetailTbl">
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th scope="row">회원명</th>
+                                            <td class="mValue">..............</td>
                                         </tr>
-                                    </thead>
-                                    <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성날짜</th>
-                                            <th>삭제</th>
+                                            <th scope="row">ID</th>
+                                            <td class="mValue">..............</td>
                                         </tr>
-                                    </tfoot>
-                                    <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>Edinburgh</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
+                                            <th scope="row">가입 날짜</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">회원 등급</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">전화번호1</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">전화번호2</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">이메일</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">배송지 주소</th>
+                                            <td class="mValue">..............</td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td colspan="2" class="mValue" style="width:100% ;">..............</td>
                                         </tr>
                                         
                                     </tbody>
@@ -252,9 +255,26 @@
                             </div>
                         </div>
                     </div>
-
+                    <div id="memberInfo2" class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">주문내역</h6>
+                        </div>
+                            <div class="card-body">
+                                This card uses Bootstrap's default styling with no utility classes added. Global
+                                styles are the only things modifying the look and feel of this default card example.
+                            </div>
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">리뷰내역</h6>
+                        </div>
+                            <div class="card-body">
+                                This card uses Bootstrap's default styling with no utility classes added. Global
+                                styles are the only things modifying the look and feel of this default card example.
+                            </div>
+                    </div>
 
                 </div>
+
+
                 <!-- /.container-fluid -->
 
             </div>
@@ -295,7 +315,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.do">Logout</a>
                 </div>
             </div>
         </div>
