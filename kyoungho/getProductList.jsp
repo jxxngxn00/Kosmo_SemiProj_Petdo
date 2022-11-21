@@ -159,29 +159,31 @@
 							</article>
 						<br/>
 						<br/>
-					
-							<div class="col-sm-4" id="col-sm-4">
-								<div class="productinfo text-center">
-								<c:forEach items="${list}" var="vo">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-										<img src="<%=pjName %>/resources/images/home/20_테디 블라썸 져지_2.jpg" alt=""/>
-										<p>${vo.product_name}</p>
-										<input type='hidden' value="<%=vo.getProduct_number() %>" />
-												<strong class="product_price">
-													<span style="font-size: 16px; color: #000000;" value="${vo.product_price}">${vo.product_price}원 &nbsp;</span>
-												</strong>
-												<img src="<%=pjName %>/resources/images/home/BEST.JPG" id="new" width="2px" height="auto" alt=""/>
-												<img src="<%=pjName %>/resources/images/home/NEW.JPG" id="new" width="2px" height="auto" alt=""/>
-										</div>
-									</div>
-									</c:forEach>
-								</div>	
-							</div>			
-						</ul>
-					</div><!--features_items-->
-				</div>
-			</div>
+		<c:forEach items="${productList }" var="vo">
+		 <div id="row" style="float:left;">				
+			<form action="getProductList.do" method="post" style="margin-bottom:10px;  margin-left:10px;" class="form-inline">	
+			<input name="product_number" type="hidden" value="${vo.product_number}"/>	
+					<table border="1">
+			<tr>
+					<td colspan="2" align="center">
+					<img src='resources/images/home/logo.png'width='300' height='200'>
+					</td>
+				</tr>			
+			<tr>	
+				<td bgcolor="orange" width="200">상품명</td>
+				<td align="left"><input name="product_name" type="text"
+						value="${vo.product_name }" /></td>
+			</tr>			
+			<tr>			
+				<td bgcolor="orange" width="150">가격</td>
+				<td align="left"><input name="product_price" type="text"
+						value="${vo.product_price }" /></td>		
+			</tr>
+			</table>
+		</form>
+		</div>
+			</c:forEach>
+		
 			<ul class="pagination">
 				<li class="active"><a href="">1</a></li>
 				<li><a href="">2</a></li>

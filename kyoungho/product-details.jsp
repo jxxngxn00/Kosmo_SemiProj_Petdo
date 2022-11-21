@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.javaclass.domain.ProductVO" %>    
+<%@page import="com.javaclass.dao.ProductDAO" %>    
+<% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,117 +123,112 @@
 	</header><!--/header-->
 	
 	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-9 padding-center">
-					<div class="product-details"><!--product-details-->
-						<div class="col-sm-5">
-							<div class="view-product">
-								<img src="<%=pjName %>/resources/images/home/019_브레드 베어 윈디 점퍼_2.jpg" width="100%" alt="" />
-								
-							</div>
+		<div class="container" style="width: 70%">
 		
+		<div class="row"><h1 class="page-header" style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
+			<input type="hidden" value="${ProductVo.product_number}" id="productId">
+		</div>
+		<div class="row" style="float: left; text-align: center; width:35%;">
+			<img alt="productPhoto" src="/resources/upload${productInfo.filename}" width="150%"">
+		</div>
 
-						</div>
-						<div class="col-sm-7">
-							<div class="product-information"><!--/product-information-->
-								<img src="<%=pjName %>/resources/images/home/new.jpg" class="newarrival" alt="" />
-								<h2 style="text-align: left;"  >브레드 베어 윈디 점퍼</h2>
-										<!-- <div  style="text-align:left; font-size: 23px; padding-right: 7px;">23,000원</div> -->
-										<!-- <span id="label1"class='product_name' value = '브레드 베어 윈디 점퍼'>브레드 베어 윈디 점퍼</span><br/>
-								         <span id="price1" class='product_price'  value = '23000'>₩ 23,000</span>
-								         <br/> -->
-<table class="producttbl">
-   <tr id="producttitle">
-   </tr>
-   <tr class="products">
-      <td id='product1' class='product'>
-         <span id="label1" class='productName' value = '브레드 베어 윈디 점퍼'>브레드 베어 윈디 점퍼</span><br/>
-         <span id="price1" class='price' value = '23000'>₩ 23,000</span>
-         <br/>
-         <select name="product1Count" id="product1Count" class='productCount'>
-            <option class='opt' value='0'>0</option>
-            <option class='opt' value='1'>1</option>
-            <option class='opt' value='2'>2</option>
-            <option class='opt' value='3'>3</option>
-            <option class='opt' value='4'>4</option>
-            <option class='opt' value='5'>5</option>
-         </select>
-      </td>
-      </tr>
-</table>
-							
-								</div><br/>
-								<br/>
-								<br/>
-								<br/>
+		<div class="row productInfo" style="width: 40%; float: right;" >
+			<div class="form-group" style="text-align: center;">
+				<h3 class="page-header"><span>${ProductVo.product_name}</span><br><small>${productInfo.productInfo}</small></h3>
+			</div>
+			<div class="form-group" style="text-align: left;">
+				<label>가격 : </label><span>&nbsp;<fmt:formatNumber value="${ProductVo.product_price}" type="number"/></span><span>&nbsp;원</span>
+				<input type="hidden" value="${ProductVo.product_price}" id="price">
+			</div>
+			<div class="form-group" style="text-align: left;">
+				<label>배송비 : </label><span>&nbsp;2500원</span>
+				<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
+			</div>
+			<div class="form-group" style="text-align: left;">
+				<label>적립금 : </label><span><fmt:parseNumber var="test" value="${ProductVo.product_price / 100}" integerOnly="true"/> ${test}&nbsp;원</span>
+			</div>
+
+			<c:choose>
+				<c:when test="${productInfo.productDist != 'acc' && productInfo.productDist != 'bag'}">
+					<div class="form-horizontal" style="text-align: left;">
+						<label>옵션 : </label> 
+						<select class="form-control opt_select" name="selectedOpt">
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+						</select>
+					</div>
+				</c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose>		
+			<div class="form-horizontal" style="text-align: left;">
+				<label>구매수량 : </label> 
+				<select class="form-control" id="select_count">
+			
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+				</select>
+			</div>	
+			<hr>
+			
+			<div class="row" style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
+				<div class="selected_option" style="text-align: right;">
+				</div>
+				<div style="text-align: center;">
+					<a href="checkout.do"><button class="btn btn-default">주문하기</button></a>
+					<a href="cart.do"><button class="btn btn-fefault cart" style="width: 200px">장바구니</button></a>
+				</div>
+			</div>
+			<hr>	
+		</div>
+	</div>
+
 								
-								<div id="rightdiv">
-								
-<form>							
-<table id="listTable">
-   <tr id="listtitle">
-   </tr>
- 
-   <tr id="listtr">
-      <td width="120">상 품</td>
-      <td width="20"></td>
-      <td width="40">수 량</td>
-      <td width="20"></td>
-      <td width="100">금 액</td>
-      <td width="80">취 소</td>
-   </tr>
-     <tr id="totallist">
-      <td colspan='6' id='sum'>
-         합 계 : <input type='text'  value=0 id='total' /> 원 
-         <input type='button' value='장바구니'  id='btn' onclick="location.href='<%=pjName %>/pay/cart.do'"/>
-      </td>
-   </tr>
-   
-</table>
-</form>	
-</div>
-										
-										<div class="oreder" style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
-										<div style="text-align:right; margin-right:150px; font-size: 16px; line-height: 1.2; font-weight: bold;
-  											color: rgba(33,33,33,0.7); font-size: 18px;">총 상품금액  :  0</div>
-											<a href="cart.do"><button class="addtocart" type="button" class="btn btn-fefault cart" style="width: 200px">
-											ADD TO CART
-											</button></a>
-												<a href="checkout.do"><button class="orderbuy" type="button" class="btn btn-fefault cart">
-											BUY NOW
-											</button></a>
-										</div>
-								
-								
-							</div><!--/product-information-->
-						</div>
-						
-					</div><!--/product-details-->
-					
-					<div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12" style="float: center; margin-right: 50px; margin-bottom: 15px">
-							<ul class="productCategory clearfix"><hr/>
-								<li style="display:inline-block;" data-toggle="tab" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="#details" class="button">상세정보                
-								</li>
-								<li style="display:inline-block;" data-toggle="tab" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="#companyprofile" class="button">리뷰()                
-								</li>
-								<li style="display:inline-block;" data-toggle="tab" class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a href="#reviews" class="button">Q&A()                
-								</li>
-						</div>
-						
-						
-						<div class="tab-content">
-							<img src="https://cdn.imweb.me/upload/S2019082912b56704ac4ce/3c8a7c8871833.png">
-							<img src="https://gi.esmplus.com/boosters1/BRAND/boosters/laughing_charlie_web/hairband/hairband-top.jpg">
-									
-								</div>
-							</div>
-							
-							
-							
-						</div>
-					</div><!--/category-tab-->
+	<div class="container">
+		<div class="row nav">
+			<nav id="middle_nav">
+				<ul class="nav nav-tabs nav-justified">
+					<li id="about">상품상세</li>
+					<li id="review">리뷰</li>
+					<li id="qna">상품문의</li>
+				</ul>
+			</nav>
+		</div>
+		
+		<div class="row" style="margin: 50px 0;">
+			<h1 class="jumbotron">
+				<div class="container">
+					<h1>Hello world</h1>
+					<small>This is product page.</small>
+				</div>
+			</h1>
+		</div>
+		
+		<div class="row about_product" style="text-align: center;">
+			<h1 class="page-header">상품 상세</h1>
+
+		</div>
+		<div class="row reviews" style="text-align: center; margin: 80px 0;">
+			<h1 class="page-header" style="margin-bottom: 50px;">Review</h1>
+			<c:forEach begin="1" end="5">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">Panel content</div>
+			</div>
+			</c:forEach>
+		</div>
+
+		<div class="row qnas" style="text-align: center; height: 700px;">
+			<h1 class="page-header">상품 Q&A</h1>
+            /* Q&A 테이블 */
+		</div>
+	</div>
+	</div>
 				
 					
 		<div class="underline">
