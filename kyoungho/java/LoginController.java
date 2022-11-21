@@ -69,7 +69,7 @@ public class LoginController {
 		}else {
 			System.out.println("로그인 성공");
 			//세션에 저장
-			session.setAttribute("login", vo.getUser_id());
+			session.setAttribute("login", result.getUser_id());
 			
 			if(vo.getUser_id().equals("admin")) {
 				System.out.println("admin 접속");

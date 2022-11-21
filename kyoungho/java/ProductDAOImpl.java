@@ -23,7 +23,15 @@ public class ProductDAOImpl implements ProductDAO {
 
 
 	public List<ProductVO> selectAllProduct() {
+		System.out.println("===> Mybatis selectAllProduct() 호출");
 		return mybatis.selectList("ProductDAO.selectAllProduct");
 	}
+
+
+	public List<ProductVO> getProductList(ProductVO vo) {
+		System.out.println("===> Mybatis getProductList() 호출");
+		return mybatis.selectList("ProductDAO.getProductList", vo);
+	}
+	
 
 }

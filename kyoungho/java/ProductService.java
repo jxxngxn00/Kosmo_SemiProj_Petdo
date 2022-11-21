@@ -11,5 +11,7 @@ public interface ProductService {
 
 	List<ProductVO> selectAllProduct();
 	
+	List<ProductVO> getProductList(ProductVO vo);
+	
 
 }

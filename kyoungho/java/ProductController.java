@@ -1,13 +1,28 @@
 package com.javaclass.control;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.javaclass.dao.ProductDAO;
+import com.javaclass.domain.ProductVO;
+import com.javaclass.service.ProductService;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-   
-   
+	
+	@Autowired
+	ProductService productService;
+	
+	
+   @RequestMapping("/getProductList.do")
+   public void list(ProductVO vo, Model m) {
+	   m.addAttribute("productList",productService.getProductList(vo));
+   }
+	
+	
    //상품목록 페이지 부르기
    @RequestMapping("/all-product-shop.do")
    public String allProductShop(){

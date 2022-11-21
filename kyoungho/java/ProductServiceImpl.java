@@ -9,6 +9,7 @@ import com.javaclass.dao.ProductDAOImpl;
 
 import com.javaclass.domain.ProductVO;
 
+
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
 	
@@ -27,5 +28,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 
+	public List<ProductVO> getProductList(ProductVO vo) {
+		return productDAO.getProductList(vo);
+	}
 
 }
