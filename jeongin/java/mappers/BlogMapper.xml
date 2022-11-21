@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="blogDAO">
+
+	<!-- QNA -->
+	
+	<!-- 질문등록 -->
+	<insert id="insertQna" parameterType="QnaVO">
+	INSERT INTO  qna_board(qna_seq, qna_title, qna_writer, qna_content, qna_date)
+	VALUES(qna_board_seq.NEXTVAL, #{qna_title}, #{qna_writer}, #{qna_content}, SYSDATE)
+	</insert>
+
+	<!-- 목록 전체 보기 -->
+	<select id="selectAllQna" resultType="QnaVO">
+		<![CDATA[
+			SELECT qna_seq, qna_writer, qna_title, qna_content, answer_title, answer_content,
+						TO_CHAR(qna_date,'yyyy-mm-dd') qDate, TO_CHAR(qna_date,'HH:MI AM') qTime
+			FROM qna_board
+			ORDER BY qna_seq DESC
+		]]>
+	</select>
+
+
+	<!-- 질문 상세보기 -->
+	<select id="selectQna" parameterType="QnaVO" resultType="QnaVO">
+		<![CDATA[
+			SELECT qna_seq, qna_writer, qna_title, qna_content, answer_title, answer_content,
+						TO_CHAR(qna_date,'yyyy-mm-dd') qDate, TO_CHAR(qna_date,'HH:MI AM') qTime
+			FROM qna_board
+			WHERE qna_seq = #{qna_seq}
+		]]>
+	</select>
+	
+	<!-- 질문 수정 (update) -->
+	<update id="updateQna" parameterType="QnaVO">
+		UPDATE qna_board 
+		SET qna_title=#{qna_title},  qna_content=#{qna_content}, qna_date=SYSDATE
+		WHERE qna_seq=#{qna_seq}
+	</update>
+	
+	<!-- 답변 등록 (update) -->
+	<update id="updateAnswer" parameterType="QnaVO">
+		UPDATE qna_board SET answer_title=#{answer_title}, answer_content = #{answer_content} 
+		WHERE qna_seq=#{qna_seq}
+	</update>
+	
+	<!-- 질문 삭제 -->
+	<delete id="deleteQna" parameterType="QnaVO">
+		DELETE FROM qna_board
+		WHERE qna_seq = #{qna_seq}
+	</delete>
+	
+</mapper>
