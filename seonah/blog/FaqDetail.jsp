@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,14 +147,13 @@
 				<div class="col-sm-9">
 					<div class="blog-post-area">
 						<div class="single-blog-post">
-							<h3>댕댕이랑 캠핑 & 피크닉 꿀팁 !</h3>
+							<h3>${faq.faq_title}</h3>
 							<div class="post-meta">
 								<ul>
-									<li><i class="fa fa-user"></i> Mac Doe</li>
-									<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-									<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
+									<li><i class="fa fa-user"></i>${faq.faq_writer}</li>
+									<li><i class="fa fa-clock-o"></i>${faq.faq_date}</li>
 								</ul>
-								<span>
+								<span style="margin-left: -10px">
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
@@ -161,9 +161,10 @@
 									<i class="fa fa-star-half-o"></i>
 								</span>
 							</div>
-							<a href="">
-								<img src="<%=pjName %>/resources/images/blog/test-content.jpg" alt="" style="max-width:auto;">
-							</a>
+							
+							<c:if test="${faq.faq_name!=null}">	
+									<img src="<%=pjName %>/resources/images/${faq.faq_realname}.jpg" width='300' height="200">
+							</c:if>	
 						
 							<div class="pager-area">
 								<ul class="pager pull-right">

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,17 +115,20 @@
 			</header>
 	
 	<section>
+
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-11">
 					<div class="blog-post-area-list" id="post-meta">
 						<h2 class="title text-center">FAQ</h2>
 						<div class="single-blog-post-list" >
-							<h3><b>댕댕이랑 캠핑 & 피크닉 꿀팁 !</b></h3>
+						<c:forEach items ="${faqList }" var="vo">
+							<h3><b><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_title}</a></b></h3>
 							<div class="post-meta" >
 								<ul>
-									<li><i class="fa fa-user"></i>#캠핑</li>
-									<li><i class="fa fa-user"></i>#소풍,피크닉</li>
+									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag1}</a></li>
+									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag2}</a></li>
+									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag3}</a></li>
 								</ul>
 								<span>
 										<i class="fa fa-star"></i>
@@ -133,128 +138,15 @@
 										<i class="fa fa-star-half-o"></i>
 								</span>
 							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/blog-test.PNG" alt="">
-							</a>
-							<p>즐거운 야외활동을 더 신나고 재밌개!</p>
+						<c:if test="${vo.faq_name!=null}">	
+							<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}"><img src="<%=pjName %>/resources/images/${vo.faq_realname}" width="20%" height="auto"></a>
+							
+						</c:if>	
+							<p><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a></p>
 							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
 						</div>
+		 </c:forEach>		
 						
-						<div class="single-blog-post-list">
-							<h3><b>'껌' 좀 씹는 우리 댕댕이💖</b></h3>
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i>#개껌</li>
-									<li><i class="fa fa-user"></i>#스트레스해소</li>
-									<li><i class="fa fa-user"></i>#치석제거</li>
-								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/FAQ-one.PNG" alt="">
-							</a>
-							<p>놀이, 간식, 치아 건강 다~ 개껌의 모든 것!</p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
-						</div>
-
-						<div class="single-blog-post-list">
-							<h3><b>닥스훈트야, 넌 뭘 좋아하니?</b></h3>			
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i>#닥스훈트</li>
-									<li><i class="fa fa-user"></i>#오소리사냥꾼</li>
-									<li><i class="fa fa-user"></i>#핫도그개</li>
-								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/FAQ-two.PNG" alt="">
-							</a>
-							<p>보기만해도 귀여운 닥스훈트의 취향백과</p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
-						</div>
-
-						<div class="single-blog-post-list">
-							<h3><b>댕댕이 체중관리 실시!</b></h3>			
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i>#비만은</li>
-									<li><i class="fa fa-user"></i>#만병의근원</li>
-									<li><i class="fa fa-user"></i>#다이어트</li>
-								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/FAQ-three.PNG" alt="">
-							</a>
-							<p>우리 댕댕이 몸무게 머선 129!?</p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
-						</div>
-
-						<div class="single-blog-post-list">
-							<h3><b>콜록 콜록! 댕댕이 기침</b></h3>				
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i>#강아지기침</li>
-									<li><i class="fa fa-user"></i>#계속콜록</li>
-									<li><i class="fa fa-user"></i>#예의주시</li>
-								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/FAQ-four.PNG" alt="">
-							</a>
-							<p>강아지가 반복적으로 기침을 한다!?</p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
-						</div>
-
-						<div class="single-blog-post-list">
-							<h3><b>댕댕이 장염 주의보</b></h3>					
-							<div class="post-meta">
-								<ul>
-									<li><i class="fa fa-user"></i>#강아지장염</li>
-									<li><i class="fa fa-user"></i>#주의사항</li>
-									<li><i class="fa fa-user"></i>#건강관리</li>
-								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
-							</div>
-							<a href="faqDetail.do">
-								<img src="<%=pjName %>/resources/images/blog/FAQ-five.PNG" alt="">
-							</a>
-							<p>댕댕이를 위혐하는 장염, 주의하고 주의하자!</p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
-						</div>
-
 						<div class="pagination-area">
 							<ul class="pagination">
 								<li><a href="" class="active">1</a></li>
