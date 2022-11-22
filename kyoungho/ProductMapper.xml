@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductDAO">
+
+<insert id="insertProduct" parameterType="ProductVO">
+INSERT INTO PRODUCT (PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK, PRODUCT_DESC, PRODUCT_DATE, PRODUCT_HITS) 
+VALUES(PRODUCT_SEQ.nextval,#{category_code},#{product_name},#{product_price},#{product_stock},#{product_desc},SYSDATE,0)
+</insert>
+
+<select id="selectAllProduct" resultType="ProductVO">
+SELECT product_number, product_name,product_stock,product_hits,product_date
+FROM product
+ORDER BY product_number
+</select>
+
+<!-- 상품목록조회 -->
+<!--  <select id="getProductList" resultType="ProductVO">
+<![CDATA[
+select product_number, product_name, product_price from product
+]]>
+</select> -->
+
+<select id="getProductList" parameterType="hashmap" resultType="ProductVO">	
+<![CDATA[
+ SELECT product_number,product_name, product_price
+FROM product
+WHERE product_number IN(SELECT product_number
+FROM (SELECT rownum as rnum, product_number FROM (SELECT rownum, product_number FROM product ORDER BY product_number DESC))
+WHERE rnum>=1 AND rnum<=100) 
+]]>
+</select>
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+</mapper>

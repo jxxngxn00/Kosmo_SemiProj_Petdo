@@ -2,6 +2,23 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.javaclass.domain.ProductVO" %>  
+<%@page import="com.javaclass.service.ProductServiceImpl" %>  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+		$(document).ready(function() {
+			var listForm = $("#listForm");
+			
+			$(".pagination_button a").on("click", function(e) {
+				e.preventDefault();
+				
+				listForm.find("input[name='pageNum']").val($(this).attr("href"));
+				listForm.submit();
+			});
+		});
+	</script>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,9 +176,9 @@
 							</article>
 						<br/>
 						<br/>
-		<c:forEach items="${productList }" var="vo">
+		<c:forEach items="${productList}" var="vo">
 		 <div id="row" style="float:left;">				
-			<form action="getProductList.do" method="post" style="margin-bottom:10px;  margin-left:10px;" class="form-inline">	
+			<form action="#" method="post" style="margin-bottom:10px;  margin-left:10px;" class="form-inline" id="listForm">	
 			<input name="product_number" type="hidden" value="${vo.product_number}"/>	
 					<table border="1">
 			<tr>
@@ -183,6 +200,31 @@
 		</form>
 		</div>
 			</c:forEach>
+		
+		<div>
+  <ul class="pagination">
+    <c:if test="${pageMaker.prev }">
+      <li class="pagination_button">
+      	<a href="#">Previous</a>
+      </li>
+    </c:if>
+
+    <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+      <li class="pagination_button">
+      	<a href="#">${num }</a>
+      </li>
+    </c:forEach>
+
+    <c:if test="${pageMaker.next }">
+      <li class="pagination_button">
+        <a href="#">Next</a>
+      </li>
+    </c:if>
+  </ul>
+</div>
+		
+		
+		
 		
 			<ul class="pagination">
 				<li class="active"><a href="">1</a></li>
@@ -256,9 +298,15 @@
 			</div>
 		</div>
 		
+	
+		
+		
 			
 		
 	</footer><!--/Footer-->
+
+	
+	
 		
 		
 
