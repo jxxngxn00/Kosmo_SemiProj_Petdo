@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,35 +236,35 @@
                                             <th>삭제</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>글 번호</th>
-                                            <th>글 제목</th>
-                                            <th>게시일</th>
-                                            <th>수정</th>
-                                            <th>삭제</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-											<td style="text-align:center;">
-												<a href="modifyNotice.do"
-												class="btn btn-info btn-circle btn-sm">
-													<i class="fas fa-info-circle"></i>
-												</a>
-											</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
+									<tfoot>
+										<tr>
+											<th>글 번호</th>
+											<th>글 제목</th>
+											<th>게시일</th>
+											<th>수정</th>
+											<th>삭제</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<c:forEach items="${nList }" var="vo">
+											<tr>
+												<td>${vo.notify_seq }</td>
+												<td>${vo.notify_title }</td>
+												<td>${vo.nDate }</td>
+												<td style="text-align: center;"><a
+													href="modifyNotice.do?notify_seq=${vo.notify_seq}"
+													class="btn btn-info btn-circle btn-sm"> <i
+														class="fas fa-info-circle"></i>
+												</a></td>
+												<td style="text-align: center;"><a
+													href="deleteNotice.do?notify_seq=${vo.notify_seq}"
+													class="btn btn-danger btn-circle btn-sm"> <i
+														class="fas fa-trash"></i>
+												</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
                             </div>
                         </div>
                     </div>

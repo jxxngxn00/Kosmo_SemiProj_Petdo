@@ -142,7 +142,19 @@
 										<td><a href="qnaDetail.do?qna_seq=${vo.qna_seq}">${vo.qna_title}</a></td>
 										<td><a href="qnaDetail.do?qna_seq=${vo.qna_seq}">${vo.qDate}</a></td>
 										<td><a href="qnaUpdate.do?qna_seq=${vo.qna_seq}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-										<td><a href="deleteQna.do?qna_seq=${vo.qna_seq }"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+										<td>
+											<c:choose>
+												<c:when test="${vo.qna_writer eq sessionScope.login }">
+													<a href="deleteQna.do?qna_seq=${vo.qna_seq }"><i class="fa fa-trash" aria-hidden="true"></i></a>
+												</c:when>
+												<c:when test="${'admin' eq sessionScope.login }">
+													<a href="deleteQna.do?qna_seq=${vo.qna_seq }"><i class="fa fa-trash" aria-hidden="true"></i></a>
+												</c:when>
+												<c:otherwise>
+													<a href="#" id="notDelete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+												</c:otherwise>
+											</c:choose>
+										</td>
 									</tr>
 								</c:forEach>
 								
@@ -202,6 +214,13 @@
 	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
     <script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
     <script src="<%=pjName %>/resources/js/main.js"></script>
-
+	<script type="text/javascript">
+		$(function(){
+			$("#notDelete").click(function(){
+				alert("본인이 작성한 글만 삭제할 수 있습니다.");
+			});
+			
+		})
+	</script>
 </body>
 </html>

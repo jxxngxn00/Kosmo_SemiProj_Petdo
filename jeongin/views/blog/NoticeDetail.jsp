@@ -151,26 +151,19 @@
 						</div><!--/shipping-->
 					</div>
 				</div>
-				<div id="col-sm" class="col-sm-9">
+				<div id="col-sm" class="col-sm-8">
 					<div class="blog-post-area">
 						<div class="single-blog-post">
-							<h2>이거만하고 집에 갑시다..</h2>
+							<h2>${notice.notify_title }</h2>
 							<div class="post-meta">
 								<ul>
-									<li><i class="fa fa-user"></i> Mac Doe</li>
-									<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-									<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
+									<li><i class="fa fa-user"></i> ${notice.notify_writer }</li>
+									<li><i class="fa fa-clock-o"></i>${notice.nTime }</li>
+									<li><i class="fa fa-calendar"></i>${notice.nDate }</li>
 								</ul>
-								<span>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-								</span>
 							</div>
 							<p>
-								화이팅 화이팅 화이팅
+								${notice.notify_content}
 						</div>
 					</div><!--/blog-post-area-->
 					

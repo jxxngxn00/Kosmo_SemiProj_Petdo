@@ -75,38 +75,37 @@
                     
 
                     <!-- 입력 폼 -->
-                    <div class="card shadow mb-4" style="width: 75%; margin: auto; margin-top: 50pt;">
-                        <div class="card-header py-3">
-                        </div>
-                        <div class="card-body" style="margin-left:15px;">
-                            <div class="inputTitle">
-                                <input type="text" style="width: 70%;" placeholder="메인 제목"/>
-                            </div>
-                            <hr/>
-                            <div>
-                                상세 설명
-                                <textarea style="width:100%; height:300px;"></textarea>
-                            </div>
-                            <div id="registBtn">
-                                <a href="#" class="btn btn-primary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-flag"></i>
-                                    </span>
-                                    <span class="text">등록</span>
-                                </a>
-                                <a href="QnA.do" class="btn btn-secondary btn-icon-split">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-arrow-right"></i>
-                                    </span>
-                                    <span class="text">취소</span>
-                                </a>
-                            </div>
-                            
-
-
-                            
-                        </div>
-                    </div>
+                    <form action="insertQna.do" id="registAnswerFrm">
+	                    <div class="card shadow mb-4" style="width: 75%; margin: auto; margin-top: 50pt;">
+	                        <div class="card-header py-3">
+	                        </div>
+	                        <div class="card-body" style="margin-left:15px;">
+	                            <div class="inputTitle">
+	                            	<input type="hidden" name="qna_seq" value="${qna_seq}"/>
+	                                <input type="text" style="width: 70%;" placeholder="메인 제목" value="${aTitle}" name="answer_title"/>
+	                            </div>
+	                            <hr/>
+	                            <div>
+	                                상세 설명
+	                                <textarea style="width:100%; height:300px;" name="answer_content"></textarea>
+	                            </div>
+	                            <div id="registBtn">
+	                                <button class="btn btn-primary btn-icon-split" id="registAnswerBtn">
+	                                    <span class="icon text-white-50">
+	                                        <i class="fas fa-flag"></i>
+	                                    </span>
+	                                    <span class="text">등록</span>
+	                                </button>
+	                                <a href="qna.do" class="btn btn-secondary btn-icon-split">
+	                                    <span class="icon text-white-50">
+	                                        <i class="fas fa-arrow-right"></i>
+	                                    </span>
+	                                    <span class="text">취소</span>
+	                                </a>
+	                            </div>
+	                        </div>
+	                    </div>
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -173,7 +172,15 @@
 
 	<!-- font awesome CDN -->
 	<script src="https://kit.fontawesome.com/3364ed6976.js" crossorigin="anonymous"></script>
-
+	
+	<!-- custom scripts -->
+	<script type="text/javascript">
+		$(function(){
+			$("#registAnswerBtn").click(function(){
+				$("#registAnswerFrm").submit();
+			});
+		})
+	</script>
 </body>
 
 </html>

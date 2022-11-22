@@ -30,6 +30,7 @@
 	  		<value>com.javaclass.domain.ImageVO</value>
 	  		<value>com.javaclass.domain.ProductVO</value>
 	  		<value>com.javaclass.domain.QnaVO</value>
+	  		<value>com.javaclass.domain.NoticeVO</value>
 	  	</list>
 	  </property>
     </bean>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -236,43 +237,39 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                            <td style="width:15%; text-align:center;">
-                                                <a href="registQna.do" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-exclamation-triangle"></i>
-                                                    </span>
-                                                    <span class="text">미응답</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td style=" text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                            <td style=" text-align:center;">
-                                                <a href="#" class="btn btn-success btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-check"></i>
-                                                    </span>
-                                                    <span class="text">응답</span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        
+										<c:forEach items="${qnaList}" var="qna">
+											<tr>
+												<td>${qna.qna_seq}</td>
+												<td>${qna.qna_title}</td>
+												<td>${qna.qDate}</td>
+												
+												<!-- 삭제버튼 -->
+												<td style="text-align: center;"><a href="deleteQna.do?qna_seq=${qna.qna_seq }"
+													class="btn btn-danger btn-circle btn-sm"> <i
+														class="fas fa-trash"></i>
+												</a></td>
+												
+												<!-- 답변이 달리지 않았을 경우 : 미응답 처리 -->
+												<c:if test="${qna.answer_title eq null }">
+													<td style="width: 15%; text-align: center;"><a
+														href="registQna.do?title=${qna.qna_title }&seq=${qna.qna_seq }" class="btn btn-warning btn-icon-split">
+															<span class="icon text-white-50"> <i
+																class="fas fa-exclamation-triangle"></i>
+														</span> <span class="text">미응답</span>
+													</a></td>
+												</c:if>
+												
+												<!-- 답변이 달렸을 경우 : 응답 처리 -->
+												<c:if test="${qna.answer_title ne null }">
+													<td style="text-align: center;"><a href="#"
+														class="btn btn-success btn-icon-split"> <span
+															class="icon text-white-50"> <i
+																class="fas fa-check"></i>
+														</span> <span class="text">응답</span>
+													</a></td>
+												</c:if>
+											</tr>
+										</c:forEach>
                                     </tbody>
                                 </table>
                             </div>
