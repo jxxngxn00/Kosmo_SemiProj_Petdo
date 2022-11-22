@@ -18,18 +18,18 @@ public class ProductServiceImpl implements ProductService {
 	@Autowired
 	private ProductDAOImpl productDAO;
 
-	
+	//상품등록
 	public void insertProduct(ProductVO vo) {
 		productDAO.insertProduct(vo);
 
 	}
-	
+	//상품 전체 조회
 	public List<ProductVO> selectAllProduct() {
 		
 		return productDAO.selectAllProduct();
 	}
 	
- 
+	//상품 카테고리별 출력
 	public List<ProductVO> getProductList(ProductVO vo, Criteria cri) {
 		return productDAO.getProductList(vo, cri);
 	}

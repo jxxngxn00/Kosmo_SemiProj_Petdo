@@ -32,7 +32,7 @@ public class PagingVO {
 		super();
 		
 	}
-
+	//getter,setter
 	public int getStartPage() {
 		return startPage;
 	}

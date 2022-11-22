@@ -24,10 +24,8 @@ public class ProductController {
 	public String getProductList(ProductVO vo, Model model, Criteria cri) {
 		System.out.println("글 목록 검색 처리");
 		
-	
-		
 		model.addAttribute("productList", productService.getProductList(vo,cri));
-		model.addAttribute("pageMaker", new PagingVO(cri, 10));
+		model.addAttribute("pageMaker", new PagingVO(cri, 123));
 		return "product/getProductList";
 	}
 
