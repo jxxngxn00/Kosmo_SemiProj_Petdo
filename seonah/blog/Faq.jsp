@@ -122,7 +122,9 @@
 					<div class="blog-post-area-list" id="post-meta">
 						<h2 class="title text-center">FAQ</h2>
 						<div class="single-blog-post-list" >
+						
 						<c:forEach items ="${faqList }" var="vo">
+						
 							<h3><b><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_title}</a></b></h3>
 							<div class="post-meta" >
 								<ul>
@@ -138,10 +140,7 @@
 										<i class="fa fa-star-half-o"></i>
 								</span>
 							</div>
-						<c:if test="${vo.faq_name!=null}">	
 							<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}"><img src="<%=pjName %>/resources/images/${vo.faq_realname}" width="20%" height="auto"></a>
-							
-						</c:if>	
 							<p><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a></p>
 							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
 						</div>

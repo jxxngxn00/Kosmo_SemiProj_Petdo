@@ -161,11 +161,8 @@
 									<i class="fa fa-star-half-o"></i>
 								</span>
 							</div>
-							
-							<c:if test="${faq.faq_name!=null}">	
-									<img src="<%=pjName %>/resources/images/${faq.faq_realname}.jpg" width='300' height="200">
-							</c:if>	
-						
+									<img src="<%=pjName %>/resources/images/${faq.faq_realname}" width='40%'>
+
 							<div class="pager-area">
 								<ul class="pager pull-right">
 									<li><a href="#">Pre</a></li>
