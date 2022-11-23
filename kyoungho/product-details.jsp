@@ -126,26 +126,26 @@
 		<div class="container" style="width: 70%">
 		
 		<div class="row"><h1 class="page-header" style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
-			<input type="hidden" value="${ProductVo.product_number}" id="productId">
+			<input type="hidden" value="${getProduct.product_number}" id="productId">
 		</div>
 		<div class="row" style="float: left; text-align: center; width:35%;">
-			<img alt="productPhoto" src="/resources/upload${productInfo.filename}" width="150%"">
+			<img alt="productPhoto" src="/resources/upload/${getProduct.stored_file_name}" width="150%"">
 		</div>
 
 		<div class="row productInfo" style="width: 40%; float: right;" >
 			<div class="form-group" style="text-align: center;">
-				<h3 class="page-header"><span>${ProductVo.product_name}</span><br><small>${productInfo.productInfo}</small></h3>
+				<h3 class="page-header"><span>${getProduct.product_name}</span><br><small>${productInfo.productInfo}</small></h3>
 			</div>
 			<div class="form-group" style="text-align: left;">
-				<label>가격 : </label><span>&nbsp;<fmt:formatNumber value="${ProductVo.product_price}" type="number"/></span><span>&nbsp;원</span>
-				<input type="hidden" value="${ProductVo.product_price}" id="price">
+				<label>가격 : </label><span>&nbsp;<fmt:formatNumber value="${getProduct.product_price}" type="number"/></span><span>&nbsp;원</span>
+				<input type="hidden" value="${getProduct.product_price}" id="price">
 			</div>
 			<div class="form-group" style="text-align: left;">
 				<label>배송비 : </label><span>&nbsp;2500원</span>
 				<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
 			</div>
 			<div class="form-group" style="text-align: left;">
-				<label>적립금 : </label><span><fmt:parseNumber var="test" value="${ProductVo.product_price / 100}" integerOnly="true"/> ${test}&nbsp;원</span>
+				<label>적립금 : </label><span><fmt:parseNumber var="test" value="${getProduct.product_price / 100}" integerOnly="true"/> ${test}&nbsp;원</span>
 			</div>
 
 			<c:choose>

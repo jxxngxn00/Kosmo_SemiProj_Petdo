@@ -4,6 +4,19 @@
 <%@page import="com.javaclass.domain.ProductVO" %>  
 <%@page import="com.javaclass.domain.PagingVO" %>  
 <%@page import="com.javaclass.service.ProductServiceImpl" %>  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+		$(document).ready(function() {
+			var listForm = $("#listForm");
+			
+			$(".pagination_button a").on("click", function(e) {
+				e.preventDefault();
+				
+				listForm.find("input[name='pageNum']").val($(this).attr("href"));
+				listForm.submit();
+			});
+		});
+	</script>
 
 
 
@@ -34,21 +47,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-$("#pageInfo a").on("click", function(e){
-	 
-    e.preventDefault();
-    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-    moveForm.attr("action", "/product/getProductList.do");
-    moveForm.submit();
-    
-});
-	</script>
-
-
 </head><!--/head-->
 
 <body>
@@ -182,16 +180,16 @@ $("#pageInfo a").on("click", function(e){
 						<br/>
 						<br/>
 						<div style="margin:auto;">
-		<c:forEach items="${productList}" var="vo">
+		<c:forEach items="${categoryList}" var="vo">
 		 <div id="row" style="float:left;" style="border-style:none; display:flex; flex-wrap:wrap; ">				
-			<form action="#" id="listForm" method="post" style="  margin-bottom:10px;  margin-left:10px; class=form-inline;  border-style: none;" >	
+			<form action="product-detail?product-number=" id="listForm" method="post" style="  margin-bottom:10px;  margin-left:10px; class=form-inline;  border-style: none;" >	
 			<div style="margin-left:120px">
-			<input name="product_number" type="hidden" value="${vo.product_number}"/>
+			<input name="product_number" type="hidden" value="${vo.product_number}"/>	
 			
 			<table style="margin-left:10px; ">
 			<tr>
 					<td colspan="2" align="center">
-					<a href="product-details.do?product_number=${vo.product_number}"><img src='resources/images/home/girl1.png'width='300' height='200'></a>	
+					<img src='resources/images/home/logo.png'width='300' height='200'>
 					</td>
 				</tr>			
 			<tr>	
@@ -222,18 +220,18 @@ $("#pageInfo a").on("click", function(e){
 	</section>
 	
 	<footer id="footer"><!--Footer-->
-	<div style="">  <input type="hidden" name="pageNum" value="${pagingVO.cri.pageNum }">
-        <input type="hidden" name="amount" value="${pagingVO.cri.amount }">
-<ul class="pagination" id="pageInfo">
-
+	<div style="">
+<ul class="pagination">
     <c:if test="${pagingVO.prev}">
       <li ><a href="getProductList=${pagingVO.startPage-1}&amount=${pagingVO.amount}">Previous</a>
       </li>
     </c:if>
 
-     <c:forEach var="num" begin="${pagingVO.startPage}" end="${pagingVO.endPage}">
-                    <li class="pageInfo_btn"><a href="getProductList.do?num=${num}">${num}</a></li>
-     </c:forEach>
+    <c:forEach var="num" begin="${pagingVO.startPage }" end="${pagingVO.endPage }">
+      <li >
+      	<a href="/product/getProductList.do?${num}&amount=${pagingVO.amount}">${num}</a>
+      </li>
+    </c:forEach>
 
     <c:if test="${pagingVO.next }">
       <li >

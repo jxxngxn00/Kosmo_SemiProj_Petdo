@@ -30,7 +30,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 
-	//상품카테고리별 조회 mybatis 호출
+	//상품전체 조회 mybatis 호출
 	  public List<ProductVO> getProductList(Criteria cri) {
 		  System.out.println("====> Mybatis로 getProductList() 기능 처리");
 		  return mybatis.selectList("ProductDAO.getProductList", cri);
@@ -44,6 +44,18 @@ public class ProductDAOImpl implements ProductDAO {
 		  
 	  }
 	
+	  
+	  public List<ProductVO> getCategoryList(ProductVO vo){
+		  System.out.println("====> Mybatis로 getCategoryList() 기능 처리");
+		  return mybatis.selectList("ProductDAO.getCategoryList", vo);
+	  };
+	  
+	  
+	  public ProductVO getProduct(ProductVO vo) {
+		  System.out.println("====> Mybatis로 getProduct() 기능 처리");
+		  System.out.println(vo);
+		  return mybatis.selectOne("ProductDAO.getProduct",vo);
+	  }
 	 
 	
 

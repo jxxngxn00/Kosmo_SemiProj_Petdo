@@ -1,5 +1,7 @@
 package com.javaclass.control;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
+	//상품 목록조회(페이징 처리)
 	@RequestMapping(value="/getProductList.do")
 	//@RequestParam : Command 객체인 VO에 매핑값이 없는 사용자 입력정보는 직접 받아서 처리
 	//				  value = 화면으로부터 전달된 파라미터 이름(jsp의 input의 name속성 값)
@@ -30,6 +33,23 @@ public class ProductController {
 		model.addAttribute("pagingVO", pageVO);
 		model.addAttribute("productList", productService.getProductList(cri));
 		return "product/getProductList";
+	}
+	//상품 카테고리 별로 출력
+	@RequestMapping(value="/getCategoryList.do")
+	public String getCategoryList(ProductVO vo, Model m) {
+		List<ProductVO> list =productService.getCategoryList(vo);
+		System.out.println(list.get(0));
+		m.addAttribute("categoryList", list);
+		return "product/getCategoryList";
+	}
+	//상품 상세조회
+	@RequestMapping("/product-details.do")
+	public String getProduct(ProductVO vo, Model m) {
+		ProductVO result = productService.getProduct(vo);
+		System.out.println(result);
+		
+		m.addAttribute("getProduct", result);
+		return "product/product-details";
 	}
 
 	
@@ -47,11 +67,7 @@ public class ProductController {
 		return "product/all-product-shop";
 	}
 
-	// 상품상세 페이지 부르기
-	@RequestMapping("/product-details.do")
-	public String productDetail() {
-		return "product/product-details";
-	}
+	
 
 	// 케어용품(전체) 페이지 부르기
 	@RequestMapping("/care1-shop.do")

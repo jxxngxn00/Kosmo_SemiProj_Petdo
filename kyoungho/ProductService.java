@@ -15,6 +15,7 @@ public interface ProductService {
 
 	int getTotal(ProductVO vo);
 	
+	List<ProductVO> getCategoryList(ProductVO vo);
 	
-
+	public ProductVO getProduct(ProductVO vo);
 }

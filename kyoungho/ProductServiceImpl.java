@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.selectAllProduct();
 	}
 	
-	//상품 카테고리별 출력
+	//상품 페이징해서 출력
 	public List<ProductVO> getProductList(Criteria cri) {
 		return productDAO.getProductList(cri);
 	}
@@ -39,6 +39,14 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.getTotal(vo);
 	}
 
+	//상품 카테고리 별로 출력
+	public List<ProductVO> getCategoryList(ProductVO vo){
+		 return productDAO.getCategoryList(vo);
+	}
+	
+	public ProductVO getProduct(ProductVO vo) {
+		return productDAO.getProduct(vo);
+	}
 
 
 	

@@ -15,6 +15,10 @@ public interface ProductDAO {
 	public List<ProductVO> getProductList(Criteria cri);
 	
 	int getTotal(ProductVO vo);
+	
+	public List<ProductVO> getCategoryList(ProductVO vo);
+	
+	public ProductVO getProduct(ProductVO vo);
 
 	
 
