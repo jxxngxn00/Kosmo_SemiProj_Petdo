@@ -44,13 +44,13 @@ public class ProductDAOImpl implements ProductDAO {
 		  
 	  }
 	
-	  
+	  //상품 카테고리 별로 mybatis 호출
 	  public List<ProductVO> getCategoryList(ProductVO vo){
 		  System.out.println("====> Mybatis로 getCategoryList() 기능 처리");
 		  return mybatis.selectList("ProductDAO.getCategoryList", vo);
 	  };
 	  
-	  
+	  //상품 상세 페이지 mybatis 호출
 	  public ProductVO getProduct(ProductVO vo) {
 		  System.out.println("====> Mybatis로 getProduct() 기능 처리");
 		  System.out.println(vo);

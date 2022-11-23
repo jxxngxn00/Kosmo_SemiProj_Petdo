@@ -1,11 +1,33 @@
 package com.javaclass.domain;
 
-import lombok.Data;
 
-@Data
+
+
 public class Criteria {
- private int pageNum;
- private int amount;
+
+	//페이지 번호
+	private int pageNum;
+	// 한페이지 당 글 갯수
+	private int amount;
+	
+	
+ public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+
 
  
  public Criteria() {
@@ -15,8 +37,14 @@ public class Criteria {
  public Criteria (int pageNum, int amount) {
 	 this.pageNum = pageNum;
 	 this.amount = amount;
+	 
+	
  }
- 
+	@Override
+	public String toString() {
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+	}
+
 
  
 }

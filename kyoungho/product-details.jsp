@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.javaclass.domain.ProductVO" %>    
 <%@page import="com.javaclass.dao.ProductDAO" %>    
+<%@page import="com.javaclass.domain.CartVO" %>    
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -123,9 +124,10 @@
 	</header><!--/header-->
 	
 	<section>
+	<form method = GET>
 		<div class="container" style="width: 70%">
 		
-		<div class="row"><h1 class="page-header" style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
+		<div class="row"><h1 class="page-header" style="text-align: center; margin-bottom: 50px;">${getProduct.product_name}</h1>
 			<input type="hidden" value="${getProduct.product_number}" id="productId">
 		</div>
 		<div class="row" style="float: left; text-align: center; width:35%;">
@@ -137,16 +139,14 @@
 				<h3 class="page-header"><span>${getProduct.product_name}</span><br><small>${productInfo.productInfo}</small></h3>
 			</div>
 			<div class="form-group" style="text-align: left;">
-				<label>가격 : </label><span>&nbsp;<fmt:formatNumber value="${getProduct.product_price}" type="number"/></span><span>&nbsp;원</span>
+				<label>가격 : </label><span>&nbsp;<fmt:formatNumber value="${getProduct.product_price}" type="number"/></span><span>${getProduct.product_price}원</span>
 				<input type="hidden" value="${getProduct.product_price}" id="price">
 			</div>
 			<div class="form-group" style="text-align: left;">
 				<label>배송비 : </label><span>&nbsp;2500원</span>
 				<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
 			</div>
-			<div class="form-group" style="text-align: left;">
-				<label>적립금 : </label><span><fmt:parseNumber var="test" value="${getProduct.product_price / 100}" integerOnly="true"/> ${test}&nbsp;원</span>
-			</div>
+		
 
 			<c:choose>
 				<c:when test="${productInfo.productDist != 'acc' && productInfo.productDist != 'bag'}">
@@ -178,14 +178,15 @@
 				<div class="selected_option" style="text-align: right;">
 				</div>
 				<div style="text-align: center;">
-					<a href="checkout.do"><button class="btn btn-default">주문하기</button></a>
-					<a href="cart.do"><button class="btn btn-fefault cart" style="width: 200px">장바구니</button></a>
+				<!-- 장바구니 버튼을 누르면 cart.do로 이동 -->
+					<a href="../pay/checkout.do"><button class="btn btn-default">주문하기</button></a>
+					<a href="../pay/cart.do"><button class="btn btn-fefault cart" style="width: 200px">장바구니</button></a>
 				</div>
 			</div>
 			<hr>	
 		</div>
 	</div>
-
+</form>
 								
 	<div class="container">
 		<div class="row nav">

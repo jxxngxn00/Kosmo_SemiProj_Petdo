@@ -12,10 +12,10 @@ public interface ProductService {
 	List<ProductVO> selectAllProduct();
 	//상품 카테고리별 출력
 	List<ProductVO> getProductList(Criteria cri);
-
+	//상품 총갯수 출력
 	int getTotal(ProductVO vo);
-	
+	//상품 카테고리별 페이지 출력
 	List<ProductVO> getCategoryList(ProductVO vo);
-	
+	//상품 상세페이지 출력
 	public ProductVO getProduct(ProductVO vo);
 }

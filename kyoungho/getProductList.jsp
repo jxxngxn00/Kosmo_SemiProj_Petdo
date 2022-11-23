@@ -191,7 +191,7 @@ $("#pageInfo a").on("click", function(e){
 			<table style="margin-left:10px; ">
 			<tr>
 					<td colspan="2" align="center">
-					<a href="product-details.do?product_number=${vo.product_number}"><img src='resources/images/home/girl1.png'width='300' height='200'></a>	
+					<a href="product-details.do?product_number=${vo.product_number}"><img src='/resources/upload/${vo.stored_file_name}'width='300' height='200'></a>	
 					</td>
 				</tr>			
 			<tr>	

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+<!-- 회원가입 -->
+<insert id="userInsert" parameterType="MemberVO">
+INSERT INTO USER_INFO 
+(user_id,user_pwd,user_name, user_phone, user_email,user_address1, user_role, user_grade, user_insertdate, user_totalm) 
+VALUES(#{user_id}, #{user_pwd},#{user_name}, #{user_phone},#{user_email},#{user_address1}, 0,'0', SYSDATE, 0 )
+
+</insert>
+
+
+<!-- 로그인 -->
+<select id="idCheck" parameterType="MemberVO"  resultType="MemberVO">
+		  SELECT *
+          FROM USER_INFO
+          WHERE USER_ID = #{user_id}
+          <if test ="user_pwd !=null">
+          		AND user_pwd = #{user_pwd}
+			</if>
+</select>
+
+
+</mapper>

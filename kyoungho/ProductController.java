@@ -34,20 +34,22 @@ public class ProductController {
 		model.addAttribute("productList", productService.getProductList(cri));
 		return "product/getProductList";
 	}
+	
 	//상품 카테고리 별로 출력
 	@RequestMapping(value="/getCategoryList.do")
 	public String getCategoryList(ProductVO vo, Model m) {
 		List<ProductVO> list =productService.getCategoryList(vo);
 		System.out.println(list.get(0));
+		//categoryList에 변수 list 값 넣기
 		m.addAttribute("categoryList", list);
 		return "product/getCategoryList";
 	}
-	//상품 상세조회
+	
+	//상품 상세 페이지 
 	@RequestMapping("/product-details.do")
 	public String getProduct(ProductVO vo, Model m) {
 		ProductVO result = productService.getProduct(vo);
 		System.out.println(result);
-		
 		m.addAttribute("getProduct", result);
 		return "product/product-details";
 	}
