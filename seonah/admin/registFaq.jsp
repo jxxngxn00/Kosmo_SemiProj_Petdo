@@ -75,29 +75,30 @@
                     
 
                     <!-- 입력 폼 -->
+                   <form action="insertFaq.do" method="post" enctype="multipart/form-data" id="insertFaq">
                     <div class="card shadow mb-4" style="width: 75%; margin: auto; margin-top: 50pt;">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">FAQ 게시판 글 관리</h6>
                         </div>
                         <div class="card-body" style="margin-left:15px;">
                             <div class="inputTitle">
-                                <input type="text" style="width: 70%;" placeholder="메인 제목"/>
+                                <input type="text" name="faq_title" style="width: 70%;" placeholder="메인 제목"/>
                             </div>
                             <div class="inputTitle">
-                                <input type="text" style="width: 70%;" placeholder="서브 제목"/>
+                                <input type="text" name="faq_writer" style="width: 70%;" placeholder="서브 제목"/>
                             </div>
                             <hr/>
                             <div>
-                                <label> 이미지 업로드 </label> <input type="file" />
+                                <label> 이미지 업로드 </label> <input type="file" name="file"/>
                             </div>
                             <div>
                                 상세 설명
-                                <textarea style="width:100%; height:300px;"></textarea>
+                                <textarea name="faq_content" style="width:100%; height:300px;"></textarea>
                             </div>
                             <div class="inputHashTag">
-                                <span> <input type="text" value="#"/> </span>
-                                <span> <input type="text" value="#"/> </span>
-                                <span> <input type="text" value="#"/> </span>
+                                <span> <input type="text" name= "faq_tag1" value="#"/> </span>
+                                <span> <input type="text" name= "faq_tag2" value="#"/> </span>
+                                <span> <input type="text" name= "faq_tag3" value="#"/> </span>
                             </div>
                             <div class="recommItems">
                                 <table class="recommItemsTbl">
@@ -106,16 +107,18 @@
                                     </tr>
                                 </table>
                             </div>
+                     </form>
 
 
 
                             <div id="registBtn">
-                                <a href="#" class="btn btn-primary btn-icon-split">
+                                <button class="btn btn-primary btn-icon-split" id="insertBtn">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-flag"></i>
                                     </span>
                                     <span class="text">등록</span>
-                                </a>
+                                </button>
+                                
                                 <a href="FAQ.do" class="btn btn-secondary btn-icon-split">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-arrow-right"></i>
@@ -123,6 +126,7 @@
                                     <span class="text">취소</span>
                                 </a>
                             </div>
+                     
                             
 
 
@@ -195,6 +199,15 @@
 
 	<!-- font awesome CDN -->
 	<script src="https://kit.fontawesome.com/3364ed6976.js" crossorigin="anonymous"></script>
+
+   <script type="text/javascript">
+      $(function() {
+         $("button#insertBtn").click(function() { //QnA 새글 등록 실행
+            $("form#insertFaq").submit();
+         })
+      })
+   </script>
+
 
 </body>
 
