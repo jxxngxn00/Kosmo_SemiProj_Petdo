@@ -1,8 +1,6 @@
 package com.javaclass.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +31,16 @@ public class ProductDAOImpl implements ProductDAO {
 
 
 	//상품카테고리별 조회 mybatis 호출
-	  public List<ProductVO> getProductList(ProductVO vo, Criteria cri) {
-		  //hashmap 새 변수생성
-		  Map<String, Object> paramMap = new HashMap<String, Object>();
-		  //해당 변수에 각각의 값을 넣어주기
-		  paramMap.put("productList", vo);
-		  // 시작 숫자설정??
-		  cri.setStartNum((cri.getPageNum() - 1) * cri.getAmount());
-		  paramMap.put("criteria", cri);
+	  public List<ProductVO> getProductList(Criteria cri) {
 		  System.out.println("====> Mybatis로 getProductList() 기능 처리");
-		  return mybatis.selectList("ProductDAO.getProductList", paramMap);
+		  return mybatis.selectList("ProductDAO.getProductList", cri);
+		   
+	  }
+	  
+	//상품갯수 조회 mybatis 호출
+	  public int getTotal(ProductVO vo) {
+		  System.out.println("====> Mybatis로 getTotal() 기능 처리");
+		 return mybatis.selectOne("ProductDAO.getTotal", vo);
 		  
 	  }
 	

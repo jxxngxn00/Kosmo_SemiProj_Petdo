@@ -12,7 +12,9 @@ public interface ProductDAO {
 	
 	public void insertProduct(ProductVO vo);
 	
-	public List<ProductVO> getProductList(ProductVO vo, Criteria cri);
+	public List<ProductVO> getProductList(Criteria cri);
+	
+	int getTotal(ProductVO vo);
 
 	
 

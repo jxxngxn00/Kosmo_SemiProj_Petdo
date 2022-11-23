@@ -11,8 +11,9 @@ public interface ProductService {
 	//상품전체 조회
 	List<ProductVO> selectAllProduct();
 	//상품 카테고리별 출력
-	List<ProductVO> getProductList(ProductVO vo, Criteria cri);
-	
+	List<ProductVO> getProductList(Criteria cri);
+
+	int getTotal(ProductVO vo);
 	
 	
 

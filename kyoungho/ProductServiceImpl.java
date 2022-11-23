@@ -30,8 +30,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	//상품 카테고리별 출력
-	public List<ProductVO> getProductList(ProductVO vo, Criteria cri) {
-		return productDAO.getProductList(vo, cri);
+	public List<ProductVO> getProductList(Criteria cri) {
+		return productDAO.getProductList(cri);
+	}
+	
+	//상품 갯수 출력
+	public int getTotal(ProductVO vo) {
+		return productDAO.getTotal(vo);
 	}
 
 

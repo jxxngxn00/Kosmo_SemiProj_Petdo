@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.javaclass.domain.ProductVO" %>  
+<%@page import="com.javaclass.domain.PagingVO" %>  
 <%@page import="com.javaclass.service.ProductServiceImpl" %>  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
@@ -16,6 +17,7 @@
 			});
 		});
 	</script>
+
 
 
 
@@ -162,72 +164,84 @@
 			</ul></div>
 			<hr height='30px'/>
 				
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
+				<div class="col-sm-9 padding-right"  style="margin:auto;">
+							
+					<div class="features_items" style="margin:auto; text-align:center;"><!--features_items-->
 		
 
-							<article class="cont-select">
-								<button class="btn-select">신상품</button>
+							<!--<article class="cont-select">
+							 <div><button class="btn-select row" style="float:right; width:100px;">신상품</button></div> 
 								<ul class="list-member">
 									<li><button type="button">상품명</button></li>
 									<li><button type="button">낮은가격</button></li>
 									<li><button type="button">높은가격</button></li>
 								</ul>
-							</article>
+							</article>-->	
 						<br/>
 						<br/>
+						<div style="margin:auto;">
 		<c:forEach items="${productList}" var="vo">
-		 <div id="row" style="float:left;">				
-			<form action="#" method="post" style="margin-bottom:10px;  margin-left:10px;" class="form-inline" id="listForm">	
+		 <div id="row" style="float:left;" style="border-style:none; display:flex; flex-wrap:wrap; ">				
+			<form action="product-detail?product-number=" id="listForm" method="post" style="  margin-bottom:10px;  margin-left:10px; class=form-inline;  border-style: none;" >	
+			<div style="margin-left:120px">
 			<input name="product_number" type="hidden" value="${vo.product_number}"/>	
-					<table border="1">
+			
+			<table style="margin-left:10px; ">
 			<tr>
 					<td colspan="2" align="center">
 					<img src='resources/images/home/logo.png'width='300' height='200'>
 					</td>
 				</tr>			
 			<tr>	
-				<td bgcolor="orange" width="200">상품명</td>
-				<td align="left"><input name="product_name" type="text"
-						value="${vo.product_name }" /></td>
+				
+				<td align="center" valign="middle" ><input name="product_name" type="text"
+						value="${vo.product_name }" readonly style="border-style:none;  width:100%" /></td>
 			</tr>			
 			<tr>			
-				<td bgcolor="orange" width="150">가격</td>
-				<td align="left"><input name="product_price" type="text"
-						value="${vo.product_price }" /></td>		
+				
+				<td align="center"><input name="product_price" type="text"
+						value="${vo.product_price }" readonly style="border-style:none;" /></td>		
 			</tr>
 			</table>
+			</div>
 		</form>
 		</div>
 			</c:forEach>
-		
-		<div>
-  <ul class="pagination">
-    <c:if test="${pageMaker.prev }">
-      <li class="pagination_button">
-      	<a href="#">Previous</a>
-      </li>
-    </c:if>
+		</div>
+			
+	</div>
+	</div>
 
-    <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-      <li class="pagination_button">
-      	<a href="#">${num }</a>
-      </li>
-    </c:forEach>
-
-    <c:if test="${pageMaker.next }">
-      <li class="pagination_button">
-        <a href="#">Next</a>
-      </li>
-    </c:if>
-  </ul>
-</div>
 		
+			
+
 		
 	
 	</section>
 	
 	<footer id="footer"><!--Footer-->
+	<div style="">
+<ul class="pagination">
+    <c:if test="${pagingVO.prev}">
+      <li ><a href="getProductList=${pagingVO.startPage-1}&amount=${pagingVO.amount}">Previous</a>
+      </li>
+    </c:if>
+
+    <c:forEach var="num" begin="${pagingVO.startPage }" end="${pagingVO.endPage }">
+      <li >
+      	<a href="/product/getProductList.do?${num}&amount=${pagingVO.amount}">${num}</a>
+      </li>
+    </c:forEach>
+
+    <c:if test="${pagingVO.next }">
+      <li >
+        <a href="getProductList=${pagingVO.endPage +1}&amount=${pagingVO.amount}">Next</a>
+      </li>
+    </c:if>
+    </ul>	
+</div>
+	
+	
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
