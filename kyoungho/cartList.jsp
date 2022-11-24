@@ -292,7 +292,7 @@
 	<div class="col-sm-12" style="margin: auto;">
 
 		<div class="table-responsive cart_info" style="text-align: center;">
-			<form action="../cart/list.do">
+			<form action="cartList.do">
 			<table class="table table-condensed"
 				style="width: 50%; margin: auto;">
 				<thead>
@@ -319,7 +319,7 @@
 							<td><fmt:formatNumber pattern="###,###,###" value="${row.product_price}"></fmt:formatNumber></td>
 							<td><input type="number" name="product_count" value="${row.product_count}" /></td>
 							<td><input type="number" name="allSum" value="${totalmoney}" /></td>
-							<td><a href =../pay/cart> </td>삭제</a>						
+							<td><a href =../pay/cart>삭제</a>	 </td>					
 						</tr>
 					</c:forEach>
 				</tbody>
