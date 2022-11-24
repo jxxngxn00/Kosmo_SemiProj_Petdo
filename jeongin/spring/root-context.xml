@@ -31,6 +31,8 @@
 	  		<value>com.javaclass.domain.ProductVO</value>
 	  		<value>com.javaclass.domain.QnaVO</value>
 	  		<value>com.javaclass.domain.NoticeVO</value>
+	  		<value>com.javaclass.domain.OrderVO</value>
+	  		<value>com.javaclass.domain.PagingVO</value>
 	  	</list>
 	  </property>
     </bean>

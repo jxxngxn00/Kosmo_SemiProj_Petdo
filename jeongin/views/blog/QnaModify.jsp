@@ -81,36 +81,69 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="product/care-shop.do">케어<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/care1-shop.do">목욕</a></li>
-										<li><a href="product/care2-shop.do">미용</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="product/toilet2-shop.do">위생용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="product/food-shop.do">식품<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=10">장난감<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="product/food1-shop.do">간식</a></li>
-										<li><a href="product/food2-shop.do">사료</a></li>
-										<li><a href="product/food3-shop.do">영양제</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
 									</ul></li>
-								<li><a href="product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="product/closet-shop.do">의류<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="product/closet2-shop.do">아우터</a></li>
-										<li><a href="product/closet3-shop.do">상의</a></li>
-										<li><a href="product/closet4-shop.do">악세사리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
 								<li><a href="notice.do" style="color: #FF9933;">NOTICE</a></li>
 								<li><a href="faq.do" style="color: #FF9933;">FAQ</a></li>

@@ -8,9 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.javaclass.domain.FaqVO;
+import com.javaclass.domain.NoticeVO;
+import com.javaclass.domain.OrderVO;
 import com.javaclass.domain.ProductVO;
 import com.javaclass.domain.QnaVO;
 import com.javaclass.service.BlogService;
+import com.javaclass.service.FaqService;
+import com.javaclass.service.OrderService;
 import com.javaclass.service.ProductService;
 
 
@@ -24,7 +29,11 @@ public class AdminController {
 	@Autowired
 	private BlogService blogService;
 	
+	@Autowired
+	private FaqService faqService;
 	
+	@Autowired
+	private OrderService orderService;
 	/*****************************/
 	/************상품목록************/
 	
@@ -103,16 +112,22 @@ public class AdminController {
 		return "admin/faq";
 	}
 	
-	//FAQ 수정 페이지로 이동
-	@RequestMapping("/modifyFaq.do")
-	public String modifyFaq() {	
-		return "admin/modifyFaq";
+	//FAQ 새글등록 (어드민 페이지)
+	@RequestMapping("/insertFaq.do")
+	public String insertFaq(FaqVO faqvo, Model m){
+		System.out.println("글등록");
+		faqService.insertFaqBoard(faqvo);
+		m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
+		return "admin/faq";
 	}
 	
-	//FAQ등록 페이지로 이동
-	@RequestMapping("/registFaq.do")
-	public String registFaq() {	
-		return "admin/registFaq";
+	// 글 수정
+	@RequestMapping("/updateFaq.do")
+	public String updateFaqBoard(FaqVO faqvo, Model m) {	
+		 System.out.println("글수정");
+		 faqService.updateFaqBoard(faqvo);
+		 m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
+		 return "admin/faq";
 	}
 	
 	/*****************************/
@@ -155,22 +170,46 @@ public class AdminController {
 	
 	//공지사항관리 페이지로 이동
 	@RequestMapping("/notice.do")
-	public String notice() {	
+	public String notice(Model m) {	
+		m.addAttribute("nList", blogService.getNoticeList());
 		return "admin/notice";
 	}
 	
-	
-	//공지사항 수정 페이지로 이동
-	@RequestMapping("/modifyNotice.do")
-	public String modifyNotice() {	
-		return "admin/modifyNotice";
-	}
-	
-
 	//공지사항등록 페이지로 이동
 	@RequestMapping("/registNotice.do")
 	public String registNotice() {	
 		return "admin/registNotice";
+	}
+	
+	//공지사항 수정 페이지로 이동
+	@RequestMapping("/modifyNotice.do")
+	public String modifyNotice(NoticeVO vo, Model m) {	
+		m.addAttribute("notice",blogService.getNotice(vo));
+		return "admin/modifyNotice";
+	}
+
+	//공지사항 수정
+	@RequestMapping("/updateNotice.do")
+	public String updateNotice(NoticeVO vo,Model m) {	
+		blogService.updateNotice(vo);
+		m.addAttribute("nList", blogService.getNoticeList());
+		return "admin/notice";
+	}
+
+	//공지사항 삭제 
+	@RequestMapping("/deleteNotice.do")
+	public String deleteNotice(NoticeVO vo, Model m) {
+		blogService.deleteNotice(vo);
+		m.addAttribute("nList", blogService.getNoticeList());
+		return "admin/notice";
+	}
+
+	//공지사항 등록 
+	@RequestMapping("/insertNotice.do")
+	public String insertNotice(NoticeVO vo, Model m) {	
+		blogService.insertNotice(vo);
+		m.addAttribute("nList", blogService.getNoticeList());
+		return "admin/notice";
 	}
 	
 	/*****************************/
@@ -187,7 +226,9 @@ public class AdminController {
 
 	//주문내역관리 페이지로 이동
 	@RequestMapping("/orderList.do")
-	public String orderList() {	
+	public String orderList(Model m) {	
+		List<OrderVO> list = orderService.getOrderList();
+		m.addAttribute("orderList", list);
 		return "admin/orderList";
 	}
 	

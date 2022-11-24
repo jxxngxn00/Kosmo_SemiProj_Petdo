@@ -95,45 +95,79 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="../product/care-shop.do">케어<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/care1-shop.do">목욕</a></li>
-										<li><a href="../product/care2-shop.do">미용</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="../product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="../product/food-shop.do">식품<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=10">장난감<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="../product/food1-shop.do">간식</a></li>
-										<li><a href="../product/food2-shop.do">사료</a></li>
-										<li><a href="../product/food3-shop.do">영양제</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
 									</ul></li>
-								<li><a href="../product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="../product/closet2-shop.do">아우터</a></li>
-										<li><a href="../product/closet3-shop.do">상의</a></li>
-										<li><a href="../product/closet4-shop.do">악세사리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
-								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-								<li><a href="../blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
 							</ul>
 						</div>
+
 						<div class="search_box pull-right">
 							<input type="text" placeholder="검색" /> <a
-								href="product/searchpage.do"
+								href="../product/searchpage.do"
 								style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
 								class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
 						</div>
@@ -144,9 +178,6 @@
 		</div>
 	</header>
 
-	<div class="review-payment">
-		<h2>결제하기</h2>
-	</div>
 	<!--/register-req-->
 	<div class="address-info" id="address-info">
 		<table class="type09">
@@ -166,7 +197,7 @@
 				</tr>
 				<tr>
 					<th scope="row" rowspan='2'>배송지 주소</th>
-					<td><input type='text' readonly="true"><input
+					<td><input type='text' readonly><input
 						type='button' value='우편번호'></td>
 				</tr>
 				<tr>
@@ -186,7 +217,7 @@
 
 	<section id="cart_items">
 
-		<div class="table-responsive cart_info">
+		<div class="table-responsive cart_info" style="text-align:center;">
 			<table class="table table-condensed">
 				<thead>
 					<tr class="cart_menu">
@@ -282,7 +313,6 @@
 				</tbody>
 			</table>
 		</div>
-		</div>
 
 		<div class="review-payment">
 			<h2>최종 결제 금액</h2>
@@ -294,7 +324,7 @@
 						<td colspan="4">&nbsp;</td>
 						<td colspan="2">
 
-							<table class="table table-condensed total-result">
+							<table class="table table-condensed total-result" id="payTbl">
 
 								<tr>
 									<td id='totaltable'>총 상품금액</td>
@@ -346,9 +376,9 @@
 			동의합니다.</label>
 	</div>
 
-	<form id='paycan-btn' style='display: inline'>
-		<a class="btn btn-default check_out" id="pay-btn" href="">결제하기</a> <a
-			class="btn btn-default cancel" id="cancel-btn" href="">취소하기</a>
+	<form id='paycan-btn' style='display:inline'>
+	<a class="btn btn-default check_out" id= "pay-btn" href="payment.do">결제하기</a>
+	<a class="btn btn-default cancel" id= "cancel-btn" href="../main.do">취소하기</a>
 	</form>
 
 	<div class="check-footer-bottom">

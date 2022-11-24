@@ -40,7 +40,7 @@
 								<ul class="nav navbar-nav" id="headerbar">
 									<li class="ment" style="margin-top: 12px;"><%= session.getAttribute("login") %>님 환영합니다.</li>
 									<li><a href="../logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
-									<li><a href="../myPage/account.do"><i class="fa fa-user"></i></a></li>
+									<li><a href="../myPage/account.do?user_id=${sessionScope.login  }"><i class="fa fa-user"></i></a></li>
 									<li><a href="../pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
 									<c:if test="${'admin' eq sessionScope.login }">
 										<li><a href="../admin.do"><i class="fa fa-cogs" aria-hidden="true"></i></a></li>
@@ -114,11 +114,11 @@
 						</div>
 						<div id="topHeader" class="appTopArea" style="top:0px;"></div>
 				</div>
-			
-			</header>
 				</div>
 			</div>
 		</div><!--/header-bottom-->
+			
+			</header>
 </div>	
 
 	

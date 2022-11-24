@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javaclass.domain.FaqVO;
+import com.javaclass.domain.NoticeVO;
 import com.javaclass.domain.QnaVO;
+import com.javaclass.domain.ReplyVO;
 import com.javaclass.service.BlogService;
+import com.javaclass.service.FaqService;
 
 
 @Controller
@@ -17,6 +21,9 @@ public class BlogController {
 	
 	@Autowired
 	private BlogService blogService;
+	
+	@Autowired
+	private FaqService faqService;
 	
 	//매번 Mapping 할 필요 없이 연결
 	@RequestMapping("/{step}.do")
@@ -27,7 +34,7 @@ public class BlogController {
 
 	/****** QnA ******/
 	
-	//QnA 페이지로 이동
+	//QnA 사용자페이지로 이동
 	@RequestMapping("/qna.do")
 	public String qna(QnaVO vo, Model m) {	
 		m.addAttribute("qnaList", blogService.getQnaList(vo));
@@ -64,8 +71,8 @@ public class BlogController {
 		System.out.println("글등록");
 		blogService.insertQna(vo);
 		m.addAttribute("qnaList", blogService.getQnaList(vo));
-		return "blog/QnA";
-	}
+		return "redirect:../blog/qnaDetail.do?qna_seq="+vo.getQna_seq();
+	}	
 	
 	//QnA DB 글 삭제
 	@RequestMapping("/deleteQna.do")
@@ -82,40 +89,72 @@ public class BlogController {
 		System.out.println("글수정");
 		blogService.updateQna(vo);
 		m.addAttribute("qnaList", blogService.getQnaList(vo));
-		return "blog/QnA";
+		return "redirect../blog/qna.do";
 	}
+	
+	//QnA 댓글 등록
+	@RequestMapping("/new.do")
+	public String insertRply(ReplyVO vo) {
+		System.out.println("댓글 입력 : "+vo);
+		int result=blogService.insertReply(vo);
+		if(result==1) return "success";
+		else return "fail";
+	}
+
+	//QnA 댓글 목록 조회
+	
+
+	//QnA 댓글 삭제
+	
+
+	//QnA 댓글 수정
+	
 
 	/****** 공지사항 ******/
 	
 	//공지사항 페이지로 이동
 	@RequestMapping("/notice.do")
-	public String notice() {		
+	public String notice(Model m) {
+		m.addAttribute("nList", blogService.getNoticeList());
 		return "blog/Notice";
 	}
 	
 	//공지사항 상세보기 페이지로 이동
 	@RequestMapping("/noticeDetail.do")
-	public String noticeDetail() {		
+	public String noticeDetail(NoticeVO vo, Model m) {	
+		m.addAttribute("notice",blogService.getNotice(vo));
 		return "blog/NoticeDetail";
 	}
 
 
 	/****** FAQ ******/
 	
-	//FAQ 페이지로 이동
-	@RequestMapping("/faq.do")
-	public String faq() {		
-		return "blog/Faq";
-	}
-	
-	//FAQ 상세보기 페이지로 이동
-	@RequestMapping("/faqDetail.do")
-	public String faqDetail() {		
-		return "blog/FaqDetail";
-	}
-	
-	//FAQ 새글등록
-	
+	// 사용자 FAQ 페이지 이동
+		@RequestMapping("/faq.do")
+		public String faq(FaqVO faqvo, Model m) {	
+			m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
+			return "blog/Faq";
+		}
+		
+		// 등록한 FAQ 유저페이지 FAQ 상세보기 페이지 이동
+		@RequestMapping(value="/faqDetail.do", method=RequestMethod.GET)
+		public String qnaDetail(FaqVO faqvo, Model m) {
+			FaqVO result = faqService.selectFaqBoard(faqvo);
+			System.out.println("result : "+result.getFaq_content());
+			m.addAttribute("faq", result);
+			return "blog/FaqDetail";
+		}
+		
+
+		// 글 수정
+		@RequestMapping("/updateFaq.do")
+		public String updateFaqBoard(FaqVO faqvo, Model m) {	
+			 System.out.println("글수정");
+			 faqService.updateFaqBoard(faqvo);
+			 m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
+			 return "blog/FaqDetail";
+		}
+		
 	
 	
 	

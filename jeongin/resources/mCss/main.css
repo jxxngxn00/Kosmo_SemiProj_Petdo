@@ -7,25 +7,13 @@
 @import url(http://fonts.googleapis.com/css?family=Abel);
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-
-h2.modal-title {
-	font-family : 'MICEGothic Bold';
-	font-weight:bolder;
-}
-
-.modal-content{
-	font-family : 'MICEGothic Bold';
-}
-
 .notosanskr * { 
  font-family: 'Noto Sans KR', sans-serif;
 }
 
-@font-face {
-    font-family: 'MICEGothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+.ment {
+	margin-top: 20px;
+
 }
 
 @font-face {
@@ -177,7 +165,11 @@ a#scrollUp i{
   margin-left: 0;
   margin-right: 0;
   padding-bottom: 20px;
-  padding-top: 20px;
+}
+
+.contact-info {
+	margin-top: -50px;
+	margin-left: 45px;
 }
 
 .header-middle .container .row .col-sm-4{
@@ -333,7 +325,7 @@ a#scrollUp i{
 .search_box input {
 width: 165px;
     float: right;
-    margin-top: 5px;
+    margin-top: 1px;
     height: 34px;
     line-height: 34px;
     font-size: 12px;
@@ -342,9 +334,6 @@ width: 165px;
     border-radius: 0;
     border-bottom: 1px solid #000000;
     font-weight: bold;
-    background-image: url(../images/home/search.png);
-    background-repeat: no-repeat;
-    background-position: 150px;
 }
 
 
@@ -433,13 +422,14 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  background: #ffffff;
+  background: #F0F0E9;
+  height: 10%;
 }
-
 
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;
   padding-bottom: 20px;
+  
 }
 
 .companyinfo {
@@ -552,14 +542,8 @@ ul.sub-menu {
   top: 50px;
 }
 
-.footer-widget {
-  margin-bottom: 68px;
-}
-
 .footer-widget .container {
   border-top: 1px solid #FFFFFF;
-  padding-top: 15px;
-  background-color: #ffffff;
 }
 
 .snsservice {
@@ -1271,9 +1255,10 @@ h2.title {
   color: #3a3a3a;
 }
 
-
+video { max-width: 50%; display: block; margin: 20px auto; margin-bottom: 45px;}
 
 .productinfo{
+	
  
  width: 80%;
 
@@ -1795,6 +1780,7 @@ div.single-products {
   float: left;
   width: 200px;
   padding-bottom: -20px;
+  margin-top: -38px;
   
 }
 
@@ -3006,10 +2992,6 @@ float: left;
 
 
 
-.col-sm-8 {
-
-}
-
 #customerID {
   font-size: 14px;
   margin-left: 15px;
@@ -3088,7 +3070,13 @@ color: #31424e;
     background: #FFFFFF;
     border: 1px solid #FF9933;
     box-sizing: border-box;
-    width: 35%;
+    width: 38%;
+}
+
+.addtocart {
+	width: 38%;
+	
+	
 }
 
 .orderbuy {
@@ -3098,63 +3086,7 @@ color: #31424e;
 
 }
 	
-
-/******QNA 게시판********/
-
-#qnaTable {
-  width: 80%;
-  height:380px;
-  border-collapse: collapse;
-}
-
-#qnaTable a{	color:black; }
-#qnaTable a:hover{	color:black;}
-
-
-#qnaTable th,
-#qnaTable td {
-  text-align: center;
-  vertical-align: center;
-}
-
-#qnaTable th {
-  padding: 10px;
-  font-weight: bold;
-vertical-align:center;
-  color : white;
-  background: #FF9933;
-}
-
-#qnaTable tbody td{
-  padding: 10px;
-    vertical-align:center;
-    border-bottom: 1px solid rgb(202,202,202);;
-}
-
-#qnaTable input[type="text"],
-#qnaTable textarea{
-	width:100%;
-	outline:none;
-	border:none;
-	border-radius: 10px;
-	padding:10px;
-	height:100%
-}
-
-#qnaTable textarea:focus,
-#qnaTable input[type="text"]:focus{
-	background-color: #ffdc96;
-	outline:none;
-}
-
-
-#petlogo {
-  float: left;
-  width: 200px;
-  padding-bottom: -20px;	
 	
-	
-}	
 	
 
 

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Form</title>
+    <title>결제</title>
    <% String pjName="/petdo"; %>
    <link href="<%=pjName %>/resources/pay-css/main.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -81,8 +81,9 @@
             </div>
             <div class="input-group">
                 <div class="input-box">
-                    <button type="submit">PAY NOW</button>
-                </div>
+					<a href="../myPage/mOrder.do"><button type="submit" id="submit">PAY
+							NOW</button></a>
+				</div>
             </div>
         </form>
     </div>

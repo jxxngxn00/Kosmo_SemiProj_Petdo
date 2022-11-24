@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,22 +18,20 @@
     <link href="<%=pjName %>/resources/blog-css/animate.css" rel="stylesheet">
 	<link href="<%=pjName %>/resources/blog-css/main.css" rel="stylesheet">
 	<link href="<%=pjName %>/resources/blog-css/responsive.css" rel="stylesheet"> -->
-<link href="<%=pjName %>/resources/mCss/bootstrap.min.css"
+<link href="<%=pjName%>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/font-awesome.min.css"
+<link href="<%=pjName%>/resources/mCss/font-awesome.min.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/prettyPhoto.css"
-	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/price-range.css"
-	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/animate.css" rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/main.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/prettyPhoto.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/price-range.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/animate.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/main.css" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/responsive.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/responsive.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -41,13 +39,13 @@
     <![endif]-->
 <link rel="shortcut icon" href="images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-144-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-114-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-72-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-57-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-57-precomposed.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
@@ -66,19 +64,20 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<!-- 로그아웃, 마이페이지, 장바구니, 관리자페이지(관리자일경우) 아이콘 -->
-							<ul class="nav navbar-nav" id="headerbar">
-								<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
-									환영합니다.</li>
-								<li><a href="#" data-toggle="modal"
-									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-								<li><a href="account.do"><i class="fa fa-user"></i></a></li>
-								<li><a href="../pay/cart.do"><i
-										class="fa fa-shopping-cart"></i></a></li>
-								<c:if test="${'admin' eq sessionScope.login }">
-									<li><a href="../admin.do"><i class="fa fa-cogs"
-											aria-hidden="true"></i></a></li>
-								</c:if>
-							</ul>
+						<ul class="nav navbar-nav" id="headerbar">
+							<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
+								환영합니다.</li>
+							<li><a href="#" data-toggle="modal"
+								data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
+							<li><a href="account.do?user_id=${sessionScope.login }"><i
+									class="fa fa-user"></i></a></li>
+							<li><a href="../pay/cart.do"><i
+									class="fa fa-shopping-cart"></i></a></li>
+							<c:if test="${'admin' eq sessionScope.login }">
+								<li><a href="../admin.do"><i class="fa fa-cogs"
+										aria-hidden="true"></i></a></li>
+							</c:if>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -106,36 +105,69 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="../product/care-shop.do">케어<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/care1-shop.do">목욕</a></li>
-										<li><a href="../product/care2-shop.do">미용</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="../product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="../product/food-shop.do">식품<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=10">장난감<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="../product/food1-shop.do">간식</a></li>
-										<li><a href="../product/food2-shop.do">사료</a></li>
-										<li><a href="../product/food3-shop.do">영양제</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
 									</ul></li>
-								<li><a href="../product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="../product/closet2-shop.do">아우터</a></li>
-										<li><a href="../product/closet3-shop.do">상의</a></li>
-										<li><a href="../product/closet4-shop.do">악세사리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
 								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
 								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
@@ -163,42 +195,45 @@
 						List</h2>
 				</div>
 			</div>
-			
-				<div class="col-sm-8" style="margin:auto;">
-					<div class="blog-post-area-list" style="display: inline;">
-						<table id="qnaTable">
-							<thead>
+
+			<div class="col-sm-8" style="margin: auto;">
+				<div class="blog-post-area-list" style="display: inline;">
+					<table id="qnaTable">
+						<thead>
+							<tr>
+								<th>주문번호</th>
+								<th>상품이름</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<c:forEach items="${userOrderList}" var="list">
 								<tr>
-									<th>주문번호</th>
-									<th>상품이름</th>
+									<td><a
+										href="mOrderDetail.do?order_number=${ list.order_number}">${list.order_number }</a></td>
+									<td><a
+										href="mOrderDetail.do?order_number=${ list.order_number}">${list.product_name }</a></td>
 								</tr>
-							</thead>
-
-							<tbody>
-								<c:forEach items="${userOrderList}" var="list">
-								<tr>
-									<td><a href="mOrderDetail.do?order_number=${ list.order_number}">${list.order_number }</a></td>
-									<td><a href="mOrderDetail.do?order_number=${ list.order_number}">${list.product_name }</a></td>
-								</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+							</c:forEach>
+						</tbody>
+					</table>
 
 
 
-						<div class="pagination-area">
-							<ul class="pagination">
-								<li><a href="" class="active">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
-							</ul>
-						</div>
+					<div class="pagination-area">
+						<ul class="pagination">
+							<li><a href="" class="active">1</a></li>
+							<li><a href="">2</a></li>
+							<li><a href="">3</a></li>
+							<li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+						</ul>
 					</div>
 				</div>
-				
+			</div>
+
 			<div class="row" style="margin: 0px auto;">
-				<div class="col-sm-4" style="margin-top:-150px;">
+
+				<div class="col-sm-4" style="margin-top: -150px;">
 					<div class="contact-info">
 						<p class="title text-center" id="fonttitle"
 							style="text-transform: capitalize; font-family: 'Noto Sans KR', sans-serif;">Order
@@ -208,15 +243,16 @@
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;">나의
 						정보</h3>
 					<ul>
-						<li style="margin-left: -38px;"><a href="account.do"
+						<li style="margin-left: -38px;"><a
+							href="account.do?user_id=${userInfo.user_id }"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원
-								정보 조회</a><br />
-						<br /> <a href="accountModify.do"
+								정보 조회</a><br /> <br /> <a
+							href="accountModify.do?user_id=${userInfo.user_id }"
 							style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br />
-						<br /> <a href="#" data-toggle="modal" data-target="#logoutModalCenter"
+							<br /> <a href="#" data-toggle="modal"
+							data-target="#logoutModalCenter"
 							style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br />
-						<br />
-						<br /></li>
+							<br /> <br /></li>
 
 					</ul>
 					<div class="subtitle">
@@ -225,10 +261,10 @@
 							정보</h3>
 					</div>
 					<ul>
-						<li style="margin-left: -38px;"><a href="mOrder.do"
+						<li style="margin-left: -38px;"><a
+							href="mOrder.do?user_id=${userInfo.user_id }"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
-								내역</a><br />
-						<br /> <a href="../pay/cart.do"
+								내역</a><br /> <br /> <a href="../pay/cart.do"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
 						</li>
 					</ul>
@@ -238,9 +274,9 @@
 			</div>
 		</div>
 	</section>
-<!-- logout Modal -->
-	<div class="modal fade" id="logoutModalCenter" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<!-- logout Modal -->
+	<div class="modal fade" id="logoutModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -254,7 +290,8 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal" style="border-radius: 10px;">취소</button>
-					<a class="btn btn-primary" href="../logOut.do" style="border-radius: 10px; margin-top: 0px">로그아웃</a>
+					<a class="btn btn-primary" href="../logOut.do"
+						style="border-radius: 10px; margin-top: 0px">로그아웃</a>
 				</div>
 			</div>
 		</div>
@@ -290,11 +327,11 @@
 
 
 
-	<script src="<%=pjName %>/resources/js/jquery.js"></script>
-	<script src="<%=pjName %>/resources/js/price-range.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
-	<script src="<%=pjName %>/resources/js/main.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.js"></script>
+	<script src="<%=pjName%>/resources/js/price-range.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=pjName%>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
+	<script src="<%=pjName%>/resources/js/main.js"></script>
 </body>
 </html>

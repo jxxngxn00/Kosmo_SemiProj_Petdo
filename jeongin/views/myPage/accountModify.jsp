@@ -59,7 +59,7 @@
 				<!--header-middle-->
 				<a href="../main.do"><img
 					src="<%=pjName%>/resources/images/home/logo.png" width="12%"
-					height="auto" " id="petlogo" alt="" /></a>
+					height="auto"  id="petlogo" alt="" /></a>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<!-- 로그아웃, 마이페이지, 장바구니, 관리자페이지(관리자일경우) 아이콘 -->
@@ -68,7 +68,7 @@
 									환영합니다.</li>
 								<li><a href="#" data-toggle="modal"
 									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-								<li><a href="account.do"><i class="fa fa-user"></i></a></li>
+								<li><a href="account.do?user_id=${userInfo.user_id }"><i class="fa fa-user"></i></a></li>
 								<li><a href="../pay/cart.do"><i
 										class="fa fa-shopping-cart"></i></a></li>
 								<c:if test="${'admin' eq sessionScope.login }">
@@ -104,36 +104,69 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="../product/care-shop.do">케어<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/care1-shop.do">목욕</a></li>
-										<li><a href="../product/care2-shop.do">미용</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="../product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="../product/food-shop.do">식품<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=10">장난감<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="../product/food1-shop.do">간식</a></li>
-										<li><a href="../product/food2-shop.do">사료</a></li>
-										<li><a href="../product/food3-shop.do">영양제</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
 									</ul></li>
-								<li><a href="../product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="../product/closet2-shop.do">아우터</a></li>
-										<li><a href="../product/closet3-shop.do">상의</a></li>
-										<li><a href="../product/closet4-shop.do">악세사리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
 								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
 								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
@@ -225,13 +258,15 @@
 					style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;">나의
 					정보</h3>
 				<ul>
-					<li style="margin-left: -38px;"><a href="account.do"
+					<li style="margin-left: -38px;"><a href="account.do?user_id=${userInfo.user_id }"
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원
-							정보 조회</a><br /> <br /> <a href="accountModify.do"
+							정보 조회</a><br />
+					<br /> <a href="accountModify.do?user_id=${userInfo.user_id }"
 						style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br />
-						<br /> <a href="#" data-toggle="modal" data-target="#logoutModalCenter"
-						style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br /> <br />
-						<br /></li>
+					<br /> <a href="#" data-toggle="modal" data-target="#logoutModalCenter"
+						style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br />
+					<br />
+					<br /></li>
 
 				</ul>
 				<div class="subtitle">
@@ -240,9 +275,10 @@
 						정보</h3>
 				</div>
 				<ul>
-					<li style="margin-left: -38px;"><a href="mOrder.do"
+					<li style="margin-left: -38px;"><a href="mOrder.do?user_id=${userInfo.user_id }"
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
-							내역</a><br /> <br /> <a href="../pay/cart.do"
+							내역</a><br />
+					<br /> <a href="../pay/cart.do"
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
 					</li>
 				</ul>

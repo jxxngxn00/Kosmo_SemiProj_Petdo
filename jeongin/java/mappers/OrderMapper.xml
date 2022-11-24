@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderDAO">
+	
+	<!-- 주문내역 목록 불러오기 -->
+	<select id="selectAllByUser" parameterType="String" resultType="OrderVO">
+	SELECT order_number, product_name
+	FROM   ( SELECT u.user_id AS user_id,u.order_number AS order_number, p.product_name AS product_name
+		        FROM user_order u, order_detail o, product p
+		        WHERE u.order_detail_number = o.order_detail_number 
+		        	AND o.product_number=p.product_number )  
+	WHERE user_id=#{user_id}
+	</select>
+	
+	<!-- 주문내역 상세조회 -->
+	<select id="selectByUser" parameterType="Integer" resultType="OrderVO">
+	SELECT order_number, product_name, order_date, order_detail_status, user_name, product_price
+	FROM ( SELECT uo.user_id AS user_id, uo.order_number AS order_number,p.product_name AS product_name, 
+					       uo.order_date AS order_date, o.order_detail_status AS order_detail_status, ui.user_name AS user_name, 
+					       o.product_price AS product_price
+		       FROM user_order uo, order_detail o, product p, user_info ui
+		       WHERE uo.order_detail_number=o.order_detail_number AND o.product_number=p.product_number
+		              AND uo.user_id = ui.user_id)
+	WHERE order_number=#{order_number}
+	</select>
+	
+	<!-- 관리자 : 주문내역 목록 -->
+	<select id="selectAllByAdmin" resultType="OrderVO">
+	SELECT order_number, order_date, product_count, user_id, product_name, product_price, order_detail_status
+	FROM   ( SELECT u.order_number order_number, u.order_date order_date, o.product_count product_count,
+               				u.user_id user_id, p.product_name product_name, o.product_price product_price, o.order_detail_status order_detail_status
+        		FROM user_order u, order_detail o, product p
+        		WHERE u.order_detail_number = o.order_detail_number AND o.product_number=p.product_number )
+		ORDER BY order_date DESC
+	</select>
+</mapper>

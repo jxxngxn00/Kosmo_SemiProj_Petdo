@@ -2,21 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.javaclass.domain.ProductVO"%>
+<%@page import="com.javaclass.domain.PagingVO"%>
 <%@page import="com.javaclass.service.ProductServiceImpl"%>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		var listForm = $("#listForm");
 
-		$(".pagination_button a").on("click", function(e) {
-			e.preventDefault();
 
-			listForm.find("input[name='pageNum']").val($(this).attr("href"));
-			listForm.submit();
-		});
-	});
-</script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,24 +15,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>care1-shop.html</title>
-<%
-	String pjName = "/petdo";
-%>
-<%
-	ProductVO vo = new ProductVO();
-%>
-<link href="<%=pjName%>/resources/mCss/bootstrap.min.css"
+<title>상품</title>
+<% String pjName="/petdo"; %>
+<%ProductVO vo=  new ProductVO(); %>
+<link href="<%=pjName %>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/font-awesome.min.css"
+<link href="<%=pjName %>/resources/mCss/font-awesome.min.css"
 	rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/prettyPhoto.css"
+<link href="<%=pjName %>/resources/mCss/prettyPhoto.css"
 	rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/price-range.css"
+<link href="<%=pjName %>/resources/mCss/price-range.css"
 	rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/animate.css" rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/main.css" rel="stylesheet">
-<link href="<%=pjName%>/resources/mCss/responsive.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/mCss/animate.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/mCss/main.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/mCss/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -56,119 +42,126 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$("#pageInfo a").on("click", function(e){
+	 
+    e.preventDefault();
+    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+    moveForm.attr("action", "/product/getProductList.do");
+    moveForm.submit();
+    
+});
+	</script>
+
+
 </head>
 <!--/head-->
 
 <body>
-	<header id="header">
-		<!--header-->
+	<header id="header"><!--header-->
+		
+		<div class="container">
+			<div class="header-middle"><!--header-middle-->
+				<a href="../main.do"><img src="<%=pjName%>/resources/images/home/logo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
+						<div class="col-sm-8">
+							<div class="shop-menu pull-right">
+								<ul class="nav navbar-nav" id="headerbar">
+									<li class="ment" style="margin-top: 12px;"><%= session.getAttribute("login") %>님 환영합니다.</li>
+									<li><a href="../logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
+									<li><a href="../myPage/account.do?user_id=${sessionScope.login  }"><i class="fa fa-user"></i></a></li>
+									<li><a href="../pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+									<c:if test="${'admin' eq sessionScope.login }">
+										<li><a href="../admin.do"><i class="fa fa-cogs" aria-hidden="true"></i></a></li>
+									</c:if>
+								</ul>
+						
+						</div>
+					</div>
+				</div>
+		</div>
+	</div><!--/header_top : 로그인 / 장바구니 등 4개 아이콘 : header-->
+
+	
+	<div class="header_middle"></div>
+	<div class="header-bottom"><!--header-bottom-->
 
 		<div class="container">
-			<div class="header-middle">
-				<!--header-middle-->
-				<div class="container">
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-						
-							<!-- 로그아웃, 마이페이지, 장바구니, 관리자페이지(관리자일경우) 아이콘 -->
-							<ul class="nav navbar-nav" id="headerbar">
-								<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
-									환영합니다.</li>
-								<li><a href="#" data-toggle="modal"
-									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-								<li><a href="../myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
-								<li><a href="../pay/cart.do"><i
-										class="fa fa-shopping-cart"></i></a></li>
-								<c:if test="${'admin' eq sessionScope.login }">
-									<li><a href="../admin.do"><i class="fa fa-cogs"
-											aria-hidden="true"></i></a></li>
-								</c:if>
-							</ul>
-						</div>
+			<div class="row">
+				<div id="sm-9" class="col-sm-9">
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
 					</div>
-				</div>
-			</div>
-		</div>
-		<!--/header_top : 로그인 / 장바구니 등 4개 아이콘 : header-->
-
-
-		<div class="header_middle"></div>
-		<div class="header-bottom">
-			<!--header-bottom-->
-
-			<div class="container">
-				<div class="row">
-					<div id="sm-9" class="col-sm-9">
-
-						<a href="../main.do"><img
-							src="<%=pjName%>/resources/images/home/petdologo.png"
-							width="12%" height="auto" " id="petlogo" alt="" /></a>
-
-
-
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle"
-								data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span> <span
-									class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-						</div>
-
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="../main.do" class="active">홈</a></li>
-								<li class="dropdown"><a href="care-shop.do">케어<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="care1-shop.do">목욕</a></li>
-										<li><a href="care2-shop.do">미용</a></li>
-									</ul></li>
-								<li class="dropdown"><a href="toilet-shop.html">배변/위생<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="toilet1-shop.do">배변용품</a></li>
-										<li><a href="toilet2-shop.do">위생용품</a></li>
-									</ul></li>
-								<li><a href="toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="food-shop.do">식품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="food1-shop.do">간식</a></li>
-										<li><a href="food2-shop.do">사료</a></li>
-										<li><a href="food3-shop.do">영양제</a></li>
-									</ul></li>
-								<li><a href="living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="#">의류<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" class="sub-menu">
-										<li><a href="closet-shop.do">프리미엄</a></li>
-										<li><a href="closet1-shop.do">아우터</a></li>
-										<li><a href="closet2-shop.do">상의</a></li>
-										<li><a href="closet3-shop.do">악세사리</a></li>
-									</ul></li>
-								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-								<li><a href="../blog/qna.do" style="color: #FF9933;">Q&A</a></li>
-							</ul>
-						</div>
+					
+					<div class="mainmenu pull-left ">
+						<ul class="nav navbar-nav collapse navbar-collapse" style="font-size: 0;">
+							
+							<li class="dropdown"><a href="../product/care-shop.do">케어<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/care1-shop.do">목욕</a></li>
+									<li><a href="../product/care2-shop.do">미용</a></li> 
+								</ul>
+							</li> 
+							<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/toilet1-shop.do">배변용품</a></li>
+									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+								</ul>
+							</li> 
+							<li><a href="../product/toy-shop.do">장난감</a></li>
+							
+							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" id="sub-menu-txt" class="sub-menu">
+									<li><a href="../product/food1-shop.do">간식</a></li>
+									<li><a href="../product/food2-shop.do">사료</a></li>
+									<li><a href="../product/food3-shop.do">영양제</a></li>
+								</ul>
+							</li>
+							<li><a href="../product/living-shop.do">리빙용품</a></li> 
+							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
+									<li><a href="../product/closet2-shop.do">아우터</a></li>
+									<li><a href="../product/closet3-shop.do">상의</a></li>
+									<li><a href="../product/closet4-shop.do">악세사리</a></li>
+								</ul>
+							</li>
+							<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li> 
+							<li><a href="../blog/faq.do" style="color: #FF9933;" >FAQ</a></li>
+							<li><a href="../blog/qna.do" style="color: #FF9933;" >Q&A</a></li>
+						</ul>
+					</div>
 						<div class="search_box pull-right">
-							<input type="text" placeholder="검색" />
+							<input type="text" placeholder="검색"/>
+							<a href="../product/searchpage.do" style="margin-left: 140px; margin-top:9px; position: absolute;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
 						</div>
-						<div id="topHeader" class="appTopArea" style="top: 0px;"></div>
-					</div>
+						<div id="topHeader" class="appTopArea" style="top:0px;"></div>
+				</div>
 				</div>
 			</div>
-		</div>
-		<!--/header-bottom-->
-	</header>
+		</div><!--/header-bottom-->
+	</div>
+	</div>
+	</div>
+	<!--/header-bottom-->
+			
+			</header>
+	</div>
 
 
 	<section>
 
 
-		<img src="<%=pjName%>/resources/images/home/subbanner_1.png"
+		<img src="<%=pjName %>/resources/images/home/subbanner_1.png"
 			id='subbaner' width="100%" height="auto" alt="" />
 
 		<div class="ec-base-tab typeMenu">
@@ -198,68 +191,95 @@
 		</div>
 		<hr height='30px' />
 
-		<div class="col-sm-9 padding-right">
-			<div class="features_items">
+		<div class="col-sm-9 padding-right" style="margin: auto;">
+
+			<div class="features_items" style="margin: auto; text-align: center;">
 				<!--features_items-->
 
 
-				<article class="cont-select">
-					<button class="btn-select">신상품</button>
-					<ul class="list-member">
-						<li><button type="button">상품명</button></li>
-						<li><button type="button">낮은가격</button></li>
-						<li><button type="button">높은가격</button></li>
-					</ul>
-				</article>
+				<!--<article class="cont-select">
+							 <div><button class="btn-select row" style="float:right; width:100px;">신상품</button></div> 
+								<ul class="list-member">
+									<li><button type="button">상품명</button></li>
+									<li><button type="button">낮은가격</button></li>
+									<li><button type="button">높은가격</button></li>
+								</ul>
+							</article>-->
 				<br /> <br />
-				<c:forEach items="${productList}" var="vo">
-					<div id="row" style="float: left;">
-						<form action="#" method="post"
-							style="margin-bottom: 10px; margin-left: 10px;"
-							class="form-inline" id="listForm">
-							<input name="product_number" type="hidden"
-								value="${vo.product_number}" />
-							<table border="1">
-								<tr>
-									<td colspan="2" align="center"><img
-										src='resources/images/home/logo.png' width='300' height='200'>
-									</td>
-								</tr>
-								<tr>
-									<td bgcolor="orange" width="200">상품명</td>
-									<td align="left"><input name="product_name" type="text"
-										value="${vo.product_name }" /></td>
-								</tr>
-								<tr>
-									<td bgcolor="orange" width="150">가격</td>
-									<td align="left"><input name="product_price" type="text"
-										value="${vo.product_price }" /></td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</c:forEach>
+				<div style="margin: auto;">
+					<c:forEach items="${productList}" var="vo">
+						<div id="row" style="float: left;"
+							style="border-style:none; display:flex; flex-wrap:wrap; ">
+							<form action="#" id="listForm" method="post"
+								style="margin-bottom: 10px; margin-left: 10px; class =form-inline; border-style: none;">
+								<div style="margin-left: 120px">
+									<input name="product_number" type="hidden"
+										value="${vo.product_number}" />
 
-				<div>
-					<ul class="pagination">
-						<c:if test="${pageMaker.prev }">
-							<li class="pagination_button"><a href="#">Previous</a></li>
-						</c:if>
+									<table style="margin-left: 10px;">
+										<tr>
+											<td colspan="2" align="center"><a
+												href="product-details.do?product_number=${vo.product_number}"><img
+													src='resources/images/home/girl1.png' width='300'
+													height='200'></a></td>
+										</tr>
+										<tr>
 
-						<c:forEach var="num" begin="${pageMaker.startPage }"
-							end="${pageMaker.endPage }">
-							<li class="pagination_button"><a href="#">${num }</a></li>
-						</c:forEach>
+											<td align="center" valign="middle"><input
+												name="product_name" type="text" value="${vo.product_name }"
+												readonly style="border-style: none; width: 100%" /></td>
+										</tr>
+										<tr>
 
-						<c:if test="${pageMaker.next }">
-							<li class="pagination_button"><a href="#">Next</a></li>
-						</c:if>
-					</ul>
+											<td align="center"><input name="product_price"
+												type="text" value="${vo.product_price }" readonly
+												style="border-style: none;" /></td>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</div>
+					</c:forEach>
 				</div>
+
+			</div>
+		</div>
+
+
+
+
+
+
 	</section>
 
 	<footer id="footer">
 		<!--Footer-->
+		<div style="">
+			<input type="hidden" name="pageNum" value="${pagingVO.cri.pageNum }">
+			<input type="hidden" name="amount" value="${pagingVO.cri.amount }">
+			<ul class="pagination" id="pageInfo">
+
+				<c:if test="${pagingVO.prev}">
+					<li><a
+						href="getProductList=${pagingVO.startPage-1}&amount=${pagingVO.amount}">Previous</a>
+					</li>
+				</c:if>
+
+				<c:forEach var="num" begin="${pagingVO.startPage}"
+					end="${pagingVO.endPage}">
+					<li class="pageInfo_btn"><a
+						href="getProductList.do?num=${num}">${num}</a></li>
+				</c:forEach>
+
+				<c:if test="${pagingVO.next }">
+					<li><a
+						href="getProductList=${pagingVO.endPage +1}&amount=${pagingVO.amount}">Next</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
+
+
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
@@ -326,29 +346,7 @@
 			</div>
 		</div>
 
-		<!-- logout Modal -->
-		<div class="modal fade" id="logoutModalCenter" tabindex="-1"
-			role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h2 class="modal-title" id="exampleModalLabel">Petdo - 로그아웃</h2>
-						<button class="close" type="button" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body" style="padding: 50px;">로그아웃 하시겠습니까?</div>
-					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button"
-							data-dismiss="modal" style="border-radius: 10px;">취소</button>
-						<a class="btn btn-primary" href="logOut.do"
-							style="border-radius: 10px; margin-top: 0px">로그아웃</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /logout Modal -->
+
 
 
 
@@ -362,11 +360,11 @@
 
 
 
-	<script src="<%=pjName%>/resources/js/jquery.js"></script>
-	<script src="<%=pjName%>/resources/js/price-range.js"></script>
-	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="<%=pjName%>/resources/js/bootstrap.min.js"></script>
-	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
-	<script src="<%=pjName%>/resources/js/main.js"></script>
+	<script src="<%=pjName %>/resources/js/jquery.js"></script>
+	<script src="<%=pjName %>/resources/js/price-range.js"></script>
+	<script src="<%=pjName %>/resources/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
+	<script src="<%=pjName %>/resources/js/main.js"></script>
 </body>
 </html>

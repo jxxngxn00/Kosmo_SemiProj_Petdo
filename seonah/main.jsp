@@ -55,11 +55,15 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav" id="headerbar">
-							<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
+							<li class="ment" style="margin-top: 12px;">${sessionScope.login}님
 								환영합니다.</li>
-							<li><a href="logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
-							<li><a href="myPage/account.do"><i class="fa fa-user"></i></a></li>
+							<li><a href="#" data-toggle="modal" data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></i></a></li>
+							<li><a href="myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
 							<li><a href="pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+							<c:if test="${'admin' eq sessionScope.login }">
+								<li><a href="admin.do"><i class="fa fa-cogs"
+										aria-hidden="true"></i></a></li>
+							</c:if>
 						</ul>
 
 					</div>
@@ -91,7 +95,7 @@
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
 
-								<li class="dropdown"><a href="product/care-shop.do">케어<i
+								<li class="dropdown"><a href="product/getProductList.do">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
 										<li><a href="product/care1-shop.do">목욕</a></li>

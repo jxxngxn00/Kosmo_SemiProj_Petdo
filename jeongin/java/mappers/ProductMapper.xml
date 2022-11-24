@@ -13,4 +13,63 @@ SELECT product_number, product_name,product_stock,product_hits,product_date
 FROM product
 ORDER BY product_number
 </select>
+
+<!-- 상품목록조회 -->
+<!--  <select id="getProductList" resultType="ProductVO">
+<![CDATA[
+select product_number, product_name, product_price from product
+]]>
+</select> -->
+<!-- 페이징된 상태로 상품목록 출력 -->
+<select id="getProductList" parameterType="ProductVO" resultType="ProductVO">	
+<![CDATA[
+SELECT*
+FROM product
+WHERE product_number IN(SELECT product_number
+FROM (SELECT rownum rnum, product_number FROM (SELECT product_number FROM product ORDER BY product_number DESC))
+WHERE rnum>=(#{pageNum}-1) * #{amount} AND rnum<=#{pageNum} * #{amount})
+
+]]>
+
+</select>
+
+<!-- 상품의 총갯수 -->
+<select id="getTotal" resultType="int">
+SELECT count(product_number) as total FROM product
+</select>
+
+<!--상품 카테고리 별로 출력(우선  1번 카테고리) -->
+<select id="getCategoryList" parameterType="ProductVO" resultType="ProductVO">	
+<![CDATA[
+SELECT product_number, category_code, product_name, product_price
+FROM product
+WHERE category_code =#{category_code}
+]]>
+
+</select>
+
+<!-- 상품 상세조회(상품 번호로) -->
+<select id= "getProduct" parameterType="ProductVO" resultType="ProductVO">
+<![CDATA[
+SELECT *
+FROM product
+WHERE product_number = #{product_number}
+]]>
+</select>
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
 </mapper>

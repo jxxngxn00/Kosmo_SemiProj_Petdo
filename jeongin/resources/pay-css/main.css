@@ -1945,7 +1945,10 @@ h2.title {
 	
  }
 
-
+table#payTbl{
+	weight:50%;
+	margin:auto;
+}
 
 .form-two {
 	margin-left: 5%
@@ -1983,8 +1986,7 @@ h2.title {
 .payment-options {
 	margin-bottom: 50px;
 	margin-top: 30px;
-	margin-right: 380px;
-	margin-left: 380px;
+	margin:auto;
 	
 }
 

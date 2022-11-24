@@ -9,7 +9,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Home</title>
-<% String pjName="/petdo"; %>
+<%
+	String pjName = "/petdo";
+%>
 <link href="<%=pjName%>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">
 <link href="<%=pjName%>/resources/mCss/font-awesome.min.css"
@@ -35,8 +37,8 @@
 	href="<%=pjName%>/resources/images/ico/apple-touch-icon-57-precomposed.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
-	
-	
+
+
 </head>
 <!--/head-->
 
@@ -49,7 +51,7 @@
 				<!--header-middle-->
 				<a href="main.do"><img
 					src="<%=pjName%>/resources/images/home/logo.png" width="12%"
-					height="auto" " id="petlogo" alt="" /></a>
+					height="auto" id="petlogo" style="margin-top: 10px;" alt="" /></a>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav" id="headerbar">
@@ -72,65 +74,81 @@
 
 
 		<div class="header_middle"></div>
-		<div id="sm-9" class="col-sm-9">
+		<div class="header-bottom">
+			<!--header-bottom-->
 
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-			</div>
+			<div class="container">
+				<div class="row">
+					<div id="sm-9" class="col-sm-9">
 
-			<div class="mainmenu pull-left ">
-				<ul class="nav navbar-nav collapse navbar-collapse"
-					style="font-size: 0;">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle"
+								data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+						</div>
 
-					<li class="dropdown"><a href="product/getProductList.do">케어<i
-							class="fa fa-angle-down"></i></a>
-						<ul role="menu" class="sub-menu">
-							<li><a href="product/care1-shop.do">목욕</a></li>
-							<li><a href="product/care2-shop.do">미용</a></li>
-						</ul></li>
-					<li class="dropdown"><a href="product/toilet-shop.do">배변/위생<i
-							class="fa fa-angle-down"></i></a>
-						<ul role="menu" class="sub-menu">
-							<li><a href="product/toilet1-shop.do">배변용품</a></li>
-							<li><a href="product/toilet2-shop.do">위생용품</a></li>
-						</ul></li>
-					<li><a href="product/toy-shop.do">장난감</a></li>
-
-					<li class="dropdown"><a href="product/food-shop.do">식품<i
-							class="fa fa-angle-down"></i></a>
-						<ul role="menu" id="sub-menu-txt" class="sub-menu">
-							<li><a href="product/food1-shop.do">간식</a></li>
-							<li><a href="product/food2-shop.do">사료</a></li>
-							<li><a href="product/food3-shop.do">영양제</a></li>
-						</ul></li>
-					<li><a href="product/living-shop.do">리빙용품</a></li>
-					<li class="dropdown"><a href="product/closet-shop.do">의류<i
-							class="fa fa-angle-down"></i></a>
-						<ul role="menu" class="sub-menu">
-							<li><a href="product/closet1-shop.do">프리미엄</a></li>
-							<li><a href="product/closet2-shop.do">아우터</a></li>
-							<li><a href="product/closet3-shop.do">상의</a></li>
-							<li><a href="product/closet4-shop.do">악세사리</a></li>
-						</ul></li>
-					<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-					<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-					<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
-				</ul>
-			</div>
-			<div class="search_box pull-right">
-				<input type="text" placeholder="검색" /> <a
-					href="product/searchpage.do"
-					style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
-					class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
-			</div>
-			<div id="topHeader" class="appTopArea" style="top: 0px;"></div>
-		</div>
+						<div class="mainmenu pull-left ">
+							<ul class="nav navbar-nav collapse navbar-collapse"
+								style="font-size: 0;">
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=14">케어<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="product/getCategoryList.do?category_code=15">미용</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=9">배변/위생<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=8">위생용품</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=10">장난감<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a href="product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a href="product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a href="product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a href="product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=1">의류<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="product/getCategoryList.do?category_code=4">악세사리</a></li>
+									</ul></li>
+								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+							</ul>
+						</div>
+						<div class="search_box pull-right">
+							<input type="text" placeholder="검색" /> <a
+								href="product/searchpage.do"
+								style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
+								class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
+						</div>
+						<div id="topHeader" class="appTopArea" style="top: 0px;"></div>
+					</div>
 	</header>
+
 
 
 	<section id="slider">
@@ -186,12 +204,12 @@
 	<hr />
 	<!-- 실시간 best 목록 나열 -->
 	<div id="top" class="col-sm-9 padding-right">
-		<div class="features_items">
+		<div class="features_items" style="margin-left: -30px;">
 			<!--features_items-->
 			<div class="prd_more">
 				<a href="shop.html" id="view">전체보기 &nbsp+</a>
 			</div>
-			<h2 class="title text-center">STORE BEST</h2>
+			<h2 class="title text-center" style="font-size: 45px; text-align: left;">STORE BEST</h2>
 
 
 			<div class="col-sm-4" id="col-sm-4">
@@ -260,26 +278,22 @@
 			</div>
 		</div>
 
-
-
-
+	<hr/>
 
 		<div class="category-tab">
-			<!--category-tab-->
-			<hr />
-			<div class="prd_more">
-
-				<a href="shop.html" id="view">전체보기 &nbsp+</a>
-			</div>
-			<h2 class="text-category">NEW PRODUCT</h2>
+		
+	<img src="<%=pjName%>/resources/images/home/subbanner5.png" width="100%" height="auto" style="margin-bottom: 35px; margin-top: -12px"  alt="" />
+	
 
 			<div class="tab-content">
 				<div class="tab-pane fade active in" id="tshirt">
-
+					<h2 class="text-category" style="margin-top: -5px; font-size: 45px">NEW PRODUCT</h2><br/><br/>
+					
 					<div class="col-sm-3">
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
+								
 									<img src="<%=pjName%>/resources/images/home/gallery2.jpg"
 										alt="" />
 									<h2>$56</h2>
@@ -367,6 +381,18 @@
 					</div>
 				</div>
 
+				<div class="col-sm-3">
+					<div class="product-image-wrapper">
+						<div class="single-products">
+							<div class="productinfo text-center">
+								<img src="<%=pjName%>/resources/images/home/gallery2.jpg" alt="" />
+								<h2>$56</h2>
+								<p>Easy Polo Black Edition</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 
 			</div>
@@ -375,242 +401,328 @@
 	</div>
 	<!--/category-tab-->
 
-
 	<a href="care-shop.html"><img
 		src="<%=pjName%>/resources/images/home/subbanner2.png" width="100%"
 		height="auto" alt="" /></a>
-	<div class="recommended_items">
+	<div class="col-sm-9">
 		<!--recommended_items-->
-		<h2 class="text-category">CARE PRODUCT</h2>
+		<div class="recommended_items">
+			<br />
+			<h2 class="title text-center"
+				style="margin-top: 20px; text-align: left; font-size: 45px">CARE ITEM</h2>
 
-		<div id="recommended-item-carousel" class="carousel slide"
-			data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="item active">
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend1.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+			<div id="recommended-item-carousel" class="carousel slide"
+				data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="item active" style="margin-left: 12%;">
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend2.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+					<div class="item" style="margin-left: 12%;">
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend3.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="item">
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend1.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend2.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend3.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
+				<a class="left recommended-item-control"
+					href="#recommended-item-carousel"
+					style="margin-left: -1820px; margin-top: 7%; border-radius: 50%;"
+					data-slide="prev"> <i class="fa fa-angle-left"
+					style="border-radius: 50%;"></i>
+				</a> <a class="right recommended-item-control"
+					href="#recommended-item-carousel" style="margin-top: 7%"
+					data-slide="next"> <i class="fa fa-angle-right"
+					style="border-radius: 50%;"></i>
+				</a>
 			</div>
-			<a class="left recommended-item-control"
-				href="#recommended-item-carousel" data-slide="prev"> <i
-				class="fa fa-angle-left"></i>
-			</a> <a class="right recommended-item-control"
-				href="#recommended-item-carousel" data-slide="next"> <i
-				class="fa fa-angle-right"></i>
-			</a>
 		</div>
+		<!--/recommended_items-->
+
 	</div>
-	<!--/recommended_items-->
 	<a href="food-shop.html"><img
 		src="<%=pjName%>/resources/images/home/subbanner3.png" width="100%"
 		height="auto" alt="" /></a>
 
-	<div class="recommended_items">
+	<div class="col-sm-9">
 		<!--recommended_items-->
-		<h2 class="text-category">Food</h2>
+		<div class="recommended_items">
+			<br />
+			<h2 class="title text-center"
+				style="margin-top: 20px;  text-align: left; font-size: 45px">FOOD ITEM</h2>
 
-		<div id="recommended-item-carousel" class="carousel slide"
-			data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="item active">
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend1.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+			<div id="recommended-item-carousel" class="carousel slide"
+				data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="item active" style="margin-left: 12%;">
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend2.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+					<div class="item" style="margin-left: 12%;">
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend3.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
 								</div>
-
+							</div>
+						</div>
+						<div class="col-sm-4" id="col-sm-4">
+							<div class="productinfo text-center">
+								<div class="product-image-wrapper">
+									<div class="single-products">
+										<img
+											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+											alt="" />
+										<p>테디 블라썸 져지</p>
+										<strong class="product_price"> <span
+											style="font-size: 16px; color: #000000;">42,000원
+												&nbsp;</span>
+										</strong> <strong class="sale_price"> <span
+											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+											id="new" width="2px" height="auto" alt="" /> <img
+											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
+											width="2px" height="auto" alt="" />
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="item">
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend1.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend2.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/recommend3.jpg"
-										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
-									<a href="#" class="btn btn-default add-to-cart"><i
-										class="fa fa-shopping-cart"></i>Add to cart</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
+				<a class="left recommended-item-control"
+					href="#recommended-item-carousel"
+					style="margin-left: -1820px; margin-top: 7%; border-radius: 50%;"
+					data-slide="prev"> <i class="fa fa-angle-left"
+					style="border-radius: 50%;"></i>
+				</a> <a class="right recommended-item-control"
+					href="#recommended-item-carousel" style="margin-top: 7%"
+					data-slide="next"> <i class="fa fa-angle-right"
+					style="border-radius: 50%;"></i>
+				</a>
 			</div>
-			<a class="left recommended-item-control"
-				href="#recommended-item-carousel" data-slide="prev"> <i
-				class="fa fa-angle-left"></i>
-			</a> <a class="right recommended-item-control"
-				href="#recommended-item-carousel" data-slide="next"> <i
-				class="fa fa-angle-right"></i>
-			</a>
 		</div>
-	</div>
 	<!--/recommended_items-->
 
+
 	<!-- logout Modal -->
-	<div class="modal fade" id="logoutModalCenter" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="logoutModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -624,15 +736,24 @@
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal" style="border-radius: 10px;">취소</button>
-					<a class="btn btn-primary" href="logOut.do" style="border-radius: 10px; margin-top: 0px">로그아웃</a>
+					<a class="btn btn-primary" href="logOut.do"
+						style="border-radius: 10px; margin-top: 0px">로그아웃</a>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
+		
+		<hr/>
+		<br/>
+		<video muted autoplay loop>
+      			<source src="<%=pjName%>/resources/images/페스룸.mp4" type="video/mp4">
+    	</video>
+    		
+	
 	<!-- /logout Modal -->
 
-	<footer id="footer">
 		<!--Footer-->
+	<footer id="footer">
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row" style="padding: 3%;">
@@ -653,6 +774,8 @@
 					</div>
 				</div>
 			</div>
+			
+		
 		</div>
 
 	</footer>
@@ -660,11 +783,11 @@
 
 
 
-	<script src="<%=pjName %>/resources/js/jquery.js"></script>
-	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="<%=pjName %>/resources/js/price-range.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
-	<script src="<%=pjName %>/resources/js/main.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.js"></script>
+	<script src="<%=pjName%>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=pjName%>/resources/js/price-range.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
+	<script src="<%=pjName%>/resources/js/main.js"></script>
 </body>
 </html>

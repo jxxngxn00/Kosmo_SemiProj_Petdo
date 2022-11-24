@@ -39,11 +39,11 @@
                                 <h1 class="h4 text-gray-900 mb-4">회원가입 </h1>
                             </div>
                             <!-- 회원가입 폼 -->
-                            <form class="user" action="join.do" method="post">
+                            <form class="user" action="userInsert.do" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="아이디" name="userId">
+                                            placeholder="아이디" name="user_id">
                                     </div>
                                   
                                     <div class="col-sm-8 mt-3 mb-sm-0">

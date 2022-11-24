@@ -24,6 +24,11 @@ public class MemberServiceImpl implements MemberService {
 		public int userInsert(MemberVO vo ){
 		  return memberDAO.memberInsert(vo);
 	   }
+		
+	//회원 상세정보 조회
+		public MemberVO getUserInfo(String user_id) {
+			return memberDAO.getUserInfo(user_id);
+		}
 }
 
 

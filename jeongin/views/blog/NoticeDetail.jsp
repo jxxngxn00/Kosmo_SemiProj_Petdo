@@ -79,38 +79,72 @@
                   </div>
                   
                   <div class="mainmenu pull-left">
-                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="main.html" class="active">홈</a></li>
-                        <li class="dropdown"><a href="care-shop.html">케어<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="care1-shop.html">목욕</a></li>
-                              <li><a href="care2-shop.html">미용</a></li> 
-                                    </ul>
-                                </li> 
-                        <li class="dropdown"><a href="toilet-shop.html">배변/위생<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="toilet1-shop.html">배변용품</a></li>
-                              <li><a href="toilet2-shop">위생용품</a></li>
-                                    </ul>
-                                </li> 
-                        <li><a href="toy-shop.html">장난감</a></li>
-                        
-                        <li class="dropdown"><a href="food-shop.html">식품<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" id="sub-menu-txt" class="sub-menu">
-                                        <li><a href="food1-shop.html">간식</a></li>
-                              <li><a href="food2-shop.html">사료</a></li>
-                              <li><a href="food3-shop.html">영양제</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="living-shop.html">리빙용품</a></li> 
-                                <li class="dropdown"><a href="closet-shop.html">의류<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="closet1-shop.html">프리미엄</a></li>
-                              <li><a href="closet2-shop.html">아우터</a></li>
-                              <li><a href="closet3-shop.html">상의</a></li>
-                              <li><a href="closet4-shop.html">악세사리</a></li>
-                                    </ul>
-                                </li>
+                     <ul class="nav navbar-nav collapse navbar-collapse"
+								style="font-size: 0;">
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=14">케어<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=15">미용</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=9">배변/위생<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=10">장난감<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=16">리빙용품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
+									</ul></li>
+								<li class="dropdown"><a
+									href="../product/getCategoryList.do?category_code=1">의류<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a
+											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a
+											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
+									</ul></li>
                                 	<li><a href="notice.do" style="color: #FF9933;">NOTICE</a></li> 
 								<li><a href="faq.do" style="color: #FF9933;" >FAQ</a></li>
 								<li><a href="qna.do" style="color: #FF9933;" >Q&A</a></li>
@@ -177,88 +211,6 @@
 						</div>
 					</div><!--/blog-post-area-->
 					
-
-					<div class="response-area" id="comment">
-						<h2>3 RESPONSES</h2>
-						<ul class="media-list">
-							<li class="media">
-								
-								<a class="pull-left" href="#">
-									<img class="media-object" src="<%=pjName %>/resources/images/blog/man-two.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									
-								</div>
-							</li>
-							<li class="media second-media">
-								<a class="pull-left" href="#">
-									<img class="media-object" src="<%=pjName %>/resources/images/blog/man-three.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									
-								</div>
-							</li>
-							<li class="media">
-								<a class="pull-left" href="#">
-									<img class="media-object" src="<%=pjName %>/resources/images/blog/man-four.jpg" alt="">
-								</a>
-								<div class="media-body">
-									<ul class="sinlge-post-meta">
-										<li><i class="fa fa-user"></i>Janis Gallagher</li>
-										<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-										<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-									
-								</div>
-							</li>
-						</ul>					
-					</div><!--/Response-area-->
-					<div class="replay-box">
-						<div class="row">
-							<div class="col-sm-4">
-								<h2>Leave a reply</h2>
-								<form>
-									<div class="blank-arrow">
-										<label>Your Name</label>
-									</div>
-									<span>*</span>
-									<input type="text" placeholder="write your name...">
-									<div class="blank-arrow">
-										<label>Email Address</label>
-									</div>
-									<span>*</span>
-									<input type="email" placeholder="your email address...">
-									<div class="blank-arrow">
-										<label>Web Site</label>
-									</div>
-									<input type="email" placeholder="current city...">
-								</form>
-							</div>
-							<div class="col-sm-8" >
-								<div class="text-area">
-									<div class="blank-arrow">
-										<label>Your Name</label>
-									</div>
-									<span>*</span>
-									<textarea name="message" rows="11"></textarea>
-									<a class="btn btn-primary" href="">post comment</a>
-								</div>
-							</div>
-						</div>
-					</div><!--/Repaly Box-->
 				</div>	
 			</div>
 		</div>

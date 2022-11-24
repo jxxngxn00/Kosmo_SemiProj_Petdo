@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +43,7 @@
 									환영합니다.</li>
 								<li><a href="#" data-toggle="modal"
 									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-								<li><a href="account.do"><i class="fa fa-user"></i></a></li>
+								<li><a href="account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
 								<li><a href="../pay/cart.do"><i
 										class="fa fa-shopping-cart"></i></a></li>
 								<c:if test="${'admin' eq sessionScope.login }">

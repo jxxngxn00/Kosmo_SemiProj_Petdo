@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.javaclass.domain.MemberVO;
 import com.javaclass.service.MemberService;
 
@@ -18,17 +17,6 @@ public class LoginController {
 	@Autowired
 	private MemberService memberService;
 	
-	@RequestMapping("loginOpen.do")
-	public String test1() {
-		
-		return "login";
-	}
-
-	@RequestMapping("joinOpen.do")
-	public String test2() {
-		return "join";
-	}
-	
 	@RequestMapping("{url}.do")
 	public String userPage(@PathVariable String url) {
 		System.out.println("확인");
@@ -36,10 +24,25 @@ public class LoginController {
 		//"/user/"를 안쓰면 [/WEB-INF/views/userLogin.jsp]로 받아서 404오류 발생
 	}
 	
+	
+	//로그인 페이지로 이동
+	@RequestMapping("loginOpen.do")
+	public String loginOpen() {
+		
+		return "login";
+	}
+	
+	//회원가입 페이지로 이동
+	@RequestMapping("joinOpen.do")
+	public String joinOpen() {
+		return "join";
+	}
+	
 	/*
 	 * 요청 : /user/userInsert.do
 	 * 뷰페이지 :  user/userJoin_ok.jsp
 	 */
+	
 	//회원가입
 	@RequestMapping(value="userInsert.do", produces="application/text;charset=utf-8")
 	public String userInsert(MemberVO vo) {
@@ -71,6 +74,7 @@ public class LoginController {
 			System.out.println("로그인 성공 : "+result.getUser_id());
 			//세션에 저장
 			session.setAttribute("login", result.getUser_id());
+			session.setAttribute("pwd", result.getUser_pwd());
 			
 			if(result.getUser_id().equals("admin")) {
 				System.out.println("admin 접속");
@@ -84,6 +88,7 @@ public class LoginController {
 	//로그아웃
 	@RequestMapping("logOut.do")
 	public String logOut(HttpSession session){
+		//HttpSession ses = request.getSession(true);
 		String id = (String) session.getAttribute("id");
 		session.removeAttribute(id);
 		session.invalidate();

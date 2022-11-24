@@ -30,5 +30,10 @@ public class MemberDAOImpl implements MemberDAO {
 		return mybatis.selectOne("user.memberLogin", vo);
 	}
 
+	public MemberVO getUserInfo(String user_id) {
+		System.out.println("===> MemberMapper getUserInfo 호출");
+		return mybatis.selectOne("user.getUserInfo", user_id);
+	}
+
 
 }

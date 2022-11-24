@@ -14,4 +14,7 @@ public interface MemberDAO {
 	
 	 //로그인 확인 기능 구현
 	MemberVO memberLogin(MemberVO vo);
+	
+	//회원 상세정보
+	MemberVO getUserInfo(String user_id);
 }
