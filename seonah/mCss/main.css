@@ -11,7 +11,10 @@
  font-family: 'Noto Sans KR', sans-serif;
 }
 
+.ment {
+	margin-top: 20px;
 
+}
 
 @font-face {
   font-family: 'SF_HambakSnow';
@@ -162,7 +165,11 @@ a#scrollUp i{
   margin-left: 0;
   margin-right: 0;
   padding-bottom: 20px;
-  padding-top: 20px;
+}
+
+.contact-info {
+	margin-top: -50px;
+	margin-left: 45px;
 }
 
 .header-middle .container .row .col-sm-4{
@@ -318,7 +325,7 @@ a#scrollUp i{
 .search_box input {
 width: 165px;
     float: right;
-    margin-top: 5px;
+    margin-top: 1px;
     height: 34px;
     line-height: 34px;
     font-size: 12px;
@@ -327,9 +334,6 @@ width: 165px;
     border-radius: 0;
     border-bottom: 1px solid #000000;
     font-weight: bold;
-    background-image: url(../images/home/search.png);
-    background-repeat: no-repeat;
-    background-position: 150px;
 }
 
 
@@ -418,13 +422,14 @@ ul.sub-menu {
 **************************/
 
 #footer {
-  background: #ffffff;
+  background: #F0F0E9;
+  height: 10%;
 }
-
 
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;
   padding-bottom: 20px;
+  
 }
 
 .companyinfo {
@@ -537,14 +542,8 @@ ul.sub-menu {
   top: 50px;
 }
 
-.footer-widget {
-  margin-bottom: 68px;
-}
-
 .footer-widget .container {
   border-top: 1px solid #FFFFFF;
-  padding-top: 15px;
-  background-color: #ffffff;
 }
 
 .snsservice {
@@ -1256,9 +1255,10 @@ h2.title {
   color: #3a3a3a;
 }
 
-
+video { max-width: 50%; display: block; margin: 20px auto; margin-bottom: 45px;}
 
 .productinfo{
+	
  
  width: 80%;
 
@@ -1780,6 +1780,7 @@ div.single-products {
   float: left;
   width: 200px;
   padding-bottom: -20px;
+  margin-top: -38px;
   
 }
 
@@ -2991,11 +2992,6 @@ float: left;
 
 
 
-.col-sm-8 {
-  margin-right: 120px;
-
-}
-
 #customerID {
   font-size: 14px;
   margin-left: 15px;
@@ -3074,7 +3070,13 @@ color: #31424e;
     background: #FFFFFF;
     border: 1px solid #FF9933;
     box-sizing: border-box;
-    width: 35%;
+    width: 38%;
+}
+
+.addtocart {
+	width: 38%;
+	
+	
 }
 
 .orderbuy {
