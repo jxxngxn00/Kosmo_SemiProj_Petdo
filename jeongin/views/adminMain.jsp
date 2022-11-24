@@ -24,7 +24,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/css/sb-admin-2.min-copy.css" rel="stylesheet">
 <style>
 a:hover {
 	text-decoration: none;
@@ -426,11 +426,11 @@ a:hover {
 						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">세션을 종료하고 로그아웃 합니다.</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
+				<div class="modal-body" >로그아웃 하시겠습니까?</div>
+				<div class="modal-footer" style="height:75px;">
+					<button class="btn btn-secondary" type="button" style="border-radius: 10px;"
 						data-dismiss="modal">취소</button>
-					<a class="btn btn-primary" href="logOut.do">로그아웃</a>
+					<a class="btn btn-primary" href="logOut.do" style="border-radius: 10px;">로그아웃</a>
 				</div>
 			</div>
 		</div>

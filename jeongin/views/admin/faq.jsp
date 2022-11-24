@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<%=pjName %>/resources/css/sb-admin-2.min-copy.css" rel="stylesheet">
 
 </head>
 
@@ -105,10 +106,10 @@
                         <i class="fas fa-fw fa-cog"></i>
                         <span>게시판관리</span>
                     </a>
-                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">홈페이지에 게시된 각종 글 관리</h6>
-                              <a class="collapse-item active" href="faq.do">FAQ 관리</a>
+                              <a class="collapse-item" href="faq.do">FAQ 관리</a>
                             <a class="collapse-item" href="review.do">리뷰 관리</a>
                             <a class="collapse-item" href="qna.do">QnA 관리</a>
                             <a class="collapse-item" href="notice.do">공지사항 관리</a>
@@ -225,6 +226,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <form id="modifyForm"></form>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -235,35 +237,33 @@
                                             <th>삭제</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>글 번호</th>
-                                            <th>글 제목</th>
-                                            <th>게시일</th>
-                                            <th>수정</th>
-                                            <th>삭제</th>
-                                        </tr>
-                                    </tfoot>
+                                
                                     <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
+                                    	<c:forEach items ="${faqList }" var="vo">	
+                                       	 <tr>
+                                       <!-- insert 폼에서 작성한 값 가져오기 -->
+                                            <td><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_seq}</a></td>
+                                            <td><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_title}</a></td>
+                                            <td><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_date}</a></td>
 											<td style="text-align:center;">
-												<a href="modifyFaq.do"
+												<a href="faqUpdate.do?faq_seq=${vo.faq_seq}"
 												class="btn btn-info btn-circle btn-sm">
 													<i class="fas fa-info-circle"></i>
 												</a>
 											</td>
+											<!-- 삭제 버튼 클릭시 클릭한 시퀀스에 해당하는 글 삭제 -->
 											<td style="text-align:center;">
-                                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                                <a href="deleteQna.do?faq_seq=${vo.faq_seq}" 
+                                                	class="btn btn-danger btn-circle btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
+                                        </c:forEach>
                                         
                                     </tbody>
                                 </table>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -37,12 +37,22 @@
 				<a href="../main.do"><img src="<%=pjName%>/resources/images/home/logo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
 						<div class="col-sm-8">
 							<div class="shop-menu pull-right">
-								<ul class="nav navbar-nav" id="headerbar">
-									<li class="ment" style="margin-top: 12px;"><%= session.getAttribute("login") %>님 환영합니다.</li>
-									<li><a href="logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
-									<li><a href="myPage/account.do"><i class="fa fa-user"></i></a></li>
-									<li><a href="pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
+							<!-- 로그아웃, 마이페이지, 장바구니, 관리자페이지(관리자일경우) 아이콘 -->
+							<ul class="nav navbar-nav" id="headerbar">
+								<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
+									환영합니다.</li>
+								<li><a href="#" data-toggle="modal"
+									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
+								<li><a href="account.do"><i class="fa fa-user"></i></a></li>
+								<li><a href="../pay/cart.do"><i
+										class="fa fa-shopping-cart"></i></a></li>
+								<c:if test="${'admin' eq sessionScope.login }">
+									<li><a href="../admin.do"><i class="fa fa-cogs"
+											aria-hidden="true"></i></a></li>
+								</c:if>
+							</ul>
+
+
 					</div>
 				</div>
 		</div>
@@ -130,47 +140,59 @@
 	    			
 						<br/>
 
-							
+						<form>							
 							<div class="form-group col-md-12">						
 								<p style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold; margin-top: 50px; margin-left: 150px; margin-bottom: 15px;">비밀번호를 입력해주세요.</p>
 								<input type="text" name="passwardconfirm" class="form-control passwardconfirm" required="required"  style="width: 40%; margin-left: 148px; display: inline;">
 								<button type="submit" id="adrbtn" style="margin-left: 5px; font-family: 'Noto Sans KR', sans-serif; display: inline;">확인</button>
 								
 							</div>
+				        </form>
 							
 							
 				            </div>
 
-				        </form>
 				
 					
 	    			</div>
 				</div>
 	    	
-	    		<div  id="col-sm-4" >
-	    			<div class="contact-info">
-	    				<p class="title text-center" id="fonttitle"  style="text-transform: capitalize; font-family: 'Noto Sans KR', sans-serif;">My Account</p>
-							</div>
-								<h3 style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;" >나의 정보</h3>
-							<ul>
-								<li style="margin-left: -38px; ">
-									<a href="mypage.html" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원 정보 조회</a><br/><br/>
-									<a href="mypage.html" style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br/><br/>
-									<a href="mypage.html" style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br/><br/><br/>
-								</li>
-									
-							</ul>
-							<div class="subtitle">
-								<h3 style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;">주문 정보</h3>
-							</div>
-								<ul>
-									<li style="margin-left: -38px; ">
-										<a href="order.html" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문 내역</a><br/><br/>
-										<a href="cart.html" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br/>
-									</li>	
-								</ul>	
-							
-					</div>		
+	    		<div class="col-sm-4" style="margin-top:-150px;">
+					<div class="contact-info">
+						<p class="title text-center" id="fonttitle"
+							style="text-transform: capitalize; font-family: 'Noto Sans KR', sans-serif;">Order
+							Info</p>
+					</div>
+					<h3
+						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;">나의
+						정보</h3>
+					<ul>
+						<li style="margin-left: -38px;"><a href="account.do"
+							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원
+								정보 조회</a><br />
+						<br /> <a href="accountModify.do"
+							style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br />
+						<br /> <a href="#" data-toggle="modal" data-target="#logoutModalCenter"
+							style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br />
+						<br />
+						<br /></li>
+
+					</ul>
+					<div class="subtitle">
+						<h3
+							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 22px; font-weight: bold; font-size: 18px;">주문
+							정보</h3>
+					</div>
+					<ul>
+						<li style="margin-left: -38px;"><a href="mOrder.do"
+							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
+								내역</a><br />
+						<br /> <a href="../pay/cart.do"
+							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
+						</li>
+					</ul>
+
+				</div>	
 	    			
 	    			</div>
     			</div>    			
@@ -178,7 +200,28 @@
     	</div>	
     </div><!--/#contact-page-->
 	
-	
+	<!-- logout Modal -->
+	<div class="modal fade" id="logoutModalCenter" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">Petdo - 로그아웃</h2>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding: 50px;">로그아웃 하시겠습니까?</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal" style="border-radius: 10px;">취소</button>
+					<a class="btn btn-primary" href="../logOut.do" style="border-radius: 10px; margin-top: 0px">로그아웃</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /logout Modal -->
 		
 	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">

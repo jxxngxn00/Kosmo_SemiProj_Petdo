@@ -22,7 +22,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/css/sb-admin-2.min-copy.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/css/custom.css" rel="stylesheet">
 
 </head>

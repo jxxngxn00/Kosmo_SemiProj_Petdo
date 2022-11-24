@@ -2611,20 +2611,25 @@ table.type09 td {
 }
 
 #pay {
-	margin-left: 480px;
-	margin-right: 150px;
+	margin : auto 18px;
 	background: #FE980F;
-	border-radius: 10;
+	border-radius: 10px;
 	color: #FFFFFF;
-	margin-top: 18px;
-	margin-bottom: 18px;
-	text-align: centet;
+	text-align: center;
 	border: none;
 	padding: 5px 10px;
 	width: 150px;
 }
 
+#tableArea {
+	text-align: center;
+	margin:auto;
+}
 
+#tableArea>a{
+	margin-top:18px;
+	margin-botton:18px;
+}
 /*payment*/
 
 

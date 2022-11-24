@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en" style="background-color:#FF9933">
+<html lang="en" style="background-color:#FDDCDF">
 
 <head>
 
@@ -24,9 +24,9 @@
 
 </head>
 
-<body class="bg-gradient-primary" style="color:#FF9933">
+<body class="bg-gradient-primary" style="color:#FDDCDF">
 
-    <div class="container" style="background-color:#FF9933">
+    <div class="container" style="background-color:#FDDCDF">
 
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">

@@ -22,7 +22,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<%=pjName %>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="<%=pjName %>/resources/css/sb-admin-2.min-copy.css" rel="stylesheet">
     <link href="<%=pjName %>/resources/css/custom.css" rel="stylesheet">
 
 </head>
@@ -216,7 +216,10 @@
                                     <tbody id="itemRegisterTbl">
                                         <tr> 
                                             <td class="tblTitle" colspan="2" style="font-size: 16pt; font-weight: bold;">상품 정보</td> 
-                                         
+                                         	<td rowspan="7" style="text-align: center; vertical-align:center;" id="addImg"> 
+                                                <label class="input-file-button" for="input-file">이미지 업로드</label>
+												<input type="file" id="input-file" accept="image/*" style="display:none; "/>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">상품명</th>
@@ -238,10 +241,6 @@
                                         <tr style="margin-bottom: -5px;">
                                             <th scope="row" style="vertical-align: middle;">판매 가격</th>
                                             <td class="iValue"><input type="text" name="product_price" style="margin-top: 7px"/></td>
-                                             <td style="text-align: center; " id="addImg"> 
-                                                <label class="input-file-button" for="input-file">이미지 업로드</label>
-												<input type="file" id="input-file" accept="image/*" style="display:none; "/>
-                                            </td>
                                         </tr>
                                         <tr>
                                             <th colspan="3">상세 설명</th>
