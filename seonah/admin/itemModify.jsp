@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<title>PetDo - 관리자 페이지</title>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -204,134 +204,71 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">상품 목록</h1>
-                    <div class="card shadow mb-4" id="searchBox" >
-                        <div class="searchOpt"><b>카테고리 검색</b>
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                전체
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                    </div>
-                        <div class="searchOpt"><b>검색어 </b>
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                전체
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">상품명</a>
-                                <a class="dropdown-item" href="#">상품 사이즈</a>
-                                <a class="dropdown-item" href="#">상품 번호</a>
-                                <a class="dropdown-item" href="#">판매 가격</a>
-                            </div>
-                            <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            </div>
-                        </form>    
-                        </div>
-                        <div class="searchOpt"><b>상품상태 </b>
-                            <fieldset>
-                                <label>
-                                  <input type="radio" name="contact" value="sale" checked />
-                                  <span>진열중</span>
-                                </label>
-                              
-                                <label>
-                                  <input type="radio" name="contact" value="soldout" />
-                                  <span>품절</span>
-                                </label>
-                              
-                                <label>
-                                  <input type="radio" name="contact" value="ready" disabled />
-                                  <span>상품 준비중</span>
-                                </label>
-                              </fieldset>
-                        </div>
-                        <div class="searchOpt"><div class="my-2"></div>
-                        <a href="#" class="btn btn-light btn-icon-split">
-                            <span class="icon text-gray-600">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="text">Search</span>
-                        </a></div>
-                    </div>
-                    <p class="mb-4">테이블 설명 ... <a target="_blank"
-                            href="https://datatables.net">(템플릿 테이블 자료 출처)</a>.</p>
-
-                    <!-- 상품목록 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">상품 목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">상품 수정</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            	<form action="updateProduct.do" method="post"
+											id="updateProduct" enctype="multipart/form-data">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>상품 번호</th>
-                                            <th>상품명</th>
-                                            <th>재고 수</th>
-                                            <th>조회 수</th>
-                                            <th>등록 날짜</th>
-                                            <th>수정</th>
-                                            <th>삭제</th>
+                                    
+                                    <tbody id="itemRegisterTbl">
+                                        <tr> 
+                                            <td class="tblTitle" colspan="2" style="font-size: 16pt; font-weight: bold;">상품 정보</td> 
+                                         	<td rowspan="6" style="width: 25%" id="bannerImg"><img src=""></td>
                                         </tr>
-                                    </thead>
-                                    <tfoot>
                                         <tr>
-                                            <th>상품 번호</th>
-                                            <th>상품명</th>
-                                            <th>재고 수</th>
-                                            <th>조회 수</th>
-                                            <th>등록 날짜</th>
-                                            <th>수정</th>
-                                            <th>삭제</th>
+                                            <th scope="row">상품명</th>
+                                            <td class="iValue"><input type="text" name="product_name" value="${item.product_name}"/></td>
                                         </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    	<c:forEach var='vo' items='${result}'>
                                         <tr>
-                                        	<td>${vo.product_number}</td>
-                                        	<td>${vo.product_name}</td>
-                                        	<td>${vo.product_stock}</td>
-                                        	<td>${vo.product_hits}</td>
-                                        	<td>${vo.product_date}</td>
-                                        	<td style="text-align:center;">
-                                        	
-												<a href="itemModify.do?product_number=${vo.product_number}"
-												class="btn btn-info btn-circle btn-sm">
-													<i class="fas fa-info-circle" aria-hidden="true"></i>
-												</a>
-											</td>
-											<!-- 삭제 버튼 클릭시 클릭한 시퀀스에 해당하는 글 삭제 -->
-											<td style="text-align:center;">
-                                                <a href="deleteProduct.do?product_number=${vo.product_number}" 
-                                                	class="btn btn-danger btn-circle btn-sm">
-                                                    <i class="fas fa-trash" aria-hidden="true"></i>
-                                                </a>
+                                            <th scope="row">재고 수</th>
+                                            <td class="iValue"><input type="text" name="product_stock" value="${item.product_stock}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">상품 번호</th>
+                                            <td class="iValue"><input type="text" name="product_number" value="${item.product_number}" readonly/></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">카테고리 코드</th>
+                                            <td class="iValue"><input type="text" name="category_code" value="${item.category_code}"/></td>
+                                        </tr>
+                                         <tr>
+                                            <th scope="row" style="vertical-align: middle;">상품 배너</th>
+                                            <td class="iValue" style="text-align: center; " id="addImg">
+                                               <input type="file" name="file" id="input-file" style="margin-left: -600px"/></td>
+                                        </tr>
+                                        <tr> <td class="tblTitle" colspan="3" style="font-size: 16pt; font-weight: bold;">판매 정보</td> </tr>
+                                        <tr style="margin-bottom: -5px;">
+                                            <th scope="row" style="vertical-align: middle;" >판매 가격</th>
+                                            <td class="iValue" colspan="3"><input type="text" name="product_price" value="${item.product_price}" style="margin-top: 7px"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" style="vertical-align: middle;">상세 설명</th>
+                                            <td class="iValue" style="text-align: center; " id="addImg">
+												<input type="file" name="file1" id="input-file" style="margin-left: -600px"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><textarea name="product_desc">value="${item.product_desc}"</textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" style="text-align: center;" >
+                                                <input type="submit" value="등록" style="background-color : #4e73df; width:70px; height:30px; font-size: 10pt; color: white; border-style: none; border-radius: 3px;" >
                                             </td>
                                         </tr>
-                                        </c:forEach>
                                     </tbody>
                                 </table>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    
 
                 </div>
+
+
                 <!-- /.container-fluid -->
 
             </div>
@@ -377,8 +314,6 @@
             </div>
         </div>
     </div>
-    
- 
 
     <!-- Bootstrap core JavaScript-->
     <script src="<%=pjName %>/resources/vendor/jquery/jquery.min.js"></script>
@@ -392,11 +327,6 @@
 
     <!-- Page level plugins -->
     <script src="<%=pjName %>/resources/vendor/chart.js/Chart.min.js"></script>
-    <script src="<%=pjName %>/resources/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<%=pjName %>/resources/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    
-    <!-- Page level custom scripts -->
-    <script src="<%=pjName %>/resources/js/demo/datatables-demo.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="<%=pjName %>/resources/js/demo/chart-area-demo.js"></script>
