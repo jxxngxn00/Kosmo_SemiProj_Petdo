@@ -24,14 +24,15 @@ public class AdminController {
 
 	@Autowired
 	private FaqService faqService;
-
+	
+	
 	// 상품목록 페이지로 이동
 	@RequestMapping("/itemList.do")
-	public String itemList(Model m) {
-		List<ProductVO> list = productService.selectAllProduct();
-		m.addAttribute("result", list);
-		return "admin/itemList";
-	}
+	   public String itemList(Model m) {   
+	      List<ProductVO> list = productService.selectAllProduct();
+	      m.addAttribute("result", list);
+	      return "admin/itemList";
+	   }
 
 	// 상품목록 조회 페이지로 이동
 	@RequestMapping("/selectItem.do")
@@ -171,5 +172,32 @@ public class AdminController {
 		m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
 		return "admin/faq";
 	}
+	
+	/****** 상품 수정 ******/
+	// 상품 정보 수정 페이지에 가져오기
+		@RequestMapping("/itemModify.do")
+		public String itemUpdatelist(ProductVO vo, Model m) {
+			ProductVO result = productService.getProduct(vo);
+			System.out.println("result : " + result.getProduct_name());
+			m.addAttribute("item", result);
+			return "admin/itemModify";
+		}
+		
+		@RequestMapping("/updateProduct.do")
+		public String itemUpdate(ProductVO vo, Model m) {
+			System.out.println("글수정" + vo);
+			productService.updateProduct(vo);
+			m.addAttribute("itemList", productService.getProduct(vo));
+			return "admin/itemList";
+		}
+		
+	// 상품 삭제
+		@RequestMapping("/deleteProduct.do")
+		public String deleteProduct(ProductVO vo, Model m) {
+			System.out.println("상품 삭제");
+			productService.deleteProduct(vo);
+			m.addAttribute("item", productService.getProduct(vo));
+			return "admin/itemList";
+		}
 
 }
