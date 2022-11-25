@@ -59,7 +59,17 @@
 <!--/head-->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
 
+$(document).ready(function(){
+	//리스트페이지로 이동
+	$("#btnList").click(function(){
+		location.href="cart/cartList.do";
+	});
+});
+
+
+</script>
 
 <body>
 	<header id="header">
@@ -292,7 +302,7 @@
 	<div class="col-sm-12" style="margin: auto;">
 
 		<div class="table-responsive cart_info" style="text-align: center;">
-			<form action="cartUpdate.do?cart_number=${cart.cart_number}">
+			
 			<table class="table table-condensed"
 				style="width: 50%; margin: auto;">
 				<thead>
@@ -307,8 +317,9 @@
 						</th>
 						<th class="total">총가격
 						</th>
-						</th>
 						<th class="delete">취소
+						</th>
+						<th class="modify">수정
 						</th>
 					</tr>
 				</thead>
@@ -316,18 +327,21 @@
 				<tbody>
 				
 					<c:forEach var="cart" items="${cartList}" varStatus="i">
-						<tr>
-							<td>사진이들어가는데 %식으로 써야함</td>
-							<td>${cart.product_name}</td>
-							<td><input type="text" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
-							<td><input type="number" name="product_count" value="${cart.product_count}" /></td>
-							<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>
-							<td><a href ="deleteCart.do?cart_number=${cart.cart_number}">삭제</a></td>					
-						</tr>
+					<form  id="submit" method = "post"  action="modifyCart.do?cart_number=${cart.cart_number}">
+							<tr>
+								<td>사진이들어가는데 %식으로 써야함</td>
+								<td>${cart.product_name}</td>
+								<td><input type="text" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
+								<td><input type="number"  name="product_count" value="${cart.product_count}" /></td>
+								<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>
+								<td><a href ="deleteCart.do?cart_number=${cart.cart_number}">삭제</a></td>		
+								<td><button type="submit" id="btnUpdate">수정</button></td>				
+							</tr>
+						</form>
 					</c:forEach>
 				</tbody>
 			</table>
-				</form>
+				
 		</div>
 
 
@@ -353,7 +367,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<a class="btn btn-default check_out" id="pay" href="checkout.do">결제하기</a>
+			<a class="btn btn-default check_out" id="pay" href="../pay/checkout.do">결제하기</a>
 		</div>
 	</div>
 

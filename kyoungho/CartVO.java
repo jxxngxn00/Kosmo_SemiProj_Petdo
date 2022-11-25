@@ -10,32 +10,21 @@ public class CartVO {
 	private String product_name;
 	private int product_price;
 	
+	private int product_sum;
 	
 	
-	//총갯수
-	private int totalMoney;
-	
-
- 
-
-
-
-
-	//생성자
-	public CartVO(int cart_number, int product_count, int product_number, String user_id, String product_name,
-			int product_price, int totalMoney) {
-		super();
-		this.cart_number = cart_number;
-		this.product_count = product_count;
-		this.product_number = product_number;
-		this.user_id = user_id;
-		this.product_name = product_name;
-		this.product_price = product_price;
-		this.totalMoney = totalMoney;
-	
+	public int getProduct_sum() {
+		return product_sum;
 	}
-	
-	
+	public void setProduct_sum(int product_sum) {
+		this.product_sum = product_sum;
+	}
+
+
+
+
+
+	private int totalMoney;
 	
 	
 	

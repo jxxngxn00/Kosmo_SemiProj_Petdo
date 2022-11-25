@@ -52,87 +52,93 @@
 <body>
 	<header id="header"><!--header-->
 		
-			<div class="container">
-				<div class="header-middle"><!--header-middle-->
-					<div class="container">
-							<div class="col-sm-8">
-								<div class="shop-menu pull-right">
-									<ul class="nav navbar-nav">
-										<li><a href="#"><i class="fa fa-user"></i></a></li>
-										<li><a href="#"><i class="fa fa-star"></i></a></li>
-										<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
-										<li><a href="login.do"><i class="fa fa-lock"></i></a></li>
-									</ul>
-								</div>
-							</div>
+		<div class="container">
+			<div class="header-middle"><!--header-middle-->
+				<a href="../main.do"><img src="<%=pjName%>/resources/images/home/logo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
+						<div class="col-sm-8">
+							<div class="shop-menu pull-right">
+								<ul class="nav navbar-nav" id="headerbar">
+									<li class="ment" style="margin-top: 12px;"><%= session.getAttribute("login") %>님 환영합니다.</li>
+									<li><a href="../logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
+									<li><a href="../myPage/account.do?user_id=${sessionScope.login  }"><i class="fa fa-user"></i></a></li>
+									<li><a href="../pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+									<c:if test="${'admin' eq sessionScope.login }">
+										<li><a href="../admin.do"><i class="fa fa-cogs" aria-hidden="true"></i></a></li>
+									</c:if>
+								</ul>
+						
 						</div>
 					</div>
-			</div>
-		</div><!--/header_top : 로그인 / 장바구니 등 4개 아이콘 : header-->
-	
-		
-		<div class="header_middle"></div>
-		<div class="header-bottom"><!--header-bottom-->
+				</div>
+		</div>
+	</div><!--/header_top : 로그인 / 장바구니 등 4개 아이콘 : header-->
 
-			<div class="container">
-				<div class="row">
-					<div id="sm-9" class="col-sm-9">
-				
-							<a href="main.do"><img src="<%=pjName %>/resources/images/home/petdologo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
-						
-							
+	
+	<div class="header_middle"></div>
+	<div class="header-bottom"><!--header-bottom-->
+
+		<div class="container">
+			<div class="row">
+				<div id="sm-9" class="col-sm-9">
 					
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						
-						<div class="mainmenu pull-left">
-							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="main.do" class="active">홈</a></li>
-								<li class="dropdown"><a href="care-shop.do">케어<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="care1-shop.do">목욕</a></li>
-										<li><a href="care2-shop.do">미용</a></li> 
-                                    </ul>
-                                </li> 
-								<li class="dropdown"><a href="toilet-shop.html">배변/위생<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="toilet1-shop.do">배변용품</a></li>
-										<li><a href="toilet2-shop.do">위생용품</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="toy-shop.do">장난감</a></li>
-								
-								<li class="dropdown"><a href="food-shop.do">식품<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" id="sub-menu-txt" class="sub-menu">
-                                        <li><a href="food1-shop.do">간식</a></li>
-										<li><a href="food2-shop.do">사료</a></li>
-										<li><a href="food3-shop.do">영양제</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="living-shop.do">리빙용품</a></li> 
-                                <li class="dropdown"><a href="#">의류<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="closet-shop.do">프리미엄</a></li>
-										<li><a href="closet1-shop.do">아우터</a></li>
-										<li><a href="closet2-shop.do">상의</a></li>
-										<li><a href="closet3-shop.do">악세사리</a></li>
-                                    </ul>
-                                </li>
-							</ul>
-						</div>
-							<div class="search_box pull-right">
-								<input type="text" placeholder="검색"/>
-							</div>
-							<div id="topHeader" class="appTopArea" style="top:0px;"></div>
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
 					</div>
-				
-				</header>
+					
+					<div class="mainmenu pull-left ">
+						<ul class="nav navbar-nav collapse navbar-collapse" style="font-size: 0;">
+							
+							<li class="dropdown"><a href="../product/care-shop.do">케어<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/care1-shop.do">목욕</a></li>
+									<li><a href="../product/care2-shop.do">미용</a></li> 
+								</ul>
+							</li> 
+							<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/toilet1-shop.do">배변용품</a></li>
+									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+								</ul>
+							</li> 
+							<li><a href="../product/toy-shop.do">장난감</a></li>
+							
+							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" id="sub-menu-txt" class="sub-menu">
+									<li><a href="../product/food1-shop.do">간식</a></li>
+									<li><a href="../product/food2-shop.do">사료</a></li>
+									<li><a href="../product/food3-shop.do">영양제</a></li>
+								</ul>
+							</li>
+							<li><a href="../product/living-shop.do">리빙용품</a></li> 
+							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
+								<ul role="menu" class="sub-menu">
+									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
+									<li><a href="../product/closet2-shop.do">아우터</a></li>
+									<li><a href="../product/closet3-shop.do">상의</a></li>
+									<li><a href="../product/closet4-shop.do">악세사리</a></li>
+								</ul>
+							</li>
+							<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li> 
+							<li><a href="../blog/faq.do" style="color: #FF9933;" >FAQ</a></li>
+							<li><a href="../blog/qna.do" style="color: #FF9933;" >Q&A</a></li>
+						</ul>
+					</div>
+						<div class="search_box pull-right">
+							<input type="text" placeholder="검색"/>
+							<a href="../product/searchpage.do" style="margin-left: 140px; margin-top:9px; position: absolute;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
+						</div>
+						<div id="topHeader" class="appTopArea" style="top:0px;"></div>
+				</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+			
+			</header>
 				</div>
 			</div>
 		</div><!--/header-bottom-->

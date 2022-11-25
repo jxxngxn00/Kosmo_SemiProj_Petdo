@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.javaclass.dao.CartDAO;
 import com.javaclass.domain.CartVO;
 
-@Service
+@Service("cartService")
 public class CartServiceImpl implements CartService {
 	
 	@Autowired

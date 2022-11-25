@@ -47,11 +47,11 @@ WHERE cart_number = #{cart_number}
 </delete>
 
 <!-- 장바구니 수정 -->
-<update id="modifyCart">
+<update id="modifyCart" parameterType="CartVO" >
 UPDATE cart
-SET product_count=#{product_count}
+SET product_count = #{product_count}
 WHERE user_id = #{user_id}
-AND product_number =#{product_number}
+AND cart_number = #{cart_number}
 </update>
 
 <!-- 장바구니에 동일한 상품 확인 -->
