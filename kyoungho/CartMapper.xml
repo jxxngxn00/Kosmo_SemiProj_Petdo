@@ -43,7 +43,7 @@ WHERE c.product_number = p.product_number AND c.user_id = #{user_id}
 
 <delete id="deleteCart" >
 DELETE FROM cart
-WHERE cart_number =#{cart_number}
+WHERE cart_number = #{cart_number}
 </delete>
 
 <!-- 장바구니 수정 -->

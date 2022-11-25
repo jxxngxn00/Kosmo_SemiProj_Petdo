@@ -31,7 +31,7 @@ public class CartDAOImpl implements CartDAO {
 	}; 
 	
 	//장바구니 삭제
-	public void delete(int cart_number) {
+	public void deleteCart(int cart_number) {
 		System.out.println("===>  CartMapper deleteCart() 호출");
 		mybatis.delete("CartVO.deleteCart", cart_number);
 	};

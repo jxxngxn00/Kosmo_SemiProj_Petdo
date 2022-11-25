@@ -292,7 +292,7 @@
 	<div class="col-sm-12" style="margin: auto;">
 
 		<div class="table-responsive cart_info" style="text-align: center;">
-			<form action="cartList.do">
+			<form action="cartUpdate.do?cart_number=${cart.cart_number}">
 			<table class="table table-condensed"
 				style="width: 50%; margin: auto;">
 				<thead>
@@ -307,19 +307,22 @@
 						</th>
 						<th class="total">총가격
 						</th>
+						</th>
+						<th class="delete">취소
+						</th>
 					</tr>
 				</thead>
 				
 				<tbody>
 				
-					<c:forEach var="row" items="${list}" varStatus="i">
+					<c:forEach var="cart" items="${cartList}" varStatus="i">
 						<tr>
 							<td>사진이들어가는데 %식으로 써야함</td>
-							<td>${row.product_name}</td>
-							<td><fmt:formatNumber pattern="###,###,###" value="${row.product_price}"></fmt:formatNumber></td>
-							<td><input type="number" name="product_count" value="${row.product_count}" /></td>
-							<td><input type="number" name="allSum" value="${totalmoney}" /></td>
-							<td><a href =../pay/cart>삭제</a>	 </td>					
+							<td>${cart.product_name}</td>
+							<td><input type="text" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
+							<td><input type="number" name="product_count" value="${cart.product_count}" /></td>
+							<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>
+							<td><a href ="deleteCart.do?cart_number=${cart.cart_number}">삭제</a></td>					
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -338,15 +341,15 @@
 				<tbody>
 					<tr>
 						<th scope="row">상품 금액</th>
-						<td>내용이 들어갑니다.</td>
+						<td><input type="text" readonly name="product_sum" value="${totalMoney}" /></td>
 					</tr>
 					<tr>
 						<th scope="row">배송비</th>
-						<td>내용이 들어갑니다.</td>
+						<td>0원</td>
 					</tr>
 					<tr>
 						<th scope="row">결제 금액</th>
-						<td>내용이 들어갑니다.</td>
+						<td>${totalMoney}</td>
 					</tr>
 				</tbody>
 			</table>

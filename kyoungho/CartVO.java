@@ -10,10 +10,20 @@ public class CartVO {
 	private String product_name;
 	private int product_price;
 	
+	
+	
+	//총갯수
+	private int totalMoney;
+	
 
-    //생성자
+ 
+
+
+
+
+	//생성자
 	public CartVO(int cart_number, int product_count, int product_number, String user_id, String product_name,
-			int product_price) {
+			int product_price, int totalMoney) {
 		super();
 		this.cart_number = cart_number;
 		this.product_count = product_count;
@@ -21,6 +31,7 @@ public class CartVO {
 		this.user_id = user_id;
 		this.product_name = product_name;
 		this.product_price = product_price;
+		this.totalMoney = totalMoney;
 	
 	}
 	
@@ -66,6 +77,15 @@ public class CartVO {
 	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
+	
+	public int getTotalMoney() {
+		return totalMoney;
+		}
+	
+	public void setTotalMoney(int totalMoney) {
+		this.totalMoney = totalMoney;
+		}
+
 
 	
 	
@@ -76,12 +96,18 @@ public class CartVO {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
+
+
 	@Override
 	public String toString() {
 		return "CartVO [cart_number=" + cart_number + ", product_count=" + product_count + ", product_number="
 				+ product_number + ", user_id=" + user_id + ", product_name=" + product_name + ", product_price="
-				+ product_price + "]";
+				+ product_price + ", totalMoney=" + totalMoney + "]";
 	}
+
+	
 	
 
 }

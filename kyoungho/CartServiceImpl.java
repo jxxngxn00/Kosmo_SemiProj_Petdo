@@ -26,8 +26,8 @@ public class CartServiceImpl implements CartService {
 		};
 		
 		//장바구니 삭제
-		public void delete(int cart_number) {
-			cartDAO.delete(cart_number);
+		public void deleteCart(int cart_number) {
+			cartDAO.deleteCart(cart_number);
 		};
 		
 		//장바구니 수정
