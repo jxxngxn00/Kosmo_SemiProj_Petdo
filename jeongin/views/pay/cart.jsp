@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%
 	String[] product = request.getParameterValues("list");
 %>
@@ -182,9 +183,9 @@
 										<li><a
 											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
-								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="../blog/qna.do" style="color: #FF9933;">Q&A</a></li>
 							</ul>
 						</div>
 
@@ -202,91 +203,6 @@
 	</header>
 
 	<section id="cart_items">
-
-
-		<%-- 	
-					<tbody>
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/one.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>써야할가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">가격</p>
-							</td>
-							<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/two.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/three.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">가격</p>
-							</td>
-
-						<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-					</tbody> --%>
 	</section>
 
 	<div class="col-sm-12" style="margin: auto;">
@@ -297,25 +213,28 @@
 				<thead>
 					<tr class="cart_menu">
 						<th class="image">상품사진
-						</td>
+						</th>
 						<th class="description">상품이름
-						</td>
+						</th>
 						<th class="price">가격
-						</td>
+						</th>
 						<th class="quantity">수량
-						</td>
+						</th>
 						<th class="total">총가격
-						</td>
+						</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>내용</td>
-						<td>내용</td>
-						<td>내용</td>
-						<td>내용</td>
-						<td>내용</td>
-					</tr>
+					<c:forEach var="row" items="${list}" varStatus="i">
+						<tr>
+							<td>사진이들어가는데 %식으로 써야함</td>
+							<td>${row.product_name}</td>
+							<td><fmt:formatNumber pattern="###,###,###" value="${row.product_price}"></fmt:formatNumber></td>
+							<td><input type="number" name="product_count" value="${row.product_count}" /></td>
+							<td><input type="number" name="allSum" value="${totalmoney}" /></td>
+							<td><a href ="../pay/cart"> </td>삭제</a>						
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

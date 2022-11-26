@@ -96,22 +96,11 @@
 									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
 								</ul>
 							</li> 
-							<li><a href="../product/toy-shop.do">장난감</a></li>
-							
 							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" id="sub-menu-txt" class="sub-menu">
 									<li><a href="../product/food1-shop.do">간식</a></li>
 									<li><a href="../product/food2-shop.do">사료</a></li>
 									<li><a href="../product/food3-shop.do">영양제</a></li>
-								</ul>
-							</li>
-							<li><a href="../product/living-shop.do">리빙용품</a></li> 
-							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-									<li><a href="../product/closet2-shop.do">아우터</a></li>
-									<li><a href="../product/closet3-shop.do">상의</a></li>
-									<li><a href="../product/closet4-shop.do">악세사리</a></li>
 								</ul>
 							</li>
 							<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li> 
@@ -138,7 +127,8 @@
 							<ul>
 								<li style="margin-left: -38px; ">
 									<a href="account.do" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원 정보 조회</a><br/><br/>
-									<a href="accountModify.do" style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br/><br/>
+									<a href="accoutModify.do?user_id=${userInfo.user_id}"
+						style="font-family: 'Noto Sans KR', sans-serif;" >회원 정보 수정</a><br /><br/>
 									<a href="#" data-toggle="modal" data-target="#logoutModalCenter" style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br/><br/><br/>
 								</li>
 									
@@ -220,6 +210,33 @@
 		</div>
 	</div>
 	<!-- /logout Modal -->
+	
+	<!-- password check Modal -->
+	<div class="modal fade" id="passwordModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">Petdo - 비밀번호 확인</h2>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding: 10px;">
+					비밀번호를 한번 더 입력해주세요. <br/>
+					<input type="password" id="pwdInput" placeholder="비밀번호" style="width:100%"/>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal" style="border-radius: 10px;">취소</button>
+					<button class="btn btn-primary" type="button" id="pwdChk"
+						data-dismiss="modal" style="border-radius: 10px; margin-top:0px;">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /password check Modal -->
 	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">
 			<div class="container">

@@ -70,13 +70,6 @@ public class ProductDAOImpl implements ProductDAO {
 		  
 	  }
 	  
-	  public List<ProductVO> GraphCount(ProductVO vo) {
-		  System.out.println("====> Mybatis로 GraphCount() 기능 처리");
-		  System.out.println(vo);
-		  return mybatis.selectList("ProductDAO.GraphCount",vo);
-		  	
-	  }
-	  
 	  
 
 }

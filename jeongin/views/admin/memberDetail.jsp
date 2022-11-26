@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -215,35 +216,31 @@
                                     <tbody id="memberDetailTbl">
                                         <tr>
                                             <th scope="row">회원명</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_name }</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">ID</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_id }</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">가입 날짜</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_insertdate }</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">회원 등급</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_grade }</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">전화번호1</th>
-                                            <td class="mValue">..............</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">전화번호2</th>
-                                            <td class="mValue">..............</td>
+                                            <th scope="row">전화번호</th>
+                                            <td class="mValue">${vo.user_phone }</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">이메일</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_email }</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">배송지 주소</th>
-                                            <td class="mValue">..............</td>
+                                            <td class="mValue">${vo.user_address1 }</td>
                                         </tr>
                                         
                                         <tr>
@@ -260,15 +257,49 @@
                             <h6 class="m-0 font-weight-bold text-primary">주문내역</h6>
                         </div>
                             <div class="card-body">
-                                This card uses Bootstrap's default styling with no utility classes added. Global
-                                styles are the only things modifying the look and feel of this default card example.
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                    	<td>주문 상세 번호</td>
+                                    	<td>상품 이름</td>
+                                    	<td>배송 상태</td>
+                                    	<td>주문 일자</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items='${oList }' var='list1'>
+                                        	<tr>
+                                        		<td>${list1.order_detail_number }</td>
+                                        		<td>${list1.product_name }</td>
+                                        		<td>${list1.order_detail_status }</td>
+                                        		<td>${list1.order_date }</td>
+                                        	</tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">리뷰내역</h6>
                         </div>
                             <div class="card-body">
-                                This card uses Bootstrap's default styling with no utility classes added. Global
-                                styles are the only things modifying the look and feel of this default card example.
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                    	<td>상품 이름</td>
+                                    	<td>리뷰 내용</td>
+                                    	<td>작성 일자</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items='${rList}' var='list2'>
+                                       		 <tr>
+                                        		<td>${list2.product_name}</td>
+                                        		<td>${list2.review_content}</td>
+                                        		<td>${list2.review_date}</td>
+                                        	</tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                     </div>
 

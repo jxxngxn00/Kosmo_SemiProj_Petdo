@@ -1,5 +1,10 @@
 package com.javaclass.control;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +33,6 @@ public class LoginController {
 	//로그인 페이지로 이동
 	@RequestMapping("loginOpen.do")
 	public String loginOpen() {
-		
 		return "login";
 	}
 	
@@ -38,14 +42,10 @@ public class LoginController {
 		return "join";
 	}
 	
-	/*
-	 * 요청 : /user/userInsert.do
-	 * 뷰페이지 :  user/userJoin_ok.jsp
-	 */
-	
 	//회원가입
 	@RequestMapping(value="userInsert.do", produces="application/text;charset=utf-8")
 	public String userInsert(MemberVO vo) {
+		
 		System.out.println(vo.getUser_name());
 		
 		int result = memberService.userInsert(vo);
@@ -61,7 +61,6 @@ public class LoginController {
 	
 	//로그인
 	@RequestMapping("login.do")
-	//************
 	//세션 사용 -> 인자에 httpSession 변수 선언
 	public String login(MemberVO vo, HttpSession session) {
 		System.out.println("로그인--");
@@ -90,7 +89,9 @@ public class LoginController {
 	public String logOut(HttpSession session){
 		//HttpSession ses = request.getSession(true);
 		String id = (String) session.getAttribute("id");
+		String pwd = (String) session.getAttribute("pwd");
 		session.removeAttribute(id);
+		session.removeAttribute(pwd);
 		session.invalidate();
 		
 		return "login";
@@ -111,6 +112,29 @@ public class LoginController {
 		return message;
 	}
 
+	
+	 // 유저 로그인/로그아웃 기록 저장하는 텍스트 파일 추가	
+	public void logCustomer(String strToWrite, HttpSession session) {
+	      try {
+	         File myObj = new File("fileLog.txt");
+	         FileWriter myWriter = null;
+	         if (myObj.createNewFile()) {
+	            myWriter = new FileWriter("C:\\springweb\\petdo\\src\\main\\resources\\fileLog.txt");
+	            LocalDateTime now = LocalDateTime.now();	// 현재 날짜와 시간 불러오는 객체
+	            myWriter.write("PetdoCustomer " + session.getAttribute("login") + strToWrite + String.valueOf(now));
+	            myWriter.write('\n');
+	         } else {
+	            // file already exists
+	            myWriter = new FileWriter("C:\\springweb\\petdo\\src\\main\\resources\\fileLog.txt", true);
+	            LocalDateTime now = LocalDateTime.now();
+	            myWriter.write("PetdoCustomer " + session.getAttribute("login") + strToWrite + String.valueOf(now));
+	            myWriter.write('\n');
+	         }
+	         myWriter.close();
+	      } catch (IOException e) {
+	         e.printStackTrace();
+	      }
+	   }//logCustomer
 	
 
 }

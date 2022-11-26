@@ -44,10 +44,17 @@ public class ProductServiceImpl implements ProductService {
 		 return productDAO.getCategoryList(vo);
 	}
 	
-	public ProductVO getProduct(ProductVO vo) {
-		return productDAO.getProduct(vo);
-	}
-
-
+	//상품 상세 페이지 출력
+		public ProductVO getProduct(ProductVO vo) {
+			return productDAO.getProduct(vo);
+		}
+		// 상품 수정
+		public void updateProduct(ProductVO vo) {
+			productDAO.updateProduct(vo);
+		}
+		// 상품 삭제
+		public void deleteProduct(ProductVO vo) {
+			productDAO.deleteProduct(vo);
+		}
 	
 }

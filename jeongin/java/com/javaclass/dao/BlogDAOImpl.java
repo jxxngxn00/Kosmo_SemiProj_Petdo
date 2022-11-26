@@ -57,13 +57,13 @@ class BlogDAOImpl implements BlogDAO {
 	//댓글 등록
 	@Override
 	public int insertReply(ReplyVO vo) {
-		return mybatis.insert("blogDAO.insertReply");
+		return mybatis.insert("blogDAO.insertReply",vo);
 	}
 	
 	//댓글 수정
 	@Override
 	public void updateReply(ReplyVO vo) {
-		mybatis.update("blogDAO.updateReply");
+		mybatis.update("blogDAO.updateReply", vo);
 	}
 
 	//댓글 삭제
@@ -74,9 +74,9 @@ class BlogDAOImpl implements BlogDAO {
 
 	//댓글 조회
 	@Override
-	public List<ReplyVO> getReply() {
-		// TODO Auto-generated method stub
-		return mybatis.selectList("blogDAO.selectAllReply");
+	public List<ReplyVO> getReply(Integer bno) {
+		List<ReplyVO> list =mybatis.selectList("blogDAO.selectAllReply", bno);
+		return list;
 	}
 
 	/**************공지사항**************/

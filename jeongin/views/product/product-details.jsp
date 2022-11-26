@@ -4,6 +4,7 @@
 <%@page import="com.javaclass.dao.ProductDAO"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Product Details | E-Shopper</title>
+<title>상품</title>
 <% String pjName="/petdo"; %>
 <link href="<%=pjName %>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">
@@ -175,31 +176,12 @@
 					<input type="hidden" value="${getProduct.product_price}" id="price">
 				</div>
 				<div class="form-group" style="text-align: left;">
-					<label>배송비 : </label><span>&nbsp;2500원</span>
-					<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
-				</div>
-				<div class="form-group" style="text-align: left;">
 					<label>적립금 : </label><span><fmt:parseNumber var="test"
 							value="${getProduct.product_price / 100}" integerOnly="true" />
 						${test}&nbsp;원</span>
 				</div>
-
-				<c:choose>
-					<c:when
-						test="${productInfo.productDist != 'acc' && productInfo.productDist != 'bag'}">
-						<div class="form-horizontal" style="text-align: left;">
-							<label>옵션 : </label> <select class="form-control opt_select"
-								name="selectedOpt">
-								<option value="S">S</option>
-								<option value="M">M</option>
-								<option value="L">L</option>
-							</select>
-						</div>
-					</c:when>
-					<c:otherwise></c:otherwise>
-				</c:choose>
 				<div class="form-horizontal" style="text-align: left;">
-					<label>구매수량 : </label> <select class="form-control"
+					<label>구매수량 : </label> <select name= "product_count" class="form-control"
 						id="select_count">
 
 						<option value="1">1</option>
@@ -210,16 +192,18 @@
 					</select>
 				</div>
 				<hr>
-
+				<form action="../cart/insert.do" id="cart-form">
+				<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
 				<div class="row"
 					style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
 					<div class="selected_option" style="text-align: right;"></div>
 					<div style="text-align: center;">
 						<a href="../pay/checkout.do"><button class="btn btn-default">주문하기</button></a>
-						<a href="../pay/cart.do"><button class="btn btn-fefault cart"
+						<a href="../cart/cartList.do"><button id= "submit" class="btn btn-fefault cart"
 								style="width: 200px">장바구니</button></a>
 					</div>
 				</div>
+				</form>
 				<hr>
 			</div>
 		</div>

@@ -244,11 +244,11 @@
 						정보</h3>
 					<ul>
 						<li style="margin-left: -38px;"><a
-							href="account.do?user_id=${userInfo.user_id }"
+							href="account.do?user_id=${sessionScope.login}"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원
-								정보 조회</a><br /> <br /> <a
-							href="accountModify.do?user_id=${userInfo.user_id }"
-							style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br />
+								정보 조회</a><br /> <br />
+							<a href="accoutModify.do?user_id=${sessionScope.login}"
+						style="font-family: 'Noto Sans KR', sans-serif;" >회원 정보 수정</a><br />
 							<br /> <a href="#" data-toggle="modal"
 							data-target="#logoutModalCenter"
 							style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br />
@@ -297,6 +297,34 @@
 		</div>
 	</div>
 	<!-- /logout Modal -->
+	
+	<!-- password check Modal -->
+	<div class="modal fade" id="passwordModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">Petdo - 비밀번호 확인</h2>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding: 10px;">
+					비밀번호를 한번 더 입력해주세요. <br/>
+					<input type="password" id="pwdInput" placeholder="비밀번호" style="width:100%"/>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal" style="border-radius: 10px;">취소</button>
+					<button class="btn btn-primary" type="button" id="pwdChk"
+						data-dismiss="modal" style="border-radius: 10px; margin-top:0px;">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /password check Modal -->
+	
 	<footer id="footer">
 		<!--Footer-->
 		<div class="footer-widget">

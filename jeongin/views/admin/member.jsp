@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!DOCTYPE html>
 <html lang="en">
 
@@ -212,8 +212,6 @@
                     <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
                     
         
-                    <p class="mb-4">테이블 설명 ... <a target="_blank"
-                            href="https://datatables.net">(템플릿 테이블 자료 출처)</a>.</p>
                         
                     <!-- 카테고리 검색창 -->
 
@@ -262,24 +260,25 @@
                                             <th>회원등급</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>회원명</th>
-                                            <th>회원번호</th>
-                                            <th>가입날짜</th>
-                                            <th>회원등급</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td><a href='memberDetail.do'>Tiger Nixon</a></td>
-                                            <td><a href='memberDetail.do'>System Architect</a></td>
-                                            <td><a href='memberDetail.do'>Edinburgh</a></td>
-                                            <td><a href='memberDetail.do'>61</a></td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
+									<tfoot>
+										<tr>
+											<th>회원명</th>
+											<th>회원번호</th>
+											<th>가입날짜</th>
+											<th>회원등급</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<c:forEach items='${list}' var='vo'>
+											<tr>
+												<td><a href='memberDetail.do?user_id=${vo.user_id}'>${vo.user_name }</a></td>
+												<td><a href='memberDetail.do?user_id=${vo.user_id}'> ${vo.user_id } </a></td>
+												<td><a href='memberDetail.do?user_id=${vo.user_id}'>${vo.user_insertdate }</a></td>
+												<td><a href='memberDetail.do?user_id=${vo.user_id}'>${vo.user_grade }</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
                             </div>
                         </div>
                     </div>
@@ -352,7 +351,14 @@
 	
 	<!-- font awesome CDN -->
 	<script src="https://kit.fontawesome.com/3364ed6976.js" crossorigin="anonymous"></script>
-	
+	<script type="text/javascript">
+		$(function(){
+			$('#dataTable').DataTable({
+				paging:true,
+				lengthChange: true
+			});
+		})
+	</script>
 </body>
 
 </html>

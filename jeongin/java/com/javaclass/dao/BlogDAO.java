@@ -34,7 +34,7 @@ public interface BlogDAO {
 	//댓글 삭제
 	void deleteReply(Integer rno);
 	//댓글 조회
-	List<ReplyVO> getReply();
+	List<ReplyVO> getReply(Integer bno);
 	
 	/* 공지사항 */
 	// 글 목록 조회

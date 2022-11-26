@@ -2,6 +2,8 @@ package com.javaclass.control;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,12 +46,15 @@ public class MyPageController {
 		m.addAttribute("userOrder", vo);
 		return "myPage/mOrderDetail";
 	}
-	
+
 	// 환불/교환 신청 입력폼 페이지로 이동
 	@RequestMapping("/return.do")
 	public String returnExchange() {		
 		return "myPage/return";
 	}
+	
+	/********************************/
+	
 
 	// 회원정보 조회 페이지로 이동
 	@RequestMapping("/account.do")
@@ -67,7 +72,25 @@ public class MyPageController {
 		return "myPage/accountModify";
 	}
 	
+	// 회원 정보 수정
+	@RequestMapping("/modify.do")
+	public String modify(MemberVO vo) {
+		System.out.println(">>>>>>update : "+vo);
+		memberService.updateInfo(vo);
+		return "myPage/account?user_id"+vo.getUser_id();
+	}
 	
-	
+	// 회원 정보 삭제
+	@RequestMapping("/delete.do")
+	public String delete(MemberVO vo, HttpSession session) {
+		System.out.println(">>>>>>delete : "+vo);
+		memberService.deleteInfo(vo);
+		String id = (String) session.getAttribute("id");
+		String pwd = (String) session.getAttribute("pwd");
+		session.removeAttribute(id);
+		session.removeAttribute(pwd);
+		session.invalidate();
+		return "redirect:/login";
+	}
 	
 }

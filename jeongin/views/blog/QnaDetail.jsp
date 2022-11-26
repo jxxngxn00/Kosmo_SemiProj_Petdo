@@ -119,19 +119,6 @@
 											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
 								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=10">장난감<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
-									</ul></li>
-								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
@@ -141,15 +128,6 @@
 											href="../product/getCategoryList.do?category_code=6">사료</a></li>
 										<li><a
 											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
-									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=16">리빙용품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
 									</ul></li>
 								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=1">의류<i
@@ -239,8 +217,9 @@
 
 
 						<div id="comment" class="media commnets">
-							<a class="pull-left" href="#"> <img class="media-object"
-								src="<%=pjName%>/resources/images/blog/man-one.jpg" alt="">
+							<a class="pull-left" href="#" style="width:100px;"> <img class="media-object" 
+								style="width:100%; margin-left:10px;"
+								src="<%=pjName%>/resources/images/blog/paw.png" alt="">
 							</a>
 							<div class="media-body">
 								<c:if test="${qna.answer_title ne null}">
@@ -257,24 +236,7 @@
 						<div class="response-area">
 							<h2>RESPONSES</h2>
 							<ul class="media-list"  id="replyList">
-								<li class="media"><a class="pull-left" href="#"> <img
-										class="media-object"
-										src="<%=pjName%>/resources/images/blog/man-two.jpg" alt="">
-								</a>
-									<div class="media-body">
-										<ul class="sinlge-post-meta">
-											<li><i class="fa fa-user"></i>Janis Gallagher</li>
-											<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-											<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
-										</ul>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-											elit, sed do eiusmod tempor incididunt ut labore et dolore
-											magna aliqua. Ut enim ad minim veniam, quis nostrud
-											exercitation ullamco laboris nisi ut aliquip ex ea commodo
-											consequat.</p>
-
-									</div></li>
-
+								
 							</ul>
 						</div>
 						<!--/Response-area-->
@@ -294,8 +256,6 @@
 											<button class="btn btn-primary" id="submitBtn">comment</button>
 										</div>
 									</div>
-								<form action="xxxxx" method='post' id='replyFrm' name='replyFrm'>
-								</form>
 							</div>
 						</div>
 						<!--/Repaly Box-->

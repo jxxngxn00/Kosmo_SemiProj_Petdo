@@ -53,27 +53,29 @@
 	
 	
 	<!-- 댓글 등록 -->
-	<insert id="insertReply" parameterType="com.javaclass.domain.ReplyVO">
+	<insert id="insertReply" parameterType="ReplyVO">
 		INSERT INTO reply(rno, bno, reply, replyer, replydate)
 		VALUES(seq_reply_rno.nextval, #{bno}, #{reply}, #{replyer}, sysdate)
 	</insert>
 	
 	<!-- 댓글 목록 조회 -->
-	<select id='selectAllReply' resultType='com.javaclass.domain.ReplyVO'>
-		SELECT * FROM reply
+	<select id='selectAllReply' parameterType="Integer" resultType='ReplyVO'>
+		SELECT rno, bno, reply, replyer, replydate, TO_CHAR(replydate,'yyyy-mm-dd') AS rDate, TO_CHAR(replydate,'HH12:MI AM') AS rTime  
+		FROM reply
+		WHERE bno=#{bno}
+		ORDER BY replydate
 	</select>
 	
 	<!-- 댓글 삭제 -->
-	<delete id='deleteReply' parameterType='com.javaclass.domain.ReplyVO'>
+	<delete id='deleteReply' parameterType='ReplyVO'>
 		DELETE FROM reply WHERE rno=#{rno}
 	</delete>
 	
 	<!-- 댓글 수정 -->
-	<update id='updateReply' parameterType='com.javaclass.domain.ReplyVO'>
-      UPDATE reply SET
-      reply = #{reply},
-      replyer = #{replyer},
-      replydate = SYSDATE,
+	<update id='updateReply' parameterType='ReplyVO'>
+      UPDATE reply 
+      SET reply = #{reply},
+      		replydate = SYSDATE
       WHERE rno = #{rno}
    </update>
    

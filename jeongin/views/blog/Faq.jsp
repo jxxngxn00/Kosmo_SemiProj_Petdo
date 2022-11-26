@@ -117,19 +117,6 @@
 											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
 								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=10">장난감<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
-									</ul></li>
-								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
@@ -139,15 +126,6 @@
 											href="../product/getCategoryList.do?category_code=6">사료</a></li>
 										<li><a
 											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
-									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=16">리빙용품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
 									</ul></li>
 								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=1">의류<i
@@ -213,7 +191,7 @@
 								<p>
 									<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a>
 								</p>
-								<a class="btn btn-primary" href="faqDetail.do">Read More</a>
+								<a class="btn btn-primary" href="faqDetail.do?faq_seq=${vo.faq_seq}">Read More</a>
 							</c:forEach>
 						</div>
 

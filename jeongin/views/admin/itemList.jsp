@@ -268,8 +268,7 @@
                             <span class="text">Search</span>
                         </a></div>
                     </div>
-                    <p class="mb-4">테이블 설명 ... <a target="_blank"
-                            href="https://datatables.net">(템플릿 테이블 자료 출처)</a>.</p>
+                    <p class="mb-4"></p>
 
                     <!-- 상품목록 테이블 -->
                     <div class="card shadow mb-4">
@@ -286,6 +285,8 @@
                                             <th>재고 수</th>
                                             <th>조회 수</th>
                                             <th>등록 날짜</th>
+                                            <th>수정</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -295,6 +296,8 @@
                                             <th>재고 수</th>
                                             <th>조회 수</th>
                                             <th>등록 날짜</th>
+                                            <th>수정</th>
+                                            <th>삭제</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -305,6 +308,20 @@
                                         	<td>${vo.product_stock}</td>
                                         	<td>${vo.product_hits}</td>
                                         	<td>${vo.product_date}</td>
+                                        	<td style="text-align:center;">
+                                        	
+												<a href="itemModify.do?product_number=${vo.product_number}"
+												class="btn btn-info btn-circle btn-sm">
+													<i class="fas fa-info-circle" aria-hidden="true"></i>
+												</a>
+											</td>
+											<!-- 삭제 버튼 클릭시 클릭한 시퀀스에 해당하는 글 삭제 -->
+											<td style="text-align:center;">
+                                                <a href="deleteProduct.do?product_number=${vo.product_number}" 
+                                                	class="btn btn-danger btn-circle btn-sm">
+                                                    <i class="fas fa-trash" aria-hidden="true"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                         </c:forEach>
                                     </tbody>

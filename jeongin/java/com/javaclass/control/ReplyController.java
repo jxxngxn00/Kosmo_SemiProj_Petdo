@@ -30,8 +30,9 @@ public class ReplyController {
 
 	//QnA 댓글 목록 조회
 	@GetMapping("replies")
-	public List<ReplyVO> selectAll(){
-		return blogService.getReply();
+	public List<ReplyVO> selectAll(Integer bno){
+		List<ReplyVO> list = blogService.getReply(bno);
+		return list;
 	}
 	
 	//QnA 댓글 삭제
@@ -41,8 +42,9 @@ public class ReplyController {
 	}
 
 	//QnA 댓글 수정
-	@GetMapping("replies/{param}")
+	@PostMapping("replies/{param}")
 	public void update(ReplyVO vo) {
+		System.out.println(vo);
 		blogService.updateReply(vo);
 	}
 

@@ -73,8 +73,8 @@ public class BlogServiceImpl implements BlogService {
 	
 	//댓글 조회
 	@Override
-	public List<ReplyVO> getReply() {
-		return blogDAO.getReply();
+	public List<ReplyVO> getReply(Integer bno) {
+		return blogDAO.getReply(bno);
 	}
 	
 	/**************공지사항**************/

@@ -1,20 +1,26 @@
 package com.javaclass.control;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaclass.domain.FaqVO;
+import com.javaclass.domain.MemberVO;
 import com.javaclass.domain.NoticeVO;
 import com.javaclass.domain.OrderVO;
 import com.javaclass.domain.ProductVO;
 import com.javaclass.domain.QnaVO;
+import com.javaclass.domain.ReviewVO;
 import com.javaclass.service.BlogService;
+import com.javaclass.service.CalService;
 import com.javaclass.service.FaqService;
+import com.javaclass.service.MemberService;
 import com.javaclass.service.OrderService;
 import com.javaclass.service.ProductService;
 
@@ -34,6 +40,13 @@ public class AdminController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private CalService calService;
+	
+	@Autowired
+	private MemberService memberService;
+	
 	/*****************************/
 	/************상품목록************/
 	
@@ -70,22 +83,93 @@ public class AdminController {
 	      return "admin/itemList";
 	   }
 	
+	
+	/****** 상품 수정 ******/
+	// 상품 정보 수정 페이지에 가져오기
+		@RequestMapping("/itemModify.do")
+		public String itemUpdatelist(ProductVO vo, Model m) {
+			ProductVO result = productService.getProduct(vo);
+			System.out.println("result : " + result.getProduct_name());
+			m.addAttribute("item", result);
+			return "admin/itemModify";
+		}
+		
+		@RequestMapping("/updateProduct.do")
+		public String itemUpdate(ProductVO vo, Model m) {
+			System.out.println("글수정" + vo);
+			productService.updateProduct(vo);
+			m.addAttribute("itemList", productService.getProduct(vo));
+			return "admin/itemList";
+		}
+		
+	// 상품 삭제
+		@RequestMapping("/deleteProduct.do")
+		public String deleteProduct(ProductVO vo, Model m) {
+			System.out.println("상품 삭제");
+			productService.deleteProduct(vo);
+			m.addAttribute("item", productService.getProduct(vo));
+			return "admin/itemList";
+		}
+	
 	/*****************************/
 	/************상품판매통계************/
 	
 	//상품별판매통계 페이지로 이동
 	@RequestMapping("/itemCharts.do")
-	public String itemCharts() {	
+	public String itemCharts(Model m) {	
+		List<HashMap<String,Integer>> list = calService.getItemCal();
+		m.addAttribute("listCal",list);
 		return "admin/itemCharts";
 	}
+	
+	//상품별 판매통계 검색
+	@ResponseBody
+	@RequestMapping("/itemSelectCharts.do")
+	public List<HashMap> searchItems(String cate, String keyword) {
+		HashMap map = new HashMap();
+		
+		switch (cate) {
+		case "상품명":
+			cate = "product_name";
+			break;
+		case "상품 번호":
+			cate = "product_number";
+			break;
+		default: cate="product_name";
+		}
+		
+		map.put("cate", cate);
+		map.put("keyword", keyword);
+		
+		System.out.println(map);
+		List result = calService.selectItemCal(map);
+		System.out.println(result);
+		return result;
+	}
+	
 	
 	
 	/*****************************/
 	/************정산관리************/
 	//정산관리 페이지로 이동
 	@RequestMapping("/calCharts.do")
-	public String calCharts() {	
+	public String calCharts(Model m) {	
+		List<HashMap<String,Integer>> list = calService.getMonthCal();
+		m.addAttribute("listCal2",list);
 		return "admin/calCharts";
+	}
+	
+	//정산관리 검색 결과 조회
+	@ResponseBody
+	@RequestMapping("/selectCal.do")
+	//public List<HashMap<String,Integer>> selectCal(String start_date, String end_date, Model m) {
+	public List selectCal(String start_date, String end_date) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("end_date", end_date);
+		map.put("start_date", start_date);
+		//List<HashMap<String,Integer>> list = calService.selectCal(map);
+		List list = calService.selectCal(map);
+		return list;
 	}
 	
 	/*****************************/
@@ -93,13 +177,31 @@ public class AdminController {
 	
 	//회원관리 페이지로 이동
 	@RequestMapping("/member.do")
-	public String member() {	
+	public String member(Model m) {	
+		System.out.println("member/list.do 요청");
+		List<MemberVO> list = memberService.memberList();
+		m.addAttribute("list", list);
 		return "admin/member";
 	}
 	
 	//회원상세정보 페이지로 이동
 	@RequestMapping("/memberDetail.do")
-	public String memberDetail() {	
+	public String memberDetail(String user_id, Model m) {
+		
+		//회원정보 저장
+		MemberVO vo = memberService.getUserInfoAdmin(user_id);
+		
+		//회원 리뷰내역 저장
+		List<ReviewVO> rList = memberService.getReviewAdmin(user_id);
+		
+		//회원 주문내역 저장
+		List<OrderVO> oList = memberService.getOrderAdmin(user_id);
+		
+		//모델에 내용 저장
+		m.addAttribute("vo",vo);
+		m.addAttribute("rList",rList);
+		m.addAttribute("oList",oList);
+		
 		return "admin/memberDetail";
 	}
 	
@@ -108,11 +210,12 @@ public class AdminController {
 	
 	//FAQ관리 페이지로 이동
 	@RequestMapping("/faq.do")
-	public String faq() {	
+	public String faq(FaqVO faqvo,  Model m) {
+		m.addAttribute("faqList",faqService.getFaqBoardList(faqvo));
 		return "admin/faq";
 	}
 	
-	//FAQ 새글등록 (어드민 페이지)
+	//FAQ 새글등록
 	@RequestMapping("/insertFaq.do")
 	public String insertFaq(FaqVO faqvo, Model m){
 		System.out.println("글등록");
@@ -121,6 +224,24 @@ public class AdminController {
 		return "admin/faq";
 	}
 	
+	// 글 삭제
+	@RequestMapping("/deleteFaq.do")
+	public String deleteFaq(FaqVO faqvo, Model m) {
+		System.out.println("글삭제");
+		faqService.deleteFaqBoard(faqvo);
+		m.addAttribute("faqList", faqService.getFaqBoardList(faqvo));
+		return "admin/faq";
+	}
+
+	// 게시글의 정보 수정 페이지에 가져오기
+	@RequestMapping("/modifyFaq.do")
+	public String faqUpdatelist(FaqVO faqvo, Model m) {
+		FaqVO result = faqService.selectFaqBoard(faqvo);
+		System.out.println("result : " + result.getFaq_content());
+		m.addAttribute("faq", result);
+		return "admin/modifyFaq";
+	}
+
 	// 글 수정
 	@RequestMapping("/updateFaq.do")
 	public String updateFaqBoard(FaqVO faqvo, Model m) {	
@@ -228,6 +349,7 @@ public class AdminController {
 	@RequestMapping("/orderList.do")
 	public String orderList(Model m) {	
 		List<OrderVO> list = orderService.getOrderList();
+		System.out.println(list.get(1));
 		m.addAttribute("orderList", list);
 		return "admin/orderList";
 	}

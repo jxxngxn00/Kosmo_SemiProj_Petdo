@@ -142,7 +142,7 @@
 							</div>
 							<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}"><img src="<%=pjName %>/resources/images/${vo.faq_realname}" width="20%" height="auto"></a>
 							<p><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a></p>
-							<a  class="btn btn-primary" href="faqDetail.do">Read More</a>
+							<a  class="btn btn-primary" href="faqDetail.do?faq_seq=${vo.faq_seq}">Read More</a>
 						</div>
 		 </c:forEach>		
 						

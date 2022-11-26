@@ -203,11 +203,6 @@
 					<h1 class="h3 mb-2 text-gray-800">주문 내역 관리</h1>
 
 
-					<p class="mb-4">
-						테이블 설명 ... <a target="_blank" href="https://datatables.net">(템플릿
-							테이블 자료 출처)</a>.
-					</p>
-
 					<!-- 주문내역 테이블 -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">

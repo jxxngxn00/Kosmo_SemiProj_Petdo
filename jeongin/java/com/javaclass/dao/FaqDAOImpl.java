@@ -32,7 +32,7 @@ public class FaqDAOImpl implements FaqDAO {
 		  mybatis.delete("FaqDAO.deleteFaqBoard", faqvo); 
 		  }
 		
-		  // 검색한 해당 게시물 조회 
+		  // 게시물 상세보기 
 		  public FaqVO selectFaqBoard(FaqVO faqvo) {
 		  System.out.println("===> Mybatis selectFaqBoard() 호출"); return (FaqVO)
 		  mybatis.selectOne("FaqDAO.selectFaqBoard", faqvo); 

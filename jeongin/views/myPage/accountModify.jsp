@@ -123,19 +123,6 @@
 											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
 								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=10">장난감<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
-									</ul></li>
-								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
@@ -145,15 +132,6 @@
 											href="../product/getCategoryList.do?category_code=6">사료</a></li>
 										<li><a
 											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
-									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=16">리빙용품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
 									</ul></li>
 								<li class="dropdown"><a
 									href="../product/getCategoryList.do?category_code=1">의류<i
@@ -198,17 +176,23 @@
 			<div class="col-sm-8">
 				<div class="contact-form">
 					<hr />
-					<form> <!-- action 써주기 -->
+					<form id="infoFrm" method="post"> <!-- action 써주기 -->
 						<div class="form-group col-md-12">
 							<p id="customerid"
 								style="float: left; margin-top: 6px; font-family: 'Noto Sans KR', sans-serif;">아이디</p>
-							<input type="text" name="user_id" class="form-control"  value="${userInfo.user_id }"
+							<input type="text" readonly name="user_id" class="form-control"  value="${userInfo.user_id }"
 								required="required" style="width: 40%; margin-left: 115px;">
 						</div>
 						<div class="form-group col-md-12">
 							<p id="customerEmail"
 								style="float: left; margin-top: 6px; font-family: 'Noto Sans KR', sans-serif;">이름</p>
 							<input type="text" name="user_name" class="form-control"  value="${userInfo.user_name }"
+								required="required" style="width: 40%; margin-left: 115px;">
+						</div>
+						<div class="form-group col-md-12">
+							<p id="customerid"
+								style="float: left; margin-top: 6px; font-family: 'Noto Sans KR', sans-serif;">비밀번호</p>
+							<input type="password" name="user_id" class="form-control"  value="${userInfo.user_pwd }"
 								required="required" style="width: 40%; margin-left: 115px;">
 						</div>
 						<div class="form-group col-md-12">
@@ -235,12 +219,13 @@
 						</div>
 
 						<div class="form-group col-md-12">
-							<input type="submit" name="submit"
-								class="btn btn-delete pull-right" value="회원탈퇴"
-								style="margin-right: 12px; font-family: 'Noto Sans KR', sans-serif">
-							<input type="submit" name="submit"
-								class="btn btn-modify pull-right" value="수정"
+							<button name="submit" id="delete"
+								class="btn btn-delete pull-right"
+								style="margin-right: 12px; font-family: 'Noto Sans KR', sans-serif">회원탈퇴</button>
+							<button name="submit" id="modify"
+								class="btn btn-modify pull-right"
 								style="margin-left: 12px; margin-bottom: 60px; font-family: 'Noto Sans KR', sans-serif">
+								수정</button>
 						</div>
 
 					</form>
@@ -345,5 +330,23 @@
 	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
 	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
 	<script src="<%=pjName%>/resources/js/main.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		let frm = $('#infoFrm');
+		
+		//수정버튼 클릭시
+		$('#modify').click(function(){
+			frm.attr('action','modify.do');
+			frm.submit();
+		});
+		
+		//탈퇴버튼 클릭시
+		$('#delete').click(function(){
+			frm.attr('action','delete.do');
+			frm.submit();
+		});
+	})
+	
+	</script>
 </body>
 </html>

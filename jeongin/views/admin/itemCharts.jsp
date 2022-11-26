@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -223,9 +224,6 @@
                         <!-- Card Content - Collapse -->
                         <div class="collapse show" id="collapseCardExample" style="text-align:center ;">
                             <div class="card-body">
-                                <span class="date-picker"><input type="date"/></span>
-                                <span class="date-picker">~</span>
-                                <span class="date-picker"><input type="date"/></span>
                             </div>
                             <div style="padding-bottom: 10px;">
                             
@@ -233,30 +231,28 @@
                                     <button class="btn btn-secondary dropdown-toggle" type="button"
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        전체
+                                        카테고리 선택
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">상품명</a>
-                                        <a class="dropdown-item" href="#">상품 사이즈</a>
                                         <a class="dropdown-item" href="#">상품 번호</a>
-                                        <a class="dropdown-item" href="#">판매 가격</a>
                                     </div>
                                     <form
                                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                                     <div class="input-group" >
                                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                        aria-label="Search" aria-describedby="basic-addon2">
+                                        aria-label="Search" aria-describedby="basic-addon2" id="inputKeyword">
                                     </div>
                                 </form>
 
                             <!-- 검색 버튼 -->
                             <div class="my-2"></div>
-                            <a href="#" class="btn btn-light btn-icon-split">
+                            <button class="btn btn-light btn-icon-split" id="searchBarBtn">
                                 <span class="icon text-gray-600">
                                     <i class="fas fa-arrow-right"></i>
                                 </span>
                                 <span class="text">Search</span>
-                            </a>
+                            </button>
                             </div>
                         </div>
                         </div>
@@ -265,15 +261,19 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">정산 관리</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">상품별 판매 통계</h6>
                         </div>
                         <div class="card-body">
                             <div class="chart-area">
-                                <canvas id="myAreaChart"></canvas>
+                            	<c:forEach items="${listCal}" var="cal">
+									<input type="hidden" name="sum" value="${cal.SUM}"
+										class="sum" />
+									<input type="hidden" name="product_name"
+										value="${cal.PRODUCT_NAME}" class="product_name" />
+								</c:forEach>
+                                <canvas id="barChart"></canvas>
                             </div>
                             <hr>
-                            Styling for the area chart can be found in the
-                            <code>/js/demo/chart-area-demo.js</code> file.
                         </div>
                     </div>
 
@@ -338,12 +338,18 @@
     <script src="<%=pjName %>/resources/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<%=pjName %>/resources/js/demo/chart-area-demo.js"></script>
-    <script src="<%=pjName %>/resources/js/demo/chart-pie-demo.js"></script>
+    <script src="<%=pjName %>/resources/js/demo/chart-bar-demo.js"></script>
+	<script src="<%=pjName%>/resources/js/demo/calChartCustom.js"></script>
 	
 	<!-- font awesome CDN -->
 	<script src="https://kit.fontawesome.com/3364ed6976.js" crossorigin="anonymous"></script>
-	
+	<script type="text/javascript">
+		$(function(){
+			$(".dropdown-item").click(function(){
+				$("#dropdownMenuButton").text($(this).text());
+			})
+		})
+	</script>
 </body>
 
 </html>

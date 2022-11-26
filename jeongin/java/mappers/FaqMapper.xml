@@ -41,13 +41,12 @@
 	
 	<!-- 글 수정 -->
 	 <update id="updateFaqBoard" parameterType="com.javaclass.domain.FaqVO">
-	        update faq_board 
-	        set
+	        update faq_board set
 	            faq_title = #{faq_title}
 	            , faq_writer = #{faq_writer}
 	            , faq_content = #{faq_content}
 	            , faq_date = SYSDATE
-	          <if test="faq_name != null">
+	           <if test="faq_name != null">
 				<!-- 사진 파일이 업로드 되었을때 -->
 				, faq_name = #{faq_name}
 				, faq_realname = #{faq_realname}
@@ -61,21 +60,20 @@
 	 </update> 
 	 
     <!--  글 삭제 -->
-   <!--  <delete id="deleteFaqBoard">
+    <delete id="deleteFaqBoard">
         delete from faq_board
         where
             faq_seq = #{faq_seq}
-    </delete> -->
+    </delete> 
     
     <!-- 클릭한 게시물 보기 -->
      <select id="selectFaqBoard" parameterType="com.javaclass.domain.FaqVO" resultType="com.javaclass.domain.FaqVO">
         select  faq_seq
 	            , faq_title
 	            , faq_writer
-	            <if test="faq_name != null">
-				<!-- 사진 파일이 업로드 되었을때 -->
-				, faq_name , faq_realname, faq_fsize
-			    </if>
+				, faq_name 
+				, faq_realname
+				, faq_fsize
 	            , faq_content
 	            , faq_date
 	            , faq_tag1
@@ -92,10 +90,9 @@
 				  , faq_title 
 				  , faq_writer 
 				  , faq_content
-			<if test="faq_name != null">
-				<!-- 사진 파일이 업로드 되었을때 -->
-				  , faq_name , faq_realname, faq_fsize
-			</if> 
+				  , faq_name 
+				  , faq_realname
+				  , faq_fsize
 				  , faq_date
 				  , faq_tag1
 	              , faq_tag2

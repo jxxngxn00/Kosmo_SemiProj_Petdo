@@ -10,7 +10,7 @@ public class OrderVO {
 	boolean refund_check;			//환불 가능 여부
 	int product_number;				//상품번호
 	String user_id;					//사용자 아이디
-	
+
 	/* User Order */
 	int order_number;				//주문번호
 	String order_date;				//주문날짜
@@ -20,7 +20,15 @@ public class OrderVO {
 	
 	/* user_info */
 	String user_name;				//구매자 이름
-	
+
+	@Override
+	public String toString() {
+		return "OrderVO [order_detail_number=" + order_detail_number + ", product_count=" + product_count
+				+ ", product_price=" + product_price + ", order_detail_status=" + order_detail_status
+				+ ", refund_check=" + refund_check + ", product_number=" + product_number + ", user_id=" + user_id
+				+ ", order_number=" + order_number + ", order_date=" + order_date + ", product_name=" + product_name
+				+ ", user_name=" + user_name + "]";
+	}
 	//getter, setter 생성
 	public String getUser_name() {
 		return user_name;
