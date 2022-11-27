@@ -61,7 +61,9 @@
 								환영합니다.</li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-							<li><a href="../myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
+							<li><a
+								href="../myPage/account.do?user_id=${sessionScope.login }"><i
+									class="fa fa-user"></i></a></li>
 							<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"
@@ -183,30 +185,45 @@
 
 	<section id="cart_items">
 
-		<div class="table-responsive cart_info" style="text-align:center;">
-			<table class="table table-condensed">
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed"
+				style="width: 900px; margin-left: 200px;">
 				<thead>
 					<tr class="cart_menu">
-						<th class="image">상품사진</th>
-						<th class="description">상품이름</th>
-						<th class="price">가격</th>
-						<th class="quantity">수량</th>
-						<th class="total">총가격</th>
+						<th class="image" style="text-align: center">상품사진</th>
+						<th class="description" style="text-align: center">상품이름</th>
+						<th class="price" style="width: 40px; text-align: center;">가격</th>
+						<th class="quantity" style="width: 40px; text-align: center;">수량</th>
+						<th class="total" style="width: 70px; text-align: center;">총가격</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="cart" items="${cartList}" varStatus="i">
-					<form  id="submit" method = "post"  action="../cart/cartList.do?user_id==${cart.user_id}">
+					<form id="submit" method="post" action="payment.do">
+						<c:forEach var="cart" items="${cartList}" varStatus="i">
+							<input type="hidden" name="user_id" value="${cart.user_id}" />
 							<tr>
-								<td>사진이들어가는데 %식으로 써야함</td>
-								<td>${cart.product_name}</td>
-								<td><input type="text" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
-								<td><input type="number"  name="product_count" value="${cart.product_count}" /></td>
-								<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>		
+								<td style="width: 150px; text-align: center;">사진이들어가는데 %식으로
+									써야함</td>
+								<td style="width: 200px; text-align: left;">${cart.product_name}
+									<input type="hidden" name="product_number"
+									value="${cart.product_number}" />
+								</td>
+								<td style="width: 60px; text-align: right;"><input
+									type="text" name="product_price"
+									style="width: 50px; border-style: none; background-color: #f5f5f5;"
+									readonly pattern="###,###,###" value="${cart.product_price}" /></td>
+								<td style="width: 50px; text-align: right; width: 40px;"><input
+									type="number" name="product_count"
+									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									value="${cart.product_count}" /></td>
+								<td style="width: 55px; text-align: right;"><input
+									type="text" readonly name="product_sum"
+									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									value="${cart.product_price*cart.product_count}" /></td>
 							</tr>
-						</form>
-					</c:forEach>
-					
+						</c:forEach>
+					</form>
+
 				</tbody>
 			</table>
 		</div>
@@ -222,7 +239,8 @@
 						<td colspan="4">&nbsp;</td>
 						<td colspan="2">
 
-							<table class="table table-condensed total-result" id="payTbl" style="width:100%">
+							<table class="table table-condensed total-result" id="payTbl"
+								style="width: 100%">
 
 								<tr>
 									<td id='totaltable'>총 상품금액</td>
@@ -270,8 +288,9 @@
 	</div>
 
 	<form id='paycan-btn' style='display: inline'>
-		<a class="btn btn-default check_out" id="pay-btn" href="../pay/payment.do">결제하기</a> <a
-			class="btn btn-default cancel" id="cancel-btn" href="">취소하기</a>
+		<a class="btn btn-default check_out" id="pay-btn"
+			href="../pay/payment.do">결제하기</a> <a class="btn btn-default cancel"
+			id="cancel-btn" href="">취소하기</a>
 	</form>
 
 	<div class="check-footer-bottom">

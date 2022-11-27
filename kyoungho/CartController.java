@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaclass.domain.CartVO;
 import com.javaclass.service.CartService;
+import com.javaclass.service.OrderService;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -22,8 +23,8 @@ public class CartController {
 
 	// 장바구니 추가
 	@RequestMapping("/insert.do")
-	public String cartInsert(@ModelAttribute CartVO vo, HttpSession session) {
-
+	public String cartInsert(CartVO vo, HttpSession session) {
+		System.out.println(vo);
 		String user_id = (String) session.getAttribute("login");
 		System.out.println(user_id);
 		vo.setUser_id(user_id);
@@ -71,7 +72,7 @@ public class CartController {
 	// 장바구니 목록
 	@RequestMapping("/cartList.do")
 	public void cartList(CartVO vo, HttpSession session, Model m) {
-
+		System.out.println(vo);
 		// 세션에 저장된 user_id
 		String user_id = (String) session.getAttribute("login");
 		vo.setUser_id(user_id);
@@ -98,11 +99,11 @@ public class CartController {
 	  
 	  @RequestMapping("/modifyCart.do") 
 	  public String modifyCart(@ModelAttribute("cartVO") CartVO vo, HttpSession session) {
-	  System.out.println("출력안됨"); 
 	  String user_id = (String) session.getAttribute("login"); 
 	  System.out.println(vo.getCart_number()); 
 	  vo.setUser_id(user_id); 
 	  cartService.modifyCart(vo);
+	  System.out.println(vo);
 	  return "redirect:/cart/cartList.do?cart_number=" + vo.getCart_number(); }
 	
 	  

@@ -213,8 +213,7 @@ $("#pageInfo a").on("click", function(e){
 							<form action="#" id="listForm" method="post"
 								style="margin-bottom: 10px; margin-left: 10px; class =form-inline; border-style: none;">
 								<div style="margin-left: 120px">
-									<input name="product_number" type="hidden"
-										value="${vo.product_number}" />
+									<input name="product_number" type="hidden" value="${vo.product_number}" />
 
 									<table style="margin-left: 10px;">
 										<tr>

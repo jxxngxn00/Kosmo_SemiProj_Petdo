@@ -212,97 +212,12 @@ $(document).ready(function(){
 	</header>
 
 	<section id="cart_items">
-
-
-		<%-- 	
-					<tbody>
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/one.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>써야할가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">가격</p>
-							</td>
-							<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/two.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
-							</td>
-							<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="<%=pjName%>/resources/images/cart/three.png" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href="">상품이름</a>
-								</h4>
-								<p>Web ID: 상품ID</p>
-							</td>
-							<td class="cart_price">
-								<p>가격</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_down" href=""> - </a> <input
-										class="cart_quantity_input" type="text" name="quantity"
-										value="1" autocomplete="off" size="2"> <a
-										class="cart_quantity_up" href=""> + </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">가격</p>
-							</td>
-
-						<td class="cart_delete"><a class="cart_quantity_delete"
-								href="">x</a></td>
-						</tr>
-					</tbody> --%>
 	</section>
 
 	<div class="col-sm-12" style="margin: auto;">
 
 		<div class="table-responsive cart_info" style="text-align: center;">
-			
+			<form id="submit" method = "post"  action="../pay/checkout.do">	
 			<table class="table table-condensed"
 				style="width: 50%; margin: auto;">
 				<thead>
@@ -327,21 +242,31 @@ $(document).ready(function(){
 				<tbody>
 				
 					<c:forEach var="cart" items="${cartList}" varStatus="i">
-					<form  id="submit" method = "post"  action="modifyCart.do?cart_number=${cart.cart_number}">
+					<input type="hidden" name=cart_number" value="${cart.cart_number}" />
+					<input type="hidden" name="product-count" value="${cart.product_count}"/>
+					<input type="hidden" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/>
+					<input type="hidden" name="product_count" value="${cart.product_number}" />
+					<input type="hidden" name="product_name" value="${cart.product_name}" />
+					<input type="hidden" readonly name="totalMoney" value="${cart.product_price*cart.product_count}" />
+					<input type="hidden" name="user_id" value="${user_id}" />
+			
 							<tr>
+							
 								<td>사진이들어가는데 %식으로 써야함</td>
-								<td>${cart.product_name}</td>
+								<td>${cart.product_name}<input type="hidden" name= "product_number"  value="${cart.product_number}"/></td>
 								<td><input type="text" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
-								<td><input type="number"  name="product_count" value="${cart.product_count}" /></td>
+								<td><input type="number" name="product_count" value="${cart.product_count}" /></td>
 								<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>
 								<td><a href ="deleteCart.do?cart_number=${cart.cart_number}">삭제</a></td>		
 								<td><button type="submit" id="btnUpdate">수정</button></td>				
+						
 							</tr>
-						</form>
+					
 					</c:forEach>
 				</tbody>
+					
 			</table>
-				
+			</form>	
 		</div>
 
 

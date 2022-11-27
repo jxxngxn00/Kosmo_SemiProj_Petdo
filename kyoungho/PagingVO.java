@@ -1,8 +1,8 @@
 package com.javaclass.domain;
 
-import lombok.Data;
 
-@Data
+
+
 public class PagingVO {
 	private int startPage;
 	private int endPage;
@@ -13,6 +13,74 @@ public class PagingVO {
 
 	//현재 페이지 번호, 한 페이지에 표출할 데이터 개수
 	private Criteria cri;
+	
+	
+	
+	
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+	public boolean isPrev() {
+		return prev;
+	}
+
+	public void setPrev(boolean prev) {
+		this.prev = prev;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public void setNext(boolean next) {
+		this.next = next;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public Criteria getCri() {
+		return cri;
+	}
+
+	public void setCri(Criteria cri) {
+		this.cri = cri;
+	}
+
 	
 	public PagingVO(Criteria cri, int total) {
 		this.pageNum= cri.getPageNum();

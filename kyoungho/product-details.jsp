@@ -154,25 +154,25 @@
 			<div class="row">
 				<h1 class="page-header"
 					style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
-				<input type="hidden" value="${getProduct.product_name}"
-					id="product_number">
+				<input type="hidden" name="product_name" value="${getProduct.product_name}"
+					id="product_number"  style="font-weight: bold">
 			</div>
 			<div class="row" style="float: left; text-align: center; width: 35%;">
 				<img alt="productPhoto"
-					src="/resources/upload/${getProduct.stored_file_name}" width="150%">
+					src="<%=pjName%>/resources/images/shop/${getProduct.stored_file_name}" width="150%" style="float: center;">
 			</div>
 
 			<div class="row productInfo" style="width: 40%; float: right;">
 				<div class="form-group" style="text-align: center;">
 					<h3 class="page-header">상품명
 						<span>${getProduct.product_name}</span><br>
-						<small>상품소개: ${getProduct.product_desc}</small>
 					</h3>
 				</div>
 				<div class="form-group" style="text-align: left;">
 					<label>가격 : </label><span>&nbsp;
 					<fmt:formatNumber name= "product_price" value="${getProduct.product_price}" type="number" /></span><span>&nbsp;${getProduct.product_price}원</span>
 					<input type="hidden" value="${getProduct.product_price}" id="price">
+					<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
 				</div>
 				<div class="form-group" style="text-align: left;">
 					<label>배송비 : </label><span>&nbsp;2500원</span>
@@ -192,12 +192,16 @@
 				<hr>
 				<form action="../cart/insert.do" id="cart-form">
 				<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
+				<input type="hidden" name="product_name" value="${getProduct.product_name}"/>
+				<input type="hidden" name="user_id" value="${user_id}"/>
+				<input type="hidden" name="product_price" value="${getProduct.product_price}"/>
+				
 				<div class="row"
 					style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
 					<div class="selected_option" style="text-align: right;"></div>
 					<div style="text-align: center;">
-						<a href="../pay/checkout.do"><button class="btn btn-default">주문하기</button></a>
-						<a href="../cart/cartList.do"><button id= "submit" class="btn btn-fefault cart"
+						<a href="../pay/checkout.do"><button id="payBtn" class="btn btn-default">주문하기</button></a>
+						<a href="../cart/cartList.do"><button id= "cartBtn" class="btn btn-fefault cart"
 								style="width: 200px">장바구니</button></a>
 					</div>
 				</div>
@@ -207,49 +211,102 @@
 		</div>
 
 
-		<div class="container">
-			<div class="row nav">
-				<nav id="middle_nav">
-					<ul class="nav nav-tabs nav-justified">
-						<li id="about">상품상세</li>
-						<li id="review">리뷰</li>
-						<li id="qna">상품문의</li>
-					</ul>
-				</nav>
-			</div>
+		<hr/>							
+	<div class="container">
+		<div class="row nav" style="margin-left: 200px ">
+			<nav id="middle_nav">
+				<ul class="nav nav-tabs nav-justified" style="list-style-type: none; float: left;">
+					<a href="#product-info"><li id="about" style="list-style-type: none; float: left;">상품상세</li></a>
+					<a href="#product-review"><li id="review" style="list-style-type: none; float: left; margin-left: 260px">리뷰</li></a>
+					<a href="#product-qna"><li id="qna" style="list-style-type: none; float: left;  margin-left: 260px">상품문의</li></a>
+				</ul>
+			</nav>
+		</div>
+		
+			<img src="<%=pjName%>/resources/images/banner55.jpg" width="100%" height="auto" style="margin-top: 20px; margin-bottom: 30px;" alt="" />
+		
+		
 
-			<div class="row" style="margin: 50px 0;">
-				<h1 class="jumbotron">
-					<div class="container">
-						<h1>Hello world</h1>
-						<small>This is product page.</small>
-					</div>
-				</h1>
-			</div>
-
-			<div class="row about_product" style="text-align: center;">
-				<h1 class="page-header">상품 상세</h1>
-
-			</div>
-			<div class="row reviews" style="text-align: center; margin: 80px 0;">
-				<h1 class="page-header" style="margin-bottom: 50px;">Review</h1>
-				<c:forEach begin="1" end="5">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Panel title</h3>
+		<div id="product-info" class="row about_product" style="text-align: center;">
+			<img src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}' width=100%; height=auto;>
+		</div>
+		
+		<div id="product-qna" class="row qnas" style="text-align: center; height: 700px;">
+			<h1 class="page-header">상품 Q&A</h1>
+            /* Q&A 테이블 */
+          
+		</div>
+		
+		<div class="view-reviews" style="text-align: center; margin: 80px 0;">
+			<h1 class="page-header" style="margin-bottom: 50px;  font-weight: bold">리뷰</h1>
+			<!-- 리뷰 조회 -->
+			<c:forEach items="${orderReview}" var="vo">
+				<div class="form-group">
+				<input name="product_number" type="hidden" value="${vo.product_number}"/>
+							<label for="username" style="float: left; margin-top: 5px;">
+								이름
+								<span class="require"></span>
+							</label>
+							<input type="text" class="form-control" id="username" value="${vo.review_writer}" readonly style="width:14%; margin-left: 50px;">
 						</div>
-						<div class="panel-body">Panel content</div>
-					</div>
+						<div>
+							<img src="<%=pjName %>/resources/images/review/${vo.review_realname}" width="25%" height="auto" style="float: left; margin-bottom: 15px"></a>
+						</div>
+						<div class="form-group" style="margin-top: 20px;">
+							<textarea class="form-control" rows="8" id="reviewTxt" readonly style="word-break:break-all;width:100%; margin-bottom: 30px; ">${vo.review_content}</textarea>
+							
 				</c:forEach>
-			</div>
-
-			<div class="row qnas" style="text-align: center; height: 700px;">
-				<h1 class="page-header">상품 Q&A</h1>
-				/* Q&A 테이블 */
+				</div>
+		
+		
+		
+		
+		<hr/>
+		<div class="product-page-content" id="review" >
+		<div class="row reviews" style="text-align: center; margin: 80px 0;">
+			<h1 class="page-header" style="margin-bottom: 50px; font-weight: bold">리뷰 작성</h1>
+			<!-- 리뷰 작성 -->
+	
+		<div class="product-page-content" id="review" >
+			 <div class="tab-content" style="width:100%;">
+				<div class="tab-pane fade in active">
+				
+					<form id="reviewRegister" action="reviewRegister.do" class="reviews-form"  method="post" enctype="multipart/form-data" style="">
+						<div class="form-group">
+						<input name="product_number" type="hidden" value="${getProduct.product_number}"/>
+							<label for="review_writer" style="float: left; margin-top: 5px; ">
+								이름
+								<span class="require"></span>
+							</label>
+							<input type="text" class="form-control" name="review_writer" value=<%=session.getAttribute("login")%> readonly style="width:14%; margin-left: 50px;">
+						</div>
+						 <div>
+                           <input type="file" name="file"/>
+                         </div>
+						<div class="form-group" style="margin-top: 20px;">
+							<textarea class="form-control" rows="8" id="reviewTxt" name="review_content" style="word-break:break-all;width:100%;"></textarea>
+						</div>
+						<div class="padding-top-20">
+							<button type="submit" id="review_btn" class="btn btn-primary reviewBtn" style="float: right">작성하기</button>
+							<br/>
+							<br/>
+							<br/>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
+		
 		</div>
 
+		
+					
+				</div>
+			</div> 
+		</div>
+		
+	</div>
+	</div>
 
 		<div class="underline">
 			<div class="container">
@@ -300,5 +357,13 @@
 	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
 	<script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
 	<script src="<%=pjName %>/resources/js/main.js"></script>
+	 <script type="text/javascript">
+      $(function() {
+         $("button#review_btn").click(function() { //QnA 새글 등록 실행
+            $("form#reviewRegister").submit();
+         })
+      })
+   </script>
+   
 </body>
 </html>

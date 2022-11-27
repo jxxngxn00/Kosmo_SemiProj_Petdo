@@ -18,6 +18,7 @@ c.user_id as user_id,
 p.product_name as product_name,
 c.product_count as product_count,
 p.product_price as product_price,
+p.product_number as product_number,
 (product_price*product_count) as totalMoney
 FROM
 user_info m, product p, cart c

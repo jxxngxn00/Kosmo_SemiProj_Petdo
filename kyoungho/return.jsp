@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%=pjName %>/resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%=pjName %>/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<%=pjName %>/resources/images/ico/apple-touch-icon-57-precomposed.png">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head><!--/head-->
 
 <body>
@@ -41,14 +43,22 @@
 				<a href="../main.do"><img src="<%=pjName%>/resources/images/home/logo.png" width="12%" height="auto"" id="petlogo" alt="" /></a>
 						<div class="col-sm-8">
 							<div class="shop-menu pull-right">
-								<ul class="nav navbar-nav" id="headerbar">
-									<li><%= session.getAttribute("login") %>님 환영합니다.</li>
-									<li><a href="../logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
-									<li><a href="account.do"><i class="fa fa-user"></i></a></li>
-									<li><a href="../pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
-								</ul>
-						
-						</div>
+							<!-- 로그아웃, 마이페이지, 장바구니, 관리자페이지(관리자일경우) 아이콘 -->
+							<ul class="nav navbar-nav" id="headerbar">
+								<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
+									환영합니다.</li>
+								<li><a href="#" data-toggle="modal"
+									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
+								<li><a href="account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
+								<li><a href="../pay/cart.do"><i
+										class="fa fa-shopping-cart"></i></a></li>
+								<c:if test="${'admin' eq sessionScope.login }">
+									<li><a href="../admin.do"><i class="fa fa-cogs"
+											aria-hidden="true"></i></a></li>
+								</c:if>
+							</ul>
+
+
 					</div>
 				</div>
 		</div>
@@ -86,22 +96,11 @@
 									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
 								</ul>
 							</li> 
-							<li><a href="../product/toy-shop.do">장난감</a></li>
-							
 							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
 								<ul role="menu" id="sub-menu-txt" class="sub-menu">
 									<li><a href="../product/food1-shop.do">간식</a></li>
 									<li><a href="../product/food2-shop.do">사료</a></li>
 									<li><a href="../product/food3-shop.do">영양제</a></li>
-								</ul>
-							</li>
-							<li><a href="../product/living-shop.do">리빙용품</a></li> 
-							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-									<li><a href="../product/closet2-shop.do">아우터</a></li>
-									<li><a href="../product/closet3-shop.do">상의</a></li>
-									<li><a href="../product/closet4-shop.do">악세사리</a></li>
 								</ul>
 							</li>
 							<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li> 
@@ -111,6 +110,7 @@
 					</div>
 						<div class="search_box pull-right">
 							<input type="text" placeholder="검색"/>
+								<a href="product/searchpage.do" style="margin-left: 140px; margin-top:-2px; position: absolute;"><i class="fa-sharp fa-solid fa-magnifying-glass" style="color: black;"></i></a>
 						</div>
 						<div id="topHeader" class="appTopArea" style="top:0px;"></div>
 				</div>
@@ -127,8 +127,9 @@
 							<ul>
 								<li style="margin-left: -38px; ">
 									<a href="account.do" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원 정보 조회</a><br/><br/>
-									<a href="accountModify.do" style="font-family: 'Noto Sans KR', sans-serif;">회원 정보 수정</a><br/><br/>
-									<a href="" style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br/><br/><br/>
+									<a href="accoutModify.do?user_id=${userInfo.user_id}"
+						style="font-family: 'Noto Sans KR', sans-serif;" >회원 정보 수정</a><br /><br/>
+									<a href="#" data-toggle="modal" data-target="#logoutModalCenter" style="font-family: 'Noto Sans KR', sans-serif;">로그아웃</a><br/><br/><br/>
 								</li>
 									
 							</ul>
@@ -138,7 +139,7 @@
 								<ul>
 									<li style="margin-left: -38px; ">
 										<a href="mOrder.do" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문 내역</a><br/><br/>
-										<a href="cart.html" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br/>
+										<a href="../pay/cart.do" style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br/>
 									</li>	
 								</ul>	
 							
@@ -187,7 +188,55 @@
 			</div>
 		</div>
 	</section>
+	<!-- logout Modal -->
+	<div class="modal fade" id="logoutModalCenter" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">Petdo - 로그아웃</h2>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding: 50px;">로그아웃 하시겠습니까?</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal" style="border-radius: 10px;">취소</button>
+					<a class="btn btn-primary" href="../logOut.do" style="border-radius: 10px; margin-top: 0px">로그아웃</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /logout Modal -->
 	
+	<!-- password check Modal -->
+	<div class="modal fade" id="passwordModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2 class="modal-title" id="exampleModalLabel">Petdo - 비밀번호 확인</h2>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body" style="padding: 10px;">
+					비밀번호를 한번 더 입력해주세요. <br/>
+					<input type="password" id="pwdInput" placeholder="비밀번호" style="width:100%"/>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal" style="border-radius: 10px;">취소</button>
+					<button class="btn btn-primary" type="button" id="pwdChk"
+						data-dismiss="modal" style="border-radius: 10px; margin-top:0px;">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /password check Modal -->
 	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
@@ -211,13 +260,7 @@
 			</div>
 		</div>
 		
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row">
-					Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></span></p>
-				</div>
-			</div>
-		</div>
+	
 		
 	</footer><!--/Footer-->
 	

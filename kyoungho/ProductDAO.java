@@ -8,7 +8,8 @@ import com.javaclass.domain.ProductVO;
 
 
 public interface ProductDAO {
-		
+
+	
 	//상품 등록
 	public void insertProduct(ProductVO vo);
 	//상품 전체 리스트 출력
@@ -19,7 +20,10 @@ public interface ProductDAO {
 	public List<ProductVO> getCategoryList(ProductVO vo);
 	//상품 상세 페이지 출력
 	public ProductVO getProduct(ProductVO vo);
-
+	//상품 수정
+	public void updateProduct(ProductVO vo);	
+	// 상품 삭제
+	public void deleteProduct(ProductVO vo);
 	
 
 }

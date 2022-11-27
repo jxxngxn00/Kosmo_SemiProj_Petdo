@@ -188,14 +188,14 @@
 						<div style="margin:auto;">
 		<c:forEach items="${categoryList}" var="vo">
 		 <div id="row" style="float:left;" style="border-style:none; display:flex; flex-wrap:wrap; ">				
-			<form action="product-detail?product-number=" id="listForm" method="post" style="  margin-bottom:10px;  margin-left:10px; class=form-inline;  border-style: none;" >	
+			<form action="product-detail?product-number=${vo.product_number}" id="listForm" method="post" style="  margin-bottom:10px;  margin-left:10px; class=form-inline;  border-style: none;" >	
 			<div style="margin-left:120px">
 			<input name="product_number" type="hidden" value="${vo.product_number}"/>	
 			
 			<table style="margin-left:10px; ">
 			<tr>
 					<td colspan="2" align="center">
-					<img src='resources/images/home/logo.png'width='300' height='200'>
+					<a href="product-details.do?product_number=${vo.product_number}"><img src='/resources/upload/${vo.stored_file_name}'width='300' height='200'></a>	
 					</td>
 				</tr>			
 			<tr>	
