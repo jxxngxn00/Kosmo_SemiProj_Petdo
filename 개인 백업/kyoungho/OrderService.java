@@ -4,13 +4,11 @@ import java.util.List;
 
 import com.javaclass.domain.OrderVO;
 
+
 public interface OrderService {
 	
 	//주문 내역 입력
 	public int orderInsert(OrderVO vo);
-	
-	//주문자 정보 입력
-	public int orderUserInsert(OrderVO vo);
 
 	//사용자에 따른 주문내역 조회
 	public List<OrderVO> getUserOrderList(String user_id);

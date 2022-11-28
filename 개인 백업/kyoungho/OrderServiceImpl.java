@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.javaclass.dao.OrderDAO;
 import com.javaclass.domain.OrderVO;
 
+
 @Service("OrderService")
 public class OrderServiceImpl implements OrderService {
 	
@@ -20,10 +21,6 @@ public class OrderServiceImpl implements OrderService {
 		return orderDAO.orderInsert(vo);
 	}
 	
-	//주문자 정보 입력
-	public int orderUserInsert(OrderVO vo) {
-		return orderDAO.orderUserInsert(vo);
-	};
 	
 	// 사용자에 따른 주문내역목록 조회
 	@Override

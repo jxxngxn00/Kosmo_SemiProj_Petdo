@@ -179,8 +179,8 @@
 		</table>
 	</div>
 
-	<div class="review-payment">
-		<h2>Review & Payment</h2>
+	<div  class="review-payment">
+		<h2 style="margin-left:30px;">Review & Payment</h2>
 	</div>
 
 	<section id="cart_items">
@@ -198,9 +198,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<form id="submit" method="post" action="payment.do">
+					
 						<c:forEach var="cart" items="${cartList}" varStatus="i">
+						<form id="submit" method="post" action="payment.do">
 							<input type="hidden" name="user_id" value="${cart.user_id}" />
+							<input type="hidden" name="totalMoney" value="${cart.totalMoney}" />
 							<tr>
 								<td style="width: 150px; text-align: center;">사진이들어가는데 %식으로
 									써야함</td>
@@ -210,19 +212,20 @@
 								</td>
 								<td style="width: 60px; text-align: right;"><input
 									type="text" name="product_price"
-									style="width: 50px; border-style: none; background-color: #f5f5f5;"
-									readonly pattern="###,###,###" value="${cart.product_price}" /></td>
-								<td style="width: 50px; text-align: right; width: 40px;"><input
-									type="number" name="product_count"
+									style="width: 50px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									readonly pattern="###,###,###" value="${cart.product_price}"  />원</td>
+								<td style="width: 50px; text-align: right; "><input
+									type="text" readonly name="product_count"
 									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
-									value="${cart.product_count}" /></td>
+									value="${cart.product_count}" />개</td>
 								<td style="width: 55px; text-align: right;"><input
 									type="text" readonly name="product_sum"
 									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
-									value="${cart.product_price*cart.product_count}" /></td>
+									value="${cart.product_price*cart.product_count}" />원</td>
 							</tr>
+									</form>
 						</c:forEach>
-					</form>
+			
 
 				</tbody>
 			</table>
@@ -230,10 +233,10 @@
 		</div>
 
 		<div class="review-payment">
-			<h2>최종 결제 금액</h2>
+			<h2  style="margin-left:30px;">최종 결제 금액</h2>
 		</div>
 		<div id='pay-total'>
-			<table>
+			<table style="margin-left: 15px">
 				<tbody>
 					<tr>
 						<td colspan="4">&nbsp;</td>
@@ -243,16 +246,16 @@
 								style="width: 100%">
 
 								<tr>
-									<td id='totaltable'>총 상품금액</td>
-									<td>${totalMoney}</td>
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">총 상품금액</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;">${totalMoney}원</td>
 								</tr>
-								<tr class="shipping-cost">
-									<td id='totaltable'>배송비</td>
-									<td>0원</td>
+								<tr class="shipping-cost ">
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">배송비</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;" >0원</td>
 								</tr>
 								<tr>
-									<td id='totaltable'>총 결제금액</td>
-									<td><span>${totalMoney}</span></td>
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">총 결제금액</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;"><span>${totalMoney}원</span></td>
 								</tr>
 							</table>
 						</td>
@@ -261,45 +264,40 @@
 			</table>
 		</div>
 		<div class="review-payment">
-			<h2>결제 방법</h2>
+			<h2  style="margin-left:30px;">결제 방법</h2>
 		</div>
 
 		<div class="payment-options">
-			<table class="table table-condensed total-result">
+			<table class="table table-condensed total-result" style="margin-left:400px; margin-top:20px; width: 600px;">
 
 				<tr>
-					<td><label><input type="checkbox"> 신용카드</label></td>
+					<td><label><input type="checkbox"> &emsp; 신용카드</label></td>
 				</tr>
 				<tr>
-					<td><label><input type="checkbox">실시간 이체</label></td>
+					<td><label><input type="checkbox"> &emsp;  실시간 이체</label></td>
 
 				</tr>
 				<tr>
-					<td><label><input type="checkbox"> 무통장 입금</label></td>
+					<td><label><input type="checkbox"> &emsp; 무통장 입금</label></td>
 				</tr>
 
 			</table>
 		</div>
 	</section>
 	<!--/#cart_items-->
+	<section>
 	<div id='pay-agree'>
-		<label><input type="checkbox"> 위 주문 내용을 확인하였으며 결제를
+
+		<label><input type="checkbox" style="margin-left: 25px;"> 위 주문 내용을 확인하였으며 결제를
 			동의합니다.</label>
 	</div>
 
-	<form id='paycan-btn' style='display: inline'>
+	<form id='paycan-btn' style='display: inline; margin-left:700px; margin-bottom:30px; background-color: #f5f5f5;'>
 		<a class="btn btn-default check_out" id="pay-btn"
-			href="../pay/payment.do">결제하기</a> <a class="btn btn-default cancel"
-			id="cancel-btn" href="">취소하기</a>
+			href="../pay/payment.do" style="margin-bottom:50px">결제하기</a> <a class="btn btn-default cancel"
+			id="cancel-btn" href="../cart/cartList.do" style="margin-bottom:50px">취소하기</a>
 	</form>
-
-	<div class="check-footer-bottom">
-		<div class="container">
-			<div class="row">
-				<i class="fa fa-love"></i>
-			</div>
-		</div>
-	</div>
+	</section>
 
 	<!-- logout Modal -->
 	<div class="modal fade" id="logoutModalCenter" tabindex="-1"
@@ -329,7 +327,7 @@
 		<!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
-				<div class="row" style="padding: 3%;">
+				<div class="row" style="padding: 3%; ">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
 						<div class="contact-info">

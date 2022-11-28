@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +22,6 @@
         <form method="POST" action="orderInsert.do">
             <h4>개인정보</h4>
             <div class="input-group">
-            		<%-- <input type="hidden" name="product_count" value="${pay.product_count}"/>
-            		<input type="hidden" name="product_price" value="${pay.product_price}"/>
-            		<input type="hidden" name="product_number" value="${pay.product_number}"/>
-            		<input type="hidden" name="product_name" value="${pay.product_name}"/> 
-            		<input type="hidden" name="user_id" value="${pay.user_id}"/>  --%>
                 <div class="input-box">
                     <input type="text" placeholder="이름을 입력해주세요" required class="name" name="user_name">
                     <i class="fa fa-user icon"></i>
@@ -76,15 +72,26 @@
                     <i class="fa fa-id-card icon"></i>
                 </div>
                 <div class="input-box">
-          			 <input type="date" class="name" placeholder="날짜를 입력해주세요"  required value="order_date" style="height:50px;">
+          			 <input type="date" class="name" placeholder="날짜를 입력해주세요" name=""  required value="order_date" style="height:50px;">
           			 <i class="fa fa-calendar icon"></i>
                 </div>
             </div>
+         
             <div class="input-group">
                 <div class="input-box">
+               
+           <c:forEach var="payment" items="${payList}" varStatus="i">
+           		    <input type="hidden" name="user_id[${i.index}]" value="${payment.user_id}"/>
+               		<input type="hidden" name="product_count[${i.index}]" value="${payment.product_count}"/>
+            		<input type="hidden" name="product_price[${i.index}]" value="${payment.product_price}"/>
+            		<input type="hidden" name="product_number[${i.index}]" value="${payment.product_number}"/>
+            		<input type="hidden" name="product_name[${i.index}]" value="${payment.product_name}"/> 
+
+           </c:forEach>	
                     <button type="submit">결제하기</button>
                 </div>
             </div>
+     
         </form>
     </div>
 </body>

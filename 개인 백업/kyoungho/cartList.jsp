@@ -213,86 +213,113 @@ $(document).ready(function(){
 
 	<section id="cart_items">
 	</section>
-
+	<h2 style="text-align:center; margin-bottom: 20px; font-weight: bold; vertical-align: top; font-size: 30px; color: #369;">장바구니 내역</h2>
 	<div class="col-sm-12" style="margin: auto;">
 
 		<div class="table-responsive cart_info" style="text-align: center;">
-			<form id="submit" method = "post"  action="../pay/checkout.do">	
+
+			
 			<table class="table table-condensed"
-				style="width: 50%; margin: auto;">
+				style="width: 1000px; margin: auto;">
+				
 				<thead>
 					<tr class="cart_menu">
-						<th class="image">상품사진
+						<th class="image" style="width: 150px; text-align: center">상품사진
 						</th>
-						<th class="description">상품이름
+						<th class="productname" style="width: 200px; text-align: center;">상품이름
 						</th>
-						<th class="price">가격
+						<th class="price" style="width: 40px; text-align: center;">가격
 						</th>
-						<th class="quantity">수량
+						<th class="quantity" style="width: 40px; text-align: center;">수량
 						</th>
-						<th class="total">총가격
+						<th class="total" style="width: 70px; text-align: center;">총가격
 						</th>
-						<th class="delete">취소
+						<th class="delete" style="width: 5px; text-align: center;">
 						</th>
-						<th class="modify">수정
+						<th class="modify" style="width: 5px; text-align: center;">
 						</th>
 					</tr>
 				</thead>
 				
 				<tbody>
-				
+					
 					<c:forEach var="cart" items="${cartList}" varStatus="i">
+			
 					<input type="hidden" name=cart_number" value="${cart.cart_number}" />
+					<input type="hidden" name= "product_number"  value="${cart.product_number}"/>
 					<input type="hidden" name="product-count" value="${cart.product_count}"/>
 					<input type="hidden" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/>
 					<input type="hidden" name="product_count" value="${cart.product_number}" />
 					<input type="hidden" name="product_name" value="${cart.product_name}" />
 					<input type="hidden" readonly name="totalMoney" value="${cart.product_price*cart.product_count}" />
-					<input type="hidden" name="user_id" value="${user_id}" />
-			
+					<input type="hidden"  name="user_id" value="${cart.user_id}" />
+				<form id="submit" method = "post"  action="modifyCart.do?cart_number=${cart.cart_number}">
 							<tr>
-							
-								<td>사진이들어가는데 %식으로 써야함</td>
-								<td>${cart.product_name}<input type="hidden" name= "product_number"  value="${cart.product_number}"/></td>
-								<td><input type="text" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}"/></td>
-								<td><input type="number" name="product_count" value="${cart.product_count}" /></td>
-								<td><input type="text" readonly name="product_sum" value="${cart.product_price*cart.product_count}" /></td>
-								<td><a href ="deleteCart.do?cart_number=${cart.cart_number}">삭제</a></td>		
-								<td><button type="submit" id="btnUpdate">수정</button></td>				
-						
+								
+								<td><img src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}'  name="stored_main_file_name"
+																					 style="width=100%; height=auto;"></td>
+								<td style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: left;">${cart.product_name}
+																			 <input type="hidden" id="id"  name="user_id" value="${cart.user_id}"/>
+																			  <input type="hidden" id="cnumber" name="cart_number" value="${cart.cart_number}"/>
+																			 <input type="hidden" id="pnumber" name="product_number" value="${cart.product_number}"/>
+																			 <input type="hidden" id="name" name="product_name" value="${cart.product_name}"/></td>
+								<td style="width: 70px; border-style: none;"><input  type="text" id="price" name= "product_price" readonly pattern="###,###,###" value="${cart.product_price}" 
+																					style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"/>원</td>
+								<td style="width: 70px; border-style: none;"><input type="number" id="count" name="product_count" value="${cart.product_count}" 
+																					style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"/>개</td>
+								<td style="width: 70px; border-style: none;"><input type="text" readonly id="sum" name="product_sum" value="${cart.product_price*cart.product_count}" 
+																					style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;" />원</td>
+								<td style="width: 5px; border-style: none;"><a href ="deleteCart.do?cart_number=${cart.cart_number}"><i class="fa fa-trash" aria-hidden="true" style="color:black"></i></a></td>		
+								<td style="width: 5px; height:10px; border-style: none; margin:auto;"><button type="submit" id="btnUpdate" 
+								style=" width:5px; background-color: #f5f5f5; "><i class="fas fa-edit" style="color:black; vertical-align:center;"></i></button></td>				
+						</form>	
 							</tr>
-					
+						
 					</c:forEach>
+				
 				</tbody>
 					
 			</table>
-			</form>	
+			
 		</div>
 
 
-		<div class="total_area" id="tableArea">
-			<table class="type09" style="margin: auto;">
+		<div class="total_area" id="tableArea" >
+		<form id="submit1" method = "post"  action="../pay/checkout.do?user_id=${user_id}">
+			<table class="type09" style="margin: auto; margin-top:30px; margin-left:500px;">
 				<thead>
 					<tr>
-						<th scope="cols" colspan='2'>결제할 상품</th>
+						<th scope="cols" colspan='2'>결제할 상품
+						<c:forEach var="cart" items="${cartList}" varStatus="i">
+						 <input id= "id1" 			type="hidden" name="user_id"  value="${cart.user_id}"/>
+						 <input id= "pnumber1" 		type="hidden" name="product_number"  value="${cart.product_number}" />
+						 <input id ="cnumber1" 		type="hidden" name="cart_number" value="${cart.cart_number}"  />
+						 <input id="pname" 			type="hidden" name="product_name" value="${cart.product_name}" />
+						 <input id="count1" 		type="hidden" name="product_count" value="${cart.product_count}" />
+						 <input id="price1" 		type="hidden" name="product_price" value="${cart.product_price}" />
+						 <input id="sum1" 			type="hidden" name="product_sum" value="${cart.product_price*cart.product_count}" />
+						 <input id="totalMoney1" 	type="hidden" name="totalMoney" value="${totalMoney}"  /></th>
+						 </c:forEach>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">상품 금액</th>
-						<td><input type="text" readonly name="product_sum" value="${totalMoney}" /></td>
+						<td style="text-align: right;"><input type="text" readonly name="product_sum" style="border-style: none; text-align: right; background-color: #f5f5f5;" value="${totalMoney}" />원</td>
 					</tr>
 					<tr>
-						<th scope="row">배송비</th>
-						<td>0원</td>
+						<th scope="row" >배송비</th>
+						<td style="text-align: right;">0원</td>
 					</tr>
 					<tr>
-						<th scope="row">결제 금액</th>
-						<td>${totalMoney}</td>
+						<th scope="row" >결제 금액</th>
+						<td style="text-align: right;"><input type="hidden" name="totalMoney" value="${totalMoney}">${totalMoney}원</td>
 					</tr>
 				</tbody>
 			</table>
-			<a class="btn btn-default check_out" id="pay" href="../pay/checkout.do">결제하기</a>
+			</form>
+			<a class="btn btn-default check_out" id="submit" href="../pay/checkout.do?user_id=${user_id}" style="background-color: #FF9933; color:white;  margin-bottom:30px;">결제하기</a>
+			
 		</div>
 	</div>
 
@@ -364,6 +391,7 @@ $(document).ready(function(){
 
 
 	<script src="<%=pjName%>/resources/js/pay_jquery.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery2.js"></script>
 	<script src="<%=pjName%>/resources/js/jquery.js"></script>
 	<script src="<%=pjName%>/resources/js/bootstrap.min.js"></script>
 	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>

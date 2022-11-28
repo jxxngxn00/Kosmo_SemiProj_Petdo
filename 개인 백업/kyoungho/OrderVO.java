@@ -1,5 +1,8 @@
 package com.javaclass.domain;
 
+import lombok.Data;
+
+@Data
 public class OrderVO {
 	
 	/* Order detail TB */
@@ -20,6 +23,7 @@ public class OrderVO {
 	
 	/* user_info */
 	String user_name;				//구매자 이름
+	
 
 	@Override
 	public String toString() {
@@ -95,5 +99,24 @@ public class OrderVO {
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	public OrderVO(int order_detail_number, int product_count, int product_price, String order_detail_status,
+			boolean refund_check, int product_number, String user_id, int order_number, String order_date,
+			String product_name, String user_name) {
+		super();
+		this.order_detail_number = order_detail_number;
+		this.product_count = product_count;
+		this.product_price = product_price;
+		this.order_detail_status = order_detail_status;
+		this.refund_check = refund_check;
+		this.product_number = product_number;
+		this.user_id = user_id;
+		this.order_number = order_number;
+		this.order_date = order_date;
+		this.product_name = product_name;
+		this.user_name = user_name;
+	}
+	public OrderVO() {
+		super();
 	}
 }

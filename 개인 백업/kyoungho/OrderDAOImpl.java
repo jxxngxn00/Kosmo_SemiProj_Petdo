@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaclass.domain.OrderVO;
 
+
 @Repository("OrderDAO")
 public class OrderDAOImpl implements OrderDAO {
 	
@@ -17,15 +18,11 @@ public class OrderDAOImpl implements OrderDAO {
 	//주문내역 입력
 	@Override
 	public int orderInsert(OrderVO vo) {
-		System.out.println("===>  OrderMapper orderInsert() 호출");
+		System.out.println("===>  OrderMapper orderInsert() 호출 : "+ vo);
 		return mybatis.insert("orderDAO.orderInsert",vo);
 	};
 	
-	//주문자 정보에 입력
-	public int orderUserInsert(OrderVO vo) {
-		System.out.println("===>  OrderMapper orderUserInsert() 호출");
-		return mybatis.insert("orderDAO.orderUserInsert",vo);
-	};
+
 	
 	// 사용자에 따른 주문내역목록 조회
 	@Override
@@ -44,5 +41,8 @@ public class OrderDAOImpl implements OrderDAO {
 	public List<OrderVO> getOrderList() {
 		return mybatis.selectList("orderDAO.selectAllByAdmin");
 	}
+
+	
+	
 
 }

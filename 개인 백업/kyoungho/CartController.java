@@ -80,6 +80,7 @@ public class CartController {
 		List<CartVO> list = cartService.listCart(user_id);
 		// 장바구니 전체 금액 호출
 		int sumCartMoney = cartService.sumCartMoney(user_id);
+		m.addAttribute("user_id", user_id);
 		m.addAttribute("totalMoney", sumCartMoney);
 		m.addAttribute("cartList", list);
 

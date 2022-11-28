@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaclass.domain.CartVO;
 import com.javaclass.domain.OrderVO;
+import com.javaclass.domain.OrderVOList;
 import com.javaclass.service.CartService;
 import com.javaclass.service.OrderService;
 
@@ -36,9 +37,10 @@ public class PayController {
 		System.out.println(vo);
 		// 세션에 저장된 user_id
 		String user_id = (String) session.getAttribute("login");
-		vo.setUser_id(user_id);
 		// 장바구니 정보
 		List<CartVO> list = cartService.listCart(user_id);
+		System.out.println(vo.getCart_number()); 
+		System.out.println(list);
 		// 장바구니 전체 금액 호출
 		int sumCartMoney = cartService.sumCartMoney(user_id);
 		m.addAttribute("user_id", user_id);
@@ -56,9 +58,8 @@ public class PayController {
 		vo.setUser_id(user_id);
 		System.out.println(vo);
 		List<CartVO> list = cartService.listCart(user_id);
-		System.out.println(vo.getProduct_number());
 		System.out.println(vo.getUser_id());
-		m.addAttribute("pay", list);
+		m.addAttribute("payList", list);
 		return "pay/payment";
 	}
 
@@ -71,10 +72,12 @@ public class PayController {
 	
 	//체크아웃에 있던걸 DB에 저장 후 mOrder 페이지로 이동
 	@RequestMapping("/orderInsert.do")
-	public String orderInsert(String user_id, OrderVO vo, Model m){
-		orderService.orderInsert(vo);
-		orderService.orderUserInsert(vo);
-		m.addAttribute("userOrderList", orderService.getUserOrderList(user_id));
+	public String orderInsert(String user_id, OrderVOList list, Model m){
+		List<CartVO> nlist = cartService.listCart(user_id);
+		list= (OrderVOList) nlist ;
+		for(OrderVO vo: list.getList()) {
+			orderService.orderInsert(vo);
+		}
 		return "redirect:../myPage/mOrder.do";
 	}
 	
