@@ -1255,13 +1255,46 @@ h2.title {
   color: #3a3a3a;
 }
 
-video { max-width: 50%; display: block; margin: 20px auto; margin-bottom: 45px;}
+video { max-width: 50%; display: block; margin: 20px auto; margin-bottom: 45px; float: left; margin-left: 140px; margin-right: 95px;}
 
 .productinfo{
-	
- 
  width: 80%;
+}
 
+.btn-fefault {
+	display: inline-block;
+    margin-top: 11px;
+    height: 57px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #ffffff;
+    border: 1px solid #FF9933;
+    font-family: "Noto Sans KR"," sans-serif";
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.btn-fault {
+	display: inline-block;
+    margin-top: 11px;
+    height: 57px;
+    line-height: 42px;
+    letter-spacing: 5px;
+    text-align: center;
+    font-family: "Noto Sans KR"," sans-serif";
+    font-size: 15px;
+    font-weight: bold;
+    background: #FF9933;
+    color: #ffffff;
+    box-sizing: border-box;
+    width: 150px;
+}
+
+.orderbtn {
+	margin-left: 15%;
 }
 
 .product-overlay {
@@ -1696,18 +1729,6 @@ div.single-products {
 
 .share {
   margin-top: 15px;
-}
-
-
-.cart {
-  background: #FE980F;
-  border: 0 none;
-  border-radius: 0;
-  color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  margin-bottom: 10px;
-  margin-left: 20px;
 }
 
 
