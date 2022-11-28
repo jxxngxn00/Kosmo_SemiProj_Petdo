@@ -107,7 +107,6 @@ a:hover {
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">홈페이지에 게시된 각종 글 관리</h6>
 						<a class="collapse-item" href="admin/faq.do">FAQ 관리</a> <a
-							class="collapse-item" href="admin/review.do">리뷰 관리</a> <a
 							class="collapse-item" href="admin/qna.do">QnA 관리</a> <a
 							class="collapse-item" href="admin/notice.do">공지사항 관리</a>
 					</div>

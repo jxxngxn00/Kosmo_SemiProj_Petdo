@@ -90,6 +90,7 @@ FROM (SELECT rownum rnum, product_number FROM (SELECT product_number FROM produc
 WHERE rnum>=(#{pageNum}-1) * #{amount} AND rnum<=#{pageNum} * #{amount})
 ]]>
 
+
 </select>
 
 <!-- 상품의 총갯수 -->
@@ -104,7 +105,15 @@ SELECT *
 FROM product
 WHERE category_code =#{category_code}
 ]]>
+</select>
 
+<!-- 상품 검색 결과 목록 출력 -->
+<select id="searchItems" parameterType="ProductVO" resultType="ProductVO">	
+<![CDATA[
+SELECT*
+FROM product
+WHERE product_name='%독%'
+]]>
 </select>
 
 <!-- 상품 상세조회(상품 번호로) -->

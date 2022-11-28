@@ -128,8 +128,8 @@
 							</ul>
 						</div>
 						<div class="search_box pull-right">
-							<input type="text" placeholder="검색" /> <a
-								href="product/searchpage.do"
+							<input type="text" placeholder="검색" name="keyword"/> <a
+								href="product/searchItems.do"
 								style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
 								class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
 						</div>

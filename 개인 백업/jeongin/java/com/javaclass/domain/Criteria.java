@@ -6,7 +6,7 @@ import lombok.Data;
 public class Criteria {
  private int pageNum;
  private int amount;
-
+ //private String keyword;
  
  public Criteria() {
 	 this(1,12);

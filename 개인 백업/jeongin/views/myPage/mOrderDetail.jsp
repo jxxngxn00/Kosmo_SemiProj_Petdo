@@ -178,8 +178,8 @@
 						<table id="detailTbl">
 							<tr>
 								<th scope="row">주문번호</th>
-								<td><input name="" type="text"
-									value="${userOrder.order_number }" readonly /></td>
+								<td><input name="order_detail_number" type="text"
+									value="${userOrder.order_detail_number }" readonly /></td>
 							</tr>
 							<tr>
 								<th scope="row">상품명</th>
@@ -207,9 +207,13 @@
 									value="${userOrder.product_price }" readonly /></td>
 							</tr>
 						</table>
+						<c:if test="${userOrder.refund_check eq 1}">
 						<input type="submit" value="환불/교환" id="submitBtn" />
+						</c:if>
 					</form>
 				</div>
+
+				<div class="row" style="margin: 0px auto;">
 
 				<div class="col-sm-4" style="margin-top: -150px;">
 					<div class="contact-info">
@@ -225,7 +229,7 @@
 							href="account.do?user_id=${sessionScope.login}"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">회원
 								정보 조회</a><br /> <br />
-								<a href="accoutModify.do?user_id=${sessionScope.login}"
+							<a href="accoutModify.do?user_id=${sessionScope.login}"
 						style="font-family: 'Noto Sans KR', sans-serif;" >회원 정보 수정</a><br />
 							<br /> <a href="#" data-toggle="modal"
 							data-target="#logoutModalCenter"
@@ -240,7 +244,7 @@
 					</div>
 					<ul>
 						<li style="margin-left: -38px;"><a
-							href="mOrder.do?user_id=${userInfo.user_id }"
+							href="mOrder.do?user_id=${sessionScope.login}"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
 								내역</a><br /> <br /> <a href="../cart/cartList.do"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
@@ -248,6 +252,8 @@
 					</ul>
 
 				</div>
+
+			</div>
 			</div>
 		</div>
 	</section>

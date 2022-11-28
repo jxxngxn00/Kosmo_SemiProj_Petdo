@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.javaclass.domain.ExchangeVO;
 import com.javaclass.domain.MemberVO;
 import com.javaclass.domain.OrderVO;
+import com.javaclass.domain.ReturnVO;
 import com.javaclass.service.MemberService;
 import com.javaclass.service.OrderService;
 
@@ -41,20 +43,36 @@ public class MyPageController {
 	
 	//주문내역 상세보기 페이지로 이동
 	@RequestMapping("/mOrderDetail.do")
-	public String mOrderDetail(Integer order_number, Model m) {
-		OrderVO vo = orderService.getUserOrder(order_number);
+	public String mOrderDetail(Integer order_detail_number, Model m) {
+		OrderVO vo = orderService.getUserOrder(order_detail_number);
 		m.addAttribute("userOrder", vo);
 		return "myPage/mOrderDetail";
 	}
 
 	// 환불/교환 신청 입력폼 페이지로 이동
 	@RequestMapping("/return.do")
-	public String returnExchange() {		
+	public String returnExchange(OrderVO vo, Model m) {
+		m.addAttribute("order_detail_number",vo.getOrder_detail_number());
 		return "myPage/return";
 	}
-	
+
+	// 환불신청
+	@RequestMapping("/insertReturn.do")
+	public String insertReturn(ReturnVO vo, Model m) {	
+		System.out.println("******** vo : "+vo.getRefund_reason());
+		orderService.refund(vo);
+		return "redirect:/myPage/mOrderDetail.do?order_detail_number="+vo.getOrder_detail_number();
+	}
+
+	// 교환신청
+	@RequestMapping("/insertExchange.do")
+	public String insertExchange(ExchangeVO vo, Model m) {		
+		orderService.exchange(vo);
+		return "redirect:/myPage/mOrderDetail.do?order_detail_number="+vo.getOrder_detail_number();
+	}
+
 	/********************************/
-	
+
 
 	// 회원정보 조회 페이지로 이동
 	@RequestMapping("/account.do")

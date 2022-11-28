@@ -210,9 +210,9 @@
 							<c:forEach items="${userOrderList}" var="list">
 								<tr>
 									<td><a
-										href="mOrderDetail.do?order_number=${ list.order_number}">${list.order_number }</a></td>
+										href="mOrderDetail.do?order_detail_number=${ list.order_detail_number}">${list.order_detail_number }</a></td>
 									<td><a
-										href="mOrderDetail.do?order_number=${ list.order_number}">${list.product_name }</a></td>
+										href="mOrderDetail.do?order_detail_number=${ list.order_detail_number}">${list.product_name }</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -262,7 +262,7 @@
 					</div>
 					<ul>
 						<li style="margin-left: -38px;"><a
-							href="mOrder.do?user_id=${userInfo.user_id }"
+							href="mOrder.do?user_id=${sessionScope.login}"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
 								내역</a><br /> <br /> <a href="../cart/cartList.do"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />

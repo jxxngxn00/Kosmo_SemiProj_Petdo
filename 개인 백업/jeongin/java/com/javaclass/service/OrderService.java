@@ -2,7 +2,9 @@ package com.javaclass.service;
 
 import java.util.List;
 
+import com.javaclass.domain.ExchangeVO;
 import com.javaclass.domain.OrderVO;
+import com.javaclass.domain.ReturnVO;
 
 public interface OrderService {
 
@@ -14,4 +16,10 @@ public interface OrderService {
 	
 	//관리자 -- 주문내역조회
 	public List<OrderVO> getOrderList();
+	
+	//환불신청
+	public void refund(ReturnVO vo);
+
+	//교환신청
+	public void exchange(ExchangeVO vo);
 }

@@ -22,4 +22,6 @@ public interface ProductService {
 	public void updateProduct(ProductVO vo);
 	// 상품 삭제
 	public void deleteProduct(ProductVO vo);
+	//상품 검색
+	List<ProductVO> searchItems(Criteria cri);
 }

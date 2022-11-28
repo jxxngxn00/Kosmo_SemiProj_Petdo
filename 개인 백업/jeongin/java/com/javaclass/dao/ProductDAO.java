@@ -24,6 +24,7 @@ public interface ProductDAO {
 	public void updateProduct(ProductVO vo);	
 	// 상품 삭제
 	public void deleteProduct(ProductVO vo);
-	
+	//상품 검색
+	public List<ProductVO> searchItems(Criteria cri);
 
 }

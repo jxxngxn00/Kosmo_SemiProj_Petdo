@@ -73,6 +73,13 @@ public class ProductDAOImpl implements ProductDAO {
 		  mybatis.delete("ProductDAO.deleteProduct",vo);
 		  
 	  }
+
+	  //상품 검색 결과
+	@Override
+	public List<ProductVO> searchItems(Criteria cri) {
+		  System.out.println("====> Mybatis로 searchItems() 기능 처리");
+		  return mybatis.selectList("ProductDAO.searchItems", cri);
+	}
 	  
 
 }

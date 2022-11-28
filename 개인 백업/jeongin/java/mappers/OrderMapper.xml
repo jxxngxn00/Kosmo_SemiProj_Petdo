@@ -5,25 +5,56 @@
 	
 	<!-- 주문내역 목록 불러오기 -->
 	<select id="selectAllByUser" parameterType="String" resultType="OrderVO">
-	SELECT order_number, product_name
-	FROM   ( SELECT u.user_id AS user_id,u.order_number AS order_number, p.product_name AS product_name
-		        FROM user_order u, order_detail o, product p
-		        WHERE u.order_detail_number = o.order_detail_number 
-		        	AND o.product_number=p.product_number )  
+	SELECT order_detail_number, product_name
+	FROM   ( SELECT o.user_id AS user_id,o.order_detail_number AS order_detail_number, p.product_name AS product_name
+		        FROM order_detail o LEFT OUTER JOIN product p
+		        ON o.product_number=p.product_number )  
 	WHERE user_id=#{user_id}
 	</select>
 	
 	<!-- 주문내역 상세조회 -->
 	<select id="selectByUser" parameterType="Integer" resultType="OrderVO">
-	SELECT order_number, product_name, order_date, order_detail_status, user_name, product_price
-	FROM ( SELECT uo.user_id AS user_id, uo.order_number AS order_number,p.product_name AS product_name, 
-					       uo.order_date AS order_date, o.order_detail_status AS order_detail_status, ui.user_name AS user_name, 
-					       o.product_price AS product_price
-		       FROM user_order uo, order_detail o, product p, user_info ui
-		       WHERE uo.order_detail_number=o.order_detail_number AND o.product_number=p.product_number
-		              AND uo.user_id = ui.user_id)
-	WHERE order_number=#{order_number}
+    SELECT order_detail_number, product_name, order_date, order_detail_status, user_name, product_price, refund_check
+	FROM ( SELECT o.refund_check refund_check, o.user_id AS user_id, p.product_name AS product_name, o.order_detail_number AS order_detail_number,
+                o.order_date AS order_date, o.order_detail_status AS order_detail_status, ui.user_name AS user_name, 
+				o.product_price AS product_price
+		       FROM order_detail o LEFT OUTER JOIN product p
+		       ON o.product_number=p.product_number
+               LEFT OUTER JOIN user_info ui
+               ON o.user_id = ui.user_id)
+	WHERE order_detail_number=#{order_detail_number}
 	</select>
+	
+	<!-- 환불/교환신청 : 주문 테이블 입력 내용 변경 -->
+	<update id="updateOrder" parameterType="ReturnVO">
+		UPDATE order_detail
+		SET 
+		<choose>
+			<when test="status='refund'">
+			order_detail_status='환불',
+			</when>
+			<when test="status='exchange'">
+			order_detail_status='교환',
+			</when>
+		</choose>
+		refund_check=0
+		WHERE user_id = #{user_id} AND order_detail_number=#{order_detail_number}
+	</update>
+	
+	<!-- 환불 신청 : 환불 테이블에 입력 -->
+	<insert id="insertReturn"  parameterType="ReturnVO">
+	INSERT INTO order_refund(refund_number, refund_reason, refund_reason_detail, user_id, order_detail_number)
+	VALUES(refund_seq.NEXTVAL, #{refund_reason},
+	#{refund_reason_detail}, #{user_id}, #{order_detail_number})
+	</insert>
+	
+	
+	<!-- 교환 신청 : 교환 테이블에 입력 -->
+	<insert id="insertExchange"  parameterType="ExchangeVO">
+	INSERT INTO order_exchange(exchange_number, exchange_reason, exchange_reason_detail, user_id, order_detail_number)
+	VALUES(exchange_seq.NEXTVAL, #{exchange_reason}, #{exchange_reason_detail},
+		#{user_id}, #{order_detail_number})
+	</insert>
 	
 	<!-- 관리자 : 주문내역 목록 -->
 	<select id="selectAllByAdmin" resultType="OrderVO">

@@ -36,6 +36,8 @@
 	  		<value>com.javaclass.domain.ReplyVO</value>
 	  		<value>com.javaclass.domain.ReviewVO</value>
 	  		<value>com.javaclass.domain.CartVO</value>
+	  		<value>com.javaclass.domain.ReturnVO</value>
+	  		<value>com.javaclass.domain.ExchangeVO</value>
 	  	</list>
 	  </property>
     </bean>

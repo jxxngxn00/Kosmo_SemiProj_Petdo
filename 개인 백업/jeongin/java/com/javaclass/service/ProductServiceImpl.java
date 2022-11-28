@@ -56,5 +56,10 @@ public class ProductServiceImpl implements ProductService {
 		public void deleteProduct(ProductVO vo) {
 			productDAO.deleteProduct(vo);
 		}
+		// 상품 검색
+		@Override
+		public List<ProductVO> searchItems(Criteria cri) {
+			return productDAO.searchItems(cri);
+		}
 	
 }

@@ -149,11 +149,14 @@
             <!-- main content -->
 				<div class="col-sm-8" style="text-align:center;">
 					<h2 class="title text-center">환불 및 교환</h2>
-               <form  action="mOrder.do">
+               <form  id="returnFrm" method="GET">
                <table id="returnTbl">
                   <tr>
                      <th scope="row">환불 및 교환</th>
                      <td>
+	               		<!-- hidden -->
+	               		<input type="hidden" name="order_detail_number" value="${order_detail_number }"/>
+	               		<input type="hidden" name="user_id" value="${sessionScope.login}"/>
                         <input type="radio" name="state" value="refund"/>환불
                         <input type="radio" name="state" value="exchange"/>교환
                      </td>
@@ -165,11 +168,17 @@
                </tr>
                   <tr>
                      <th scope="row">사유 선택</th>
-                        <td><select></select></td>
+                        <td><select name="refund_reason">
+                        	<option value="단순변심">단순변심</option>
+                        	<option value="상품불량">상품불량</option>
+                        	<option value="배송지연">배송지연</option>
+                        	<option value="상품정보와 상이">상품정보와 상이</option>
+                        </select></td>
                   </tr>
+                  <tr></tr>
                   <tr>
                         <th scope="row">상세 사유</th>
-                        <td><textarea style="height: 150pt;"></textarea></td>
+                        <td><textarea name="refund_reason_detail" style="height: 150pt;"></textarea></td>
                   </tr>
                   <tr>
                      <td colspan="2">
@@ -178,7 +187,7 @@
                   </tr>
                   <tr>
                      <td colspan="2">
-                        <input type="submit" value="신청" />
+                        <input type="submit" value="신청" id="returnBtn"/>
                      </td>
                   </tr>
                </table>
@@ -211,32 +220,6 @@
 	</div>
 	<!-- /logout Modal -->
 	
-	<!-- password check Modal -->
-	<div class="modal fade" id="passwordModalCenter" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h2 class="modal-title" id="exampleModalLabel">Petdo - 비밀번호 확인</h2>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body" style="padding: 10px;">
-					비밀번호를 한번 더 입력해주세요. <br/>
-					<input type="password" id="pwdInput" placeholder="비밀번호" style="width:100%"/>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal" style="border-radius: 10px;">취소</button>
-					<button class="btn btn-primary" type="button" id="pwdChk"
-						data-dismiss="modal" style="border-radius: 10px; margin-top:0px;">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /password check Modal -->
 	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
@@ -272,5 +255,25 @@
 	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
     <script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
     <script src="<%=pjName %>/resources/js/main.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	
+    	let frm = $('form#returnFrm');
+    	
+    	//환불/교환 버튼 클릭시
+    	$('#returnBtn').click(function(){
+    		
+    		//환불 테이블에 입력
+    		if($('input[value="return"]')) {
+    			frm.attr('action','insertReturn.do');
+    		}
+    		//교환 테이블에 입력
+    		else if($('input[value="exchange"]')){
+    			frm.attr('action','insertExchange.do');
+    		}
+    		frm.submit();
+    	})//end of click
+    })
+    </script>
 </body>
 </html>

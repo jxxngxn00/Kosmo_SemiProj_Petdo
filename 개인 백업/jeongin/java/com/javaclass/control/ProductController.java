@@ -54,19 +54,17 @@ public class ProductController {
 		return "product/product-details";
 	}
 
-	
-	
-//
-//	// 상품목록페이지 부르기
-//	@RequestMapping("/getProductList.do")
-//	public void list(ProductVO vo, Model m) {
-//		m.addAttribute("productList", productService.getProductList(vo));
-//	}
-
 	// 상품목록 페이지 부르기
 	@RequestMapping("/all-product-shop.do")
 	public String allProductShop() {
 		return "product/all-product-shop";
+	}
+	
+	// 상품 검색 결과 출력
+	@RequestMapping("/searchItems.do")
+	public String searchItems(ProductVO vo, Model model) {
+		model.addAttribute("productList", productService.searchItems(cri));
+		return "product/getProductList";
 	}
 
 	

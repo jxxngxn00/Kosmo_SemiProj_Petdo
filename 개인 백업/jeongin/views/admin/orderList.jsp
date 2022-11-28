@@ -235,24 +235,31 @@
 									<tbody>
 										<c:forEach items="${orderList}" var="list">
 											<tr>
-												<td>${list.order_number}</td>
+												<td>${list.order_detail_number}</td>
 												<td>${list.order_date}</td>
 												<td>${list.product_count}</td>
 												<td>${list.product_name}</td>
 												<td>${list.product_price}</td>
 												<td><c:choose>
-														<c:when test="${list.order_detail_status eq '배송완료' }">
+														<c:when test="${list.order_detail_status eq '완료' }">
 															<a href="#" class="btn btn-success btn-icon-split"> <span
 																class="icon text-white-50"> <i
 																	class="fas fa-check"></i>
 															</span> <span class="text">배송완료</span>
 															</a>
 														</c:when>
-														<c:when test="${list.order_detail_status eq '환불교환' }">
+														<c:when test="${list.order_detail_status eq '환불' }">
 															<a href="#" class="btn btn-warning btn-icon-split"> <span
 																class="icon text-white-50"> <i
 																	class="fas fa-exclamation-triangle"></i>
-															</span> <span class="text">환불/교환</span>
+															</span> <span class="text">환불</span>
+															</a>
+														</c:when>
+														<c:when test="${list.order_detail_status eq '교환' }">
+															<a href="#" class="btn btn-warning btn-icon-split"> <span
+																class="icon text-white-50"> <i
+																	class="fas fa-exclamation-triangle"></i>
+															</span> <span class="text">교환</span>
 															</a>
 														</c:when>
 														<c:when test="${list.order_detail_status eq '준비중' }">
