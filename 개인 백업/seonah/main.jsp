@@ -55,15 +55,11 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav" id="headerbar">
-							<li class="ment" style="margin-top: 12px;">${sessionScope.login}님
+							<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
 								환영합니다.</li>
-							<li><a href="#" data-toggle="modal" data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></i></a></li>
-							<li><a href="myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
+							<li><a href="logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
+							<li><a href="myPage/account.do"><i class="fa fa-user"></i></a></li>
 							<li><a href="pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
-							<c:if test="${'admin' eq sessionScope.login }">
-								<li><a href="admin.do"><i class="fa fa-cogs"
-										aria-hidden="true"></i></a></li>
-							</c:if>
 						</ul>
 
 					</div>
@@ -91,39 +87,37 @@
 							</button>
 						</div>
 
+						
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="product/getProductList.do">케어<i
+								<li class="dropdown"><a href="main.do">홈</a></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/care1-shop.do">목욕</a></li>
-										<li><a href="product/care2-shop.do">미용</a></li>
+										<li><a href="product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="product/toilet2-shop.do">위생용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="product/food-shop.do">식품<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="product/food1-shop.do">간식</a></li>
-										<li><a href="product/food2-shop.do">사료</a></li>
-										<li><a href="product/food3-shop.do">영양제</a></li>
+										<li><a href="product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="product/getCategoryList.do?category_code=7">영양제</a></li>
 									</ul></li>
-								<li><a href="product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="product/closet-shop.do">의류<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="product/closet2-shop.do">아우터</a></li>
-										<li><a href="product/closet3-shop.do">상의</a></li>
-										<li><a href="product/closet4-shop.do">악세사리</a></li>
+										<li><a href="product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
 								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
 								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
@@ -207,15 +201,15 @@
 				<div class="productinfo text-center">
 					<div class="product-image-wrapper">
 						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+							<img src="<%=pjName%>/resources/images/main/main_best1.jpg"
 								alt="" />
 							<p>
-								<a href="product/product-details.do">테디 블라썸 져지</a>
+								<a href="product/product-details.do">스펀지 타월L</a>
 							</p>
 							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+								style="font-size: 16px; color: #000000;">5,900원 &nbsp;</span>
 							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">7,000원</span>
 							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
 								id="new" width="2px" height="auto" alt="" /> <img
 								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
@@ -230,13 +224,13 @@
 				<div class="productinfo text-center">
 					<div class="product-image-wrapper">
 						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+							<img src="<%=pjName%>/resources/images/main/main_best2.jpg"
 								alt="" />
-							<p>테디 블라썸 져지</p>
+							<p>히트랩 패딩</p>
 							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+								style="font-size: 16px; color: #000000;">28,000원 &nbsp;</span>
 							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">32,000원</span>
 							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
 								id="new" width="2px" height="auto" alt="" /> <img
 								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
@@ -252,13 +246,13 @@
 				<div class="productinfo text-center">
 					<div class="product-image-wrapper">
 						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
+							<img src="<%=pjName%>/resources/images/main/main_best3.jpg"
 								alt="" />
-							<p>테디 블라썸 져지</p>
+							<p>레인보우 링스/플라워 샤워 시리얼</p>
 							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">42,000원 &nbsp;</span>
+								style="font-size: 16px; color: #000000;">7,900원 &nbsp;</span>
 							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
+								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">9,000원</span>
 							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
 								id="new" width="2px" height="auto" alt="" /> <img
 								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
@@ -285,10 +279,10 @@
 							<div class="single-products">
 								<div class="productinfo text-center">
 								
-									<img src="<%=pjName%>/resources/images/home/gallery2.jpg"
+									<img src="<%=pjName%>/resources/images/main/main_new1.png"
 										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
+									<h2>로얄캐닌 미니 인도어 퍼피 3kg</h2>
+									<p>39,900원</p>
 								</div>
 							</div>
 						</div>
@@ -298,10 +292,10 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/gallery2.jpg"
+									<img src="<%=pjName%>/resources/images/main/main_new2.jpg"
 										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
+									<h2>어스레이티드 풉백 배변봉투</h2>
+									<p>10,700원</p>
 								</div>
 							</div>
 						</div>
@@ -311,10 +305,10 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/gallery3.jpg"
+									<img src="<%=pjName%>/resources/images/main/main_new3.jpg"
 										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
+									<h2>수딩 풋클렌저</h2>
+									<p>16,900원</p>
 								</div>
 							</div>
 						</div>
@@ -324,10 +318,10 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/gallery4.jpg"
+									<img src="<%=pjName%>/resources/images/main/main_new4.png"
 										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
+									<h2>하이포닉 키토산 탈취제</h2>
+									<p>11,000원</p>
 								</div>
 							</div>
 						</div>
@@ -338,10 +332,10 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/home/gallery4.jpg"
+									<img src="<%=pjName%>/resources/images/main/main_new5.jpg"
 										alt="" />
-									<h2>$56</h2>
-									<p>Easy Polo Black Edition</p>
+									<h2>카리나 티셔츠</h2>
+									<p>23,000원</p>
 								</div>
 							</div>
 						</div>
@@ -352,9 +346,9 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/home/gallery3.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
+								<img src="<%=pjName%>/resources/images/main/main_new6.JPG" alt="" />
+								<h2>수딩 리무버패드(눈물자국 패드)</h2>
+								<p>16,900원</p>
 							</div>
 						</div>
 					</div>
@@ -364,9 +358,9 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/home/gallery2.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
+								<img src="<%=pjName%>/resources/images/main/main_new7.jpg" alt="" />
+								<h2>자이언트 요기 토일렛</h2>
+								<p>22,000원</p>
 							</div>
 						</div>
 					</div>
@@ -376,9 +370,9 @@
 					<div class="product-image-wrapper">
 						<div class="single-products">
 							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/home/gallery2.jpg" alt="" />
-								<h2>$56</h2>
-								<p>Easy Polo Black Edition</p>
+								<img src="<%=pjName%>/resources/images/main/main_new8.JPG" alt="" />
+								<h2>코듀로이 패딩 자켓</h2>
+								<p>45,000원</p>
 							</div>
 						</div>
 					</div>
@@ -707,10 +701,20 @@
 					style="border-radius: 50%;"></i>
 				</a>
 			</div>
+			
+		<div style="float: left; display: inline-block; margin-top: 30px;">
+		<hr/>
+		<h2 class="title text-center"
+				style="text-align: CENTER; font-size: 45px; color: #FF9933">EVENT</h2>
+			<video muted autoplay loop>
+	      			<source src="<%=pjName%>/resources/images/shop/VIDEO.mp4" type="video/mp4">
+	    	</video>
+	    	<img src="<%=pjName%>/resources/images/shop/mainbanner.jpg" alt="" style=" margin-top: 20px; height: 537px;"/>
+		</div>
 		</div>
 	<!--/recommended_items-->
 
-
+		
 	<!-- logout Modal -->
 	<div class="modal fade" id="logoutModalCenter" tabindex="-1"
 		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -734,12 +738,7 @@
 		</div>
 	</div>	
 		
-		<hr/>
-		<br/>
-		<video muted autoplay loop>
-      			<source src="<%=pjName%>/resources/images/페스룸.mp4" type="video/mp4">
-    	</video>
-    		
+		
 	
 	<!-- /logout Modal -->
 
