@@ -96,40 +96,37 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="../product/care-shop.do">케어<i
+								<li class="dropdown"><a href="../main.do">홈</a></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/care1-shop.do">목욕</a></li>
-										<li><a href="../product/care2-shop.do">미용</a></li>
+										<li><a href="product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="product/getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="../product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="../product/food-shop.do">식품<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="../product/food1-shop.do">간식</a></li>
-										<li><a href="../product/food2-shop.do">사료</a></li>
-										<li><a href="../product/food3-shop.do">영양제</a></li>
+										<li><a href="product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="product/getCategoryList.do?category_code=7">영양제</a></li>
 									</ul></li>
-								<li><a href="../product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="../product/closet2-shop.do">아우터</a></li>
-										<li><a href="../product/closet3-shop.do">상의</a></li>
-										<li><a href="../product/closet4-shop.do">악세사리</a></li>
+										<li><a href="product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="product/getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
-								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-								<li><a href="../blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
 							</ul>
 						</div>
 						<div class="search_box pull-right">
@@ -163,7 +160,7 @@
 			</div>
 
 			<div class="row productInfo" style="width: 40%; float: right;">
-				<div class="form-group" style="text-align: center;">
+				<div class="form-group" style="text-align: left;">
 					<h3 class="page-header">
 						<span>${getProduct.product_name}</span><br>
 					</h3>
@@ -189,19 +186,22 @@
 					</select>
 				</div>
 				<hr>
-				<form action="../cart/insert.do" id="cart-form">
-				<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
+				 <form action="../cart/insert.do" id="cart-form">
+            	<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
+            	<input type="hidden" name="product_name" value="${getProduct.product_name}"/>
+            	<input type="hidden" name="user_id" value="${user_id}"/>
+            	<input type="hidden" name="product_price" value="${getProduct.product_price}"/>
+
 				<div class="row"
-					style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
-					<div class="selected_option" style="text-align: right;"></div>
-					<div style="text-align: center;">
-						<a href="../pay/checkout.do"><button class="btn btn-default">주문하기</button></a>
-						<a href="../cart/cartList.do"><button id= "submit" class="btn btn-fefault cart"
+					style="margin-top: 20px; margin-left: 50px;">
+					<div class="selected_option" style="text-align: right; margin-top: 230px;"></div>
+					<div class="orderbtn" style="text-align: center; ">
+						<a href="../pay/checkout.do"><button class="btn btn-fefault cart">주문하기</button></a>
+						<a href="../cart/cartList.do"><button id= "submit" class="btn btn-fault cart"
 								style="width: 200px">장바구니</button></a>
 					</div>
 				</div>
 				</form>
-				<hr>
 			</div>
 		</div>
 
@@ -230,11 +230,6 @@
 			<img src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}' width=100%; height=auto;>
 		</div>
 		
-		<div id="product-qna" class="row qnas" style="text-align: center; height: 700px;">
-			<h1 class="page-header">상품 Q&A</h1>
-            /* Q&A 테이블 */
-          
-		</div>
 		
 		<div class="view-reviews" style="text-align: center; margin: 80px 0;">
 			<h1 class="page-header" style="margin-bottom: 50px;  font-weight: bold">리뷰</h1>
