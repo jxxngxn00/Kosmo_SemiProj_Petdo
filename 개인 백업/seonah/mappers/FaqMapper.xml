@@ -14,10 +14,9 @@
 	            faq_seq
 	            , faq_title
 	            , faq_writer
-	            , faq_content
-	            <if test="faq_name != null">
+	            <if test="faq_name != null or faq_mainName != null">
 				<!-- 사진 파일이 업로드 되었을때 -->
-				, faq_name , faq_realname, faq_fsize
+				, faq_name , faq_realname, faq_fsize, faq_mainName, faq_mainRealName, faq_mainFsize
 			    </if>
 	            , faq_date
 	            , faq_tag1
@@ -28,9 +27,8 @@
 	        	faq_board_seq.nextval,
 	            #{faq_title}
 	            , #{faq_writer}
-	            , #{faq_content}
-	            <if test="faq_name != null">
-	            ,#{faq_name},#{faq_realname},#{faq_fsize}
+	            <if test="faq_name != null or faq_mainName != null">
+	            ,#{faq_name},#{faq_realname},#{faq_fsize},#{faq_mainName},#{faq_mainRealName},#{faq_mainFsize}
 	            </if>
 	            , SYSDATE
 	            , #{faq_tag1}
@@ -44,13 +42,15 @@
 	        update faq_board set
 	            faq_title = #{faq_title}
 	            , faq_writer = #{faq_writer}
-	            , faq_content = #{faq_content}
 	            , faq_date = SYSDATE
-	           <if test="faq_name != null">
+	           <if test="faq_name != null or faq_mainName != null">
 				<!-- 사진 파일이 업로드 되었을때 -->
 				, faq_name = #{faq_name}
 				, faq_realname = #{faq_realname}
 				, faq_fsize = #{faq_fsize}
+				, faq_mainName = #{faq_mainName}
+				, faq_mainRealName = #{faq_mainRealName}
+				, faq_mainFsize = #{faq_mainFsize}
 			  </if>
 	            , faq_tag1 = #{faq_tag1}
 	            , faq_tag2 = #{faq_tag2}
@@ -74,7 +74,9 @@
 				, faq_name 
 				, faq_realname
 				, faq_fsize
-	            , faq_content
+				, faq_mainName
+				, faq_mainRealName
+				, faq_mainFsize
 	            , faq_date
 	            , faq_tag1
 	            , faq_tag2
@@ -89,10 +91,12 @@
 			SELECT faq_seq 
 				  , faq_title 
 				  , faq_writer 
-				  , faq_content
 				  , faq_name 
 				  , faq_realname
 				  , faq_fsize
+				  , faq_mainName
+				  , faq_mainRealName
+				  , faq_mainFsize
 				  , faq_date
 				  , faq_tag1
 	              , faq_tag2
