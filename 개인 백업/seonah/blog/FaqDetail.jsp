@@ -67,44 +67,42 @@
 						</button>
 					</div>
 					
-					<div class="mainmenu pull-left ">
-						<ul class="nav navbar-nav collapse navbar-collapse" style="font-size: 0;">
-							
-							<li class="dropdown"><a href="../product/care-shop.do">케어<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/care1-shop.do">목욕</a></li>
-									<li><a href="../product/care2-shop.do">미용</a></li> 
-								</ul>
-							</li> 
-							<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
-								</ul>
-							</li> 
-							<li><a href="../product/toy-shop.do">장난감</a></li>
-							
-							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" id="sub-menu-txt" class="sub-menu">
-									<li><a href="../product/food1-shop.do">간식</a></li>
-									<li><a href="../product/food2-shop.do">사료</a></li>
-									<li><a href="../product/food3-shop.do">영양제</a></li>
-								</ul>
-							</li>
-							<li><a href="../product/living-shop.do">리빙용품</a></li> 
-							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-									<li><a href="../product/closet2-shop.do">아우터</a></li>
-									<li><a href="../product/closet3-shop.do">상의</a></li>
-									<li><a href="../product/closet4-shop.do">악세사리</a></li>
-								</ul>
-							</li>
-							<li><a href="notice.do" style="color: #FF9933;">NOTICE</a></li> 
-							<li><a href="faq.do" style="color: #FF9933;" >FAQ</a></li>
-							<li><a href="qna.do" style="color: #FF9933;" >Q&A</a></li>
-						</ul>
-					</div>
+	<div class="mainmenu pull-left ">
+							<ul class="nav navbar-nav collapse navbar-collapse"
+								style="font-size: 0;">
+								<li class="dropdown"><a href="main.do">홈</a></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=14">케어<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="product/getCategoryList.do?category_code=15">미용</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=9">배변/위생<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=8">위생용품</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=1">의류<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="product/getCategoryList.do?category_code=4">악세사리</a></li>
+									</ul></li>
+								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+							</ul>
+						</div>
 					<div class="search_box pull-right">
 							<input type="text" placeholder="검색"/>
 							<a href="product/searchpage.do" style="margin-left: 140px; margin-top:-2px; position: absolute;"><i class="fa-sharp fa-solid fa-magnifying-glass" style="color: black;"></i></a>
@@ -117,177 +115,23 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							
-							 <div class="panel panel-default">
-								<div class="panel-heading">
-								   <h4 class="panel-title"><a href="faq.do">FAQ</a></h4>
-								</div>
-							 </div>
-							 <div class="panel panel-default">
-								<div class="panel-heading">
-								   <h4 class="panel-title"><a href="qna.do">QnA</a></h4>
-								</div>
-							 </div>
-							 <div class="panel panel-default">
-								<div class="panel-heading">
-								   <h4 class="panel-title"><a href="notice.do">공지사항</a></h4>
-								</div>
-							 </div>
-						  </div><!--/category-productsr-->
-						
-						<div class="shipping text-center"><!--shipping-->
-							<img src="<%=pjName %>/resources/images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
-					</div>
-				</div>
+			
 				<div class="col-sm-9">
 					<div class="blog-post-area">
 						<div class="single-blog-post">
-							<h3>${faq.faq_title}</h3>
+							<h3 style="font-size: 28px;">${faq.faq_title}</h3>
+							<hr/>
 							<div class="post-meta">
 								<ul>
-									<li><i class="fa fa-user"></i>${faq.faq_writer}</li>
+									<li><i class="fa-solid fa-dog"></i>${faq.faq_writer}</li>
 									<li><i class="fa fa-clock-o"></i>${faq.faq_date}</li>
 								</ul>
-								<span style="margin-left: -10px">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-								</span>
 							</div>
-									<img src="<%=pjName %>/resources/images/${faq.faq_realname}" width='40%'>
+									<img src="<%=pjName %>/resources/images/faq/${faq.faq_mainRealName}" width='100%'>
 
-							<div class="pager-area">
-								<ul class="pager pull-right">
-									<li><a href="#">Pre</a></li>
-									<li><a href="#">Next</a></li>
-								</ul>
-							</div>
+							
 						</div>
 					</div><!--/blog-post-area-->
-
-					<div class="rating-area">
-						<ul class="ratings">
-							<li class="rate-this">Rate this item:</li>
-							<li>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star color"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</li>
-							<li class="color">(6 votes)</li>
-						</ul>
-						<ul class="tag">
-							<li>TAG:</li>
-							<li><a class="color" href="">위생/배변<span> / </span></a></li>
-							<li><a class="color" href="">급식기/급수기<span> / </span></a></li>
-							<li><a class="color" href="">장난감</a></li>
-						</ul>
-					</div><!--/rating-area-->
-				
-					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">recommended items</h2>
-						
-						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="<%=pjName %>/resources/images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			
-						</div>
-					</div><!--/recommended_items-->
 
 				</div>	
 			</div>

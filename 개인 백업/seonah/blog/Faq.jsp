@@ -68,43 +68,41 @@
 					</div>
 					
 					<div class="mainmenu pull-left ">
-						<ul class="nav navbar-nav collapse navbar-collapse" style="font-size: 0;">
-							
-							<li class="dropdown"><a href="../product/care-shop.do">케어<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/care1-shop.do">목욕</a></li>
-									<li><a href="../product/care2-shop.do">미용</a></li> 
-								</ul>
-							</li> 
-							<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-									<li><a href="../product/toilet2-shop.do">위생용품</a></li>
-								</ul>
-							</li> 
-							<li><a href="../product/toy-shop.do">장난감</a></li>
-							
-							<li class="dropdown"><a href="../product/food-shop.do">식품<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" id="sub-menu-txt" class="sub-menu">
-									<li><a href="../product/food1-shop.do">간식</a></li>
-									<li><a href="../product/food2-shop.do">사료</a></li>
-									<li><a href="../product/food3-shop.do">영양제</a></li>
-								</ul>
-							</li>
-							<li><a href="../product/living-shop.do">리빙용품</a></li> 
-							<li class="dropdown"><a href="../product/closet-shop.do">의류<i class="fa fa-angle-down"></i></a>
-								<ul role="menu" class="sub-menu">
-									<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-									<li><a href="../product/closet2-shop.do">아우터</a></li>
-									<li><a href="../product/closet3-shop.do">상의</a></li>
-									<li><a href="../product/closet4-shop.do">악세사리</a></li>
-								</ul>
-							</li>
-							<li><a href="notice.do" style="color: #FF9933;">NOTICE</a></li> 
-							<li><a href="faq.do" style="color: #FF9933;" >FAQ</a></li>
-							<li><a href="qna.do" style="color: #FF9933;" >Q&A</a></li>
-						</ul>
-					</div>
+							<ul class="nav navbar-nav collapse navbar-collapse"
+								style="font-size: 0;">
+								<li class="dropdown"><a href="main.do">홈</a></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=14">케어<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="product/getCategoryList.do?category_code=15">미용</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=9">배변/위생<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="product/getCategoryList.do?category_code=8">위생용품</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=5">식품<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" id="sub-menu-txt" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="product/getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="product/getCategoryList.do?category_code=7">영양제</a></li>
+									</ul></li>
+								<li class="dropdown"><a href="product/getCategoryList.do?category_code=1">의류<i
+										class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="product/getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="product/getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="product/getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="product/getCategoryList.do?category_code=4">악세사리</a></li>
+									</ul></li>
+								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+							</ul>
+						</div>
 						<div class="search_box pull-right">
 							<input type="text" placeholder="검색"/>
 							<a href="product/searchpage.do" style="margin-left: 140px; margin-top:-2px; position: absolute;"><i class="fa-sharp fa-solid fa-magnifying-glass" style="color: black;"></i></a>
@@ -115,45 +113,29 @@
 			</header>
 	
 	<section>
-
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-11">
-					<div class="blog-post-area-list" id="post-meta">
-						<h2 class="title text-center">FAQ</h2>
-						<div class="single-blog-post-list" >
-						
-						<c:forEach items ="${faqList }" var="vo">
-						
-							<h3><b><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_title}</a></b></h3>
-							<div class="post-meta" >
+			<div class="row" >
+			<h2 class="title text-center" style="font-size: 40px">FAQ</h2>
+				<div class="col-sm-12" style="float: left; margin-left: 30px">
+					<div class="blog-post-area-list" id="post-meta" style="float: left;  width: 100%">
+					<c:forEach items ="${faqList }" var="vo">
+						<div class="single-blog-post-list" style="float: left; color: black; margin-right: 70px;">
+							<h3 style="font-size: 20px; color: black;" id="faqtitle"><b><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_title}</a></b></h3>
+							<div class="post-meta" style="float: center; text-align: center; margin-left: 115px;">
 								<ul>
-									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag1}</a></li>
-									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag2}</a></li>
-									<li><i class="fa fa-user"></i><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag3}</a></li>
+									<li><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag1}</a></li>
+									<li><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag2}</a></li>
+									<li><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_tag3}</a></li>
 								</ul>
-								<span>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star-half-o"></i>
-								</span>
+								
 							</div>
-							<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}"><img src="<%=pjName %>/resources/images/${vo.faq_realname}" width="20%" height="auto"></a>
-							<p><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a></p>
-							<a  class="btn btn-primary" href="faqDetail.do?faq_seq=${vo.faq_seq}">Read More</a>
+							<a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}"><img src="<%=pjName %>/resources/images/${vo.faq_realname}" width="100%" height="auto"></a>
+							<p style="font-size: 15px;"><a href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}">${vo.faq_writer}</a></p>
+							<a id="clickbtn" class="btn btn-primary" href="../blog/faqDetail.do?faq_seq=${vo.faq_seq}" style="float: center; text-align: center;">Click</a>
 						</div>
 		 </c:forEach>		
 						
-						<div class="pagination-area">
-							<ul class="pagination">
-								<li><a href="" class="active">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
-							</ul>
-						</div>
+					
 					</div>
 				</div>
 			</div>
