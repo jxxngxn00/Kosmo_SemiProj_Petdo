@@ -29,6 +29,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
+	
+
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -69,7 +71,7 @@
 								<li><a href="#" data-toggle="modal"
 									data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
 								<li><a href="account.do?user_id=${userInfo.user_id }"><i class="fa fa-user"></i></a></li>
-								<li><a href="../pay/cart.do"><i
+								<li><a href="../cart/cartList.do"><i
 										class="fa fa-shopping-cart"></i></a></li>
 								<c:if test="${'admin' eq sessionScope.login }">
 									<li><a href="../admin.do"><i class="fa fa-cogs"
@@ -192,7 +194,7 @@
 						<div class="form-group col-md-12">
 							<p id="customerid"
 								style="float: left; margin-top: 6px; font-family: 'Noto Sans KR', sans-serif;">비밀번호</p>
-							<input type="password" name="user_id" class="form-control"  value="${userInfo.user_pwd }"
+							<input type="password" name="user_pwd" class="form-control"  value="${userInfo.user_pwd }"
 								required="required" style="width: 40%; margin-left: 115px;">
 						</div>
 						<div class="form-group col-md-12">
@@ -211,7 +213,7 @@
 							<p id="customerEmail"
 								style="float: left; font-family: 'Noto Sans KR', sans-serif; margin-top: 6px;">주소</p>
 							<div>
-								<input type="text" name="subject" class="form-control"
+								<input type="text" class="form-control" name="user_address1"
 									required="required"  value="${userInfo.user_address1 }"
 									style="width: 83%; margin-left: 115px; margin-top: 5px;">
 							</div>
@@ -263,7 +265,7 @@
 					<li style="margin-left: -38px;"><a href="mOrder.do?user_id=${userInfo.user_id }"
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
 							내역</a><br />
-					<br /> <a href="../pay/cart.do"
+					<br /> <a href="../cart/cartList.do"
 						style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
 					</li>
 				</ul>
@@ -296,6 +298,19 @@
 		</div>
 	</div>
 	<!-- /logout Modal -->
+
+	<!-- delete User Modal -->
+        <section class="modal modal-section type-confirm">
+            <div class="enroll_box">
+                <p class="menu_msg"></p>
+            </div>
+            <div class="enroll_btn">
+                <button class="btn pink_btn btn_ok">확인</button>
+                <button class="btn gray_btn modal_close">취소</button>
+            </div>
+        </section>
+        <!-- delete User Modal -->
+
 
 	<footer id="footer">
 		<!--Footer-->
@@ -330,23 +345,6 @@
 	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
 	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
 	<script src="<%=pjName%>/resources/js/main.js"></script>
-	<script type="text/javascript">
-	$(function(){
-		let frm = $('#infoFrm');
-		
-		//수정버튼 클릭시
-		$('#modify').click(function(){
-			frm.attr('action','modify.do');
-			frm.submit();
-		});
-		
-		//탈퇴버튼 클릭시
-		$('#delete').click(function(){
-			frm.attr('action','delete.do');
-			frm.submit();
-		});
-	})
-	
-	</script>
+	<script src="<%=pjName%>/resources/js/myPageCustom.js" type="text/javascript"></script>
 </body>
 </html>

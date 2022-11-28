@@ -2653,7 +2653,7 @@ body{
 }
 .wrapper h2{
   background-color: #fcfcfc;
-  color: #7ed321;
+  color: #FE980F;
   font-size: 24px;
   padding: 10px;
   margin-bottom: 20px;
@@ -2662,7 +2662,7 @@ body{
 }
 h4{
   padding-bottom: 5px;
-  color: #7ed321;
+  color: #FE980F;
 }
 .input-group{
   margin-bottom: 8px;
@@ -2692,10 +2692,10 @@ h4{
   color: #333;
 }
 .name:focus, .dob:focus{
-  -webkit-box-shadow:0 0 2px 1px #7ed32180;
-  -moz-box-shadow:0 0 2px 1px #7ed32180;
-  box-shadow: 0 0 2px 1px #7ed32180;
-  border: 1px solid #7ed321;
+  -webkit-box-shadow:0 0 2px 1px #FE980F80;
+  -moz-box-shadow:0 0 2px 1px #FE980F80;
+  box-shadow: 0 0 2px 1px #FE980F80;
+  border: 1px solid #FE980F;
 }
 .input-box .icon{
   width: 48px;
@@ -2716,9 +2716,9 @@ h4{
   border-right: none;
 }
 .name:focus + .icon{
-  background-color: #7ed321;
+  background-color: #FE980F;
   color: #fff;
-  border-right: 1px solid #7ed321;
+  border-right: 1px solid #FE980F;
   border: none;
   transition: 1s;
 }
@@ -2754,7 +2754,7 @@ h4{
   border-bottom-right-radius: 3px;
 }
 .radio:checked + label{
-  background-color: #7ed321;
+  background-color: #FE980F;
   color: #fff;
   transition: 0.5s;
 }
@@ -2772,7 +2772,7 @@ h4{
   transition: all 0.2s ease;
 }
 .input-box select:focus{
-  background-color: #7ed321;
+  background-color: #FE980F;
   color: #fff;
   text-align: center;
 }
@@ -2780,7 +2780,7 @@ button{
   width: 100%;
   background: transparent;
   border: none;
-  background: #7ed321;
+  background: #FE980F;
   color: #fff;
   padding: 15px;
   border-radius: 4px;

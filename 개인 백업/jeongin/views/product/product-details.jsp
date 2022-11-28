@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.javaclass.domain.ProductVO"%>
 <%@page import="com.javaclass.dao.ProductDAO"%>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,32 +14,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>상품</title>
-<% String pjName="/petdo"; %>
-<link href="<%=pjName %>/resources/mCss/bootstrap.min.css"
+<title>${getProduct.product_name}</title>
+<%
+	String pjName = "/petdo";
+%>
+<link href="<%=pjName%>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/font-awesome.min.css"
+<link href="<%=pjName%>/resources/mCss/font-awesome.min.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/prettyPhoto.css"
+<link href="<%=pjName%>/resources/mCss/prettyPhoto.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/price-range.css"
+<link href="<%=pjName%>/resources/mCss/price-range.css"
 	rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/animate.css" rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/main.css" rel="stylesheet">
-<link href="<%=pjName %>/resources/mCss/responsive.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/animate.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/main.css" rel="stylesheet">
+<link href="<%=pjName%>/resources/mCss/responsive.css" rel="stylesheet">
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
 <link rel="shortcut icon" href="../images/ico/favicon.ico">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-144-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-114-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-72-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="<%=pjName %>/resources/images/ico/apple-touch-icon-57-precomposed.png">
+	href="<%=pjName%>/resources/images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -56,13 +59,13 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav" id="headerbar">
-							<li class="ment" style="margin-top: 12px;"><%= session.getAttribute("login") %>님
+							<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
 								환영합니다.</li>
 							<li><a href="../logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
 							<li><a
 								href="../myPage/account.do?user_id=${sessionScope.login  }"><i
 									class="fa fa-user"></i></a></li>
-							<li><a href="../pay/cart.do"><i
+							<li><a href="../cart/cartList.do"><i
 									class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"
@@ -97,36 +100,37 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
-								<li class="dropdown"><a href="../product/care-shop.do">케어<i
+								<li class="dropdown"><a href="../main.do">홈</a></li>
+								<li class="dropdown"><a
+									href="getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/care1-shop.do">목욕</a></li>
-										<li><a href="../product/care2-shop.do">미용</a></li>
+										<li><a href="getCategoryList.do?category_code=14">목욕</a></li>
+										<li><a href="getCategoryList.do?category_code=15">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
+								<li class="dropdown"><a
+									href="getCategoryList.do?category_code=9">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
-										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
+										<li><a href="getCategoryList.do?category_code=9">배변용품</a></li>
+										<li><a href="getCategoryList.do?category_code=8">위생용품</a></li>
 									</ul></li>
-								<li><a href="../product/toy-shop.do">장난감</a></li>
-
-								<li class="dropdown"><a href="../product/food-shop.do">식품<i
+								<li class="dropdown"><a
+									href="getCategoryList.do?category_code=5">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a href="../product/food1-shop.do">간식</a></li>
-										<li><a href="../product/food2-shop.do">사료</a></li>
-										<li><a href="../product/food3-shop.do">영양제</a></li>
+										<li><a href="getCategoryList.do?category_code=5">간식</a></li>
+										<li><a href="getCategoryList.do?category_code=6">사료</a></li>
+										<li><a href="getCategoryList.do?category_code=7">영양제</a></li>
 									</ul></li>
-								<li><a href="../product/living-shop.do">리빙용품</a></li>
-								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
+								<li class="dropdown"><a
+									href="getCategoryList.do?category_code=1">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
-										<li><a href="../product/closet2-shop.do">아우터</a></li>
-										<li><a href="../product/closet3-shop.do">상의</a></li>
-										<li><a href="../product/closet4-shop.do">악세사리</a></li>
+										<li><a href="getCategoryList.do?category_code=1">프리미엄</a></li>
+										<li><a href="getCategoryList.do?category_code=2">아우터</a></li>
+										<li><a href="getCategoryList.do?category_code=3">상의</a></li>
+										<li><a href="getCategoryList.do?category_code=4">악세사리</a></li>
 									</ul></li>
 								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
 								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
@@ -135,7 +139,7 @@
 						</div>
 						<div class="search_box pull-right">
 							<input type="text" placeholder="검색" /> <a
-								href="../product/searchpage.do"
+								href="../searchpage.do"
 								style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
 								class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
 						</div>
@@ -155,34 +159,34 @@
 			<div class="row">
 				<h1 class="page-header"
 					style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
-				<input type="hidden" value="${getProduct.product_number}"
-					id="productId">
+				<input type="hidden" value="${getProduct.product_name}"
+					id="product_number" style="font-weight: bold">
 			</div>
 			<div class="row" style="float: left; text-align: center; width: 35%;">
 				<img alt="productPhoto"
-					src="/resources/upload/${getProduct.stored_file_name}" width="150%"">
+					src="<%=pjName%>/resources/images/shop/${getProduct.stored_file_name}"
+					width="150%" style="float: center;">
 			</div>
 
 			<div class="row productInfo" style="width: 40%; float: right;">
-				<div class="form-group" style="text-align: center;">
+				<div class="form-group" style="text-align: left;">
 					<h3 class="page-header">
 						<span>${getProduct.product_name}</span><br>
-						<small>${productInfo.productInfo}</small>
 					</h3>
 				</div>
 				<div class="form-group" style="text-align: left;">
-					<label>가격 : </label><span>&nbsp;<fmt:formatNumber
-							value="${getProduct.product_price}" type="number" /></span><span>&nbsp;원</span>
+					<label>가격 : </label><span>&nbsp; <fmt:formatNumber 
+							 name="product_price" value="${getProduct.product_price}"
+							type="number" /></span><span>&nbsp;${getProduct.product_price}원</span>
 					<input type="hidden" value="${getProduct.product_price}" id="price">
 				</div>
 				<div class="form-group" style="text-align: left;">
-					<label>적립금 : </label><span><fmt:parseNumber var="test"
-							value="${getProduct.product_price / 100}" integerOnly="true" />
-						${test}&nbsp;원</span>
+					<label>배송비 : </label><span>&nbsp;2500원</span>
+					<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
 				</div>
 				<div class="form-horizontal" style="text-align: left;">
-					<label>구매수량 : </label> <select name= "product_count" class="form-control"
-						id="select_count">
+					<label>구매수량 : </label> <select name="product_count"
+						class="form-control" id="select_count">
 
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -193,65 +197,141 @@
 				</div>
 				<hr>
 				<form action="../cart/insert.do" id="cart-form">
-				<input type="hidden" name= "product_number" value="${getProduct.product_number}" />
-				<div class="row"
-					style="margin-top: 20px; margin-left: -130px; margin-top: 120px;">
-					<div class="selected_option" style="text-align: right;"></div>
-					<div style="text-align: center;">
-						<a href="../pay/checkout.do"><button class="btn btn-default">주문하기</button></a>
-						<a href="../cart/cartList.do"><button id= "submit" class="btn btn-fefault cart"
-								style="width: 200px">장바구니</button></a>
+					<input type="hidden" name="product_number"
+						value="${getProduct.product_number}" /> <input type="hidden"
+						name="product_name" value="${getProduct.product_name}" /> <input
+						type="hidden" name="user_id" value="${user_id}" /> <input
+						type="hidden" name="product_price"
+						value="${getProduct.product_price}" />
+
+					<div class="row" style="margin-top: 20px; margin-left: 50px;">
+						<div class="selected_option"
+							style="text-align: right; margin-top: 230px;"></div>
+						<div class="orderbtn" style="text-align: center;">
+							<a href="../pay/checkout.do"><button
+									class="btn btn-fefault cart">주문하기</button></a> <a
+								href="../cart/cartList.do"><button id="submit"
+									class="btn btn-fault cart" style="width: 200px">장바구니</button></a>
+						</div>
 					</div>
-				</div>
 				</form>
-				<hr>
 			</div>
 		</div>
 
 
+		<hr />
 		<div class="container">
-			<div class="row nav">
+			<div class="row nav" style="margin-left: 200px">
 				<nav id="middle_nav">
-					<ul class="nav nav-tabs nav-justified">
-						<li id="about">상품상세</li>
-						<li id="review">리뷰</li>
-						<li id="qna">상품문의</li>
+					<ul class="nav nav-tabs nav-justified"
+						style="list-style-type: none; float: left;">
+						<a href="#product-info"><li id="about"
+							style="list-style-type: none; float: left;">상품상세</li></a>
+						<a href="#product-review"><li id="review"
+							style="list-style-type: none; float: left; margin-left: 260px">리뷰</li></a>
+						<a href="#product-qna"><li id="qna"
+							style="list-style-type: none; float: left; margin-left: 260px">상품문의</li></a>
 					</ul>
 				</nav>
 			</div>
 
-			<div class="row" style="margin: 50px 0;">
-				<h1 class="jumbotron">
-					<div class="container">
-						<h1>Hello world</h1>
-						<small>This is product page.</small>
-					</div>
-				</h1>
+
+
+
+
+			<img src="<%=pjName%>/resources/images/banner55.jpg" width="100%"
+				height="auto" style="margin-top: 20px; margin-bottom: 30px;" alt="" />
+
+
+
+			<div id="product-info" class="row about_product"
+				style="text-align: center;">
+				<img
+					src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}'
+					width=100%; height=auto;>
 			</div>
 
-			<div class="row about_product" style="text-align: center;">
-				<h1 class="page-header">상품 상세</h1>
 
-			</div>
-			<div class="row reviews" style="text-align: center; margin: 80px 0;">
-				<h1 class="page-header" style="margin-bottom: 50px;">Review</h1>
-				<c:forEach begin="1" end="5">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Panel title</h3>
-						</div>
-						<div class="panel-body">Panel content</div>
+			<div class="view-reviews" style="text-align: center; margin: 80px 0;">
+				<h1 class="page-header"
+					style="margin-bottom: 50px; font-weight: bold">리뷰</h1>
+				<!-- 리뷰 조회 -->
+				<c:forEach items="${orderReview}" var="vo">
+					<div class="form-group">
+						<input name="product_number" type="hidden"
+							value="${vo.product_number}" /> <label for="username"
+							style="float: left; margin-top: 5px;"> 이름 <span
+							class="require"></span>
+						</label> <input type="text" class="form-control" id="username"
+							value="${vo.review_writer}" readonly
+							style="width: 14%; margin-left: 50px;">
 					</div>
+					<div>
+						<img
+							src="<%=pjName %>/resources/images/review/${vo.review_realname}"
+							width="25%" height="auto"
+							style="float: left; margin-bottom: 15px"></a>
+					</div>
+					<div class="form-group" style="margin-top: 20px;">
+						<textarea class="form-control" rows="8" id="reviewTxt" readonly
+							style="word-break: break-all; width: 100%; margin-bottom: 30px;">${vo.review_content}</textarea>
 				</c:forEach>
 			</div>
 
-			<div class="row qnas" style="text-align: center; height: 700px;">
-				<h1 class="page-header">상품 Q&A</h1>
-				/* Q&A 테이블 */
+
+
+
+			<hr />
+			<div class="product-page-content" id="review">
+				<div class="row reviews" style="text-align: center; margin: 80px 0;">
+					<h1 class="page-header"
+						style="margin-bottom: 50px; font-weight: bold">리뷰 작성</h1>
+					<!-- 리뷰 작성 -->
+
+					<div class="product-page-content" id="review">
+						<div class="tab-content" style="width: 100%;">
+							<div class="tab-pane fade in active">
+
+								<form id="reviewRegister" action="reviewRegister.do"
+									class="reviews-form" method="post"
+									enctype="multipart/form-data" style="">
+									<div class="form-group">
+										<input name="product_number" type="hidden"
+											value="${getProduct.product_number}" /> <label
+											for="review_writer" style="float: left; margin-top: 5px;">
+											이름 <span class="require"></span>
+										</label> <input type="text" class="form-control" name="review_writer"
+											value=<%=session.getAttribute("login")%> readonly
+											style="width: 14%; margin-left: 50px;">
+									</div>
+									<div>
+										<input type="file" name="file" />
+									</div>
+									<div class="form-group" style="margin-top: 20px;">
+										<textarea class="form-control" rows="8" id="reviewTxt"
+											name="review_content"
+											style="word-break: break-all; width: 100%;"></textarea>
+									</div>
+									<div class="padding-top-20">
+										<button type="submit" id="review_btn"
+											class="btn btn-primary reviewBtn" style="float: right">작성하기</button>
+										<br /> <br /> <br />
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
 			</div>
 		</div>
 		</div>
 
+		</div>
+		</div>
 
 		<div class="underline">
 			<div class="container">
@@ -296,11 +376,19 @@
 
 
 
-	<script src="<%=pjName %>/resources/js/jquery_1.js"></script>
-	<script src="<%=pjName %>/resources/js/price-range.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="<%=pjName %>/resources/js/bootstrap.min.js"></script>
-	<script src="<%=pjName %>/resources/js/jquery.prettyPhoto.js"></script>
-	<script src="<%=pjName %>/resources/js/main.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery_1.js"></script>
+	<script src="<%=pjName%>/resources/js/price-range.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.scrollUp.min.js"></script>
+	<script src="<%=pjName%>/resources/js/bootstrap.min.js"></script>
+	<script src="<%=pjName%>/resources/js/jquery.prettyPhoto.js"></script>
+	<script src="<%=pjName%>/resources/js/main.js"></script>
+	<script type="text/javascript">
+      $(function() {
+         $("button#review_btn").click(function() { //QnA 새글 등록 실행
+            $("form#reviewRegister").submit();
+         })
+      })
+   </script>
+
 </body>
 </html>

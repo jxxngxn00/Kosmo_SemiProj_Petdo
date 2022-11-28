@@ -71,7 +71,7 @@
 								data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
 							<li><a href="account.do?user_id=${sessionScope.login }"><i
 									class="fa fa-user"></i></a></li>
-							<li><a href="../pay/cart.do"><i
+							<li><a href="../cart/cartList.do"><i
 									class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"
@@ -264,7 +264,7 @@
 						<li style="margin-left: -38px;"><a
 							href="mOrder.do?user_id=${userInfo.user_id }"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">주문
-								내역</a><br /> <br /> <a href="../pay/cart.do"
+								내역</a><br /> <br /> <a href="../cart/cartList.do"
 							style="font-family: 'Noto Sans KR', sans-serif; margin-bottom: 15px;">장바구니</a><br />
 						</li>
 					</ul>

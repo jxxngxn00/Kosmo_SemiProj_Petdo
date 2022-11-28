@@ -57,14 +57,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	//회원정보 수정
-	public MemberVO updateInfo(MemberVO vo) {
+	public int updateInfo(MemberVO vo) {
+		//System.out.println(">>>>>>update : "+vo);
 		return memberDAO.updateInfo(vo);
 	}
 
 
 	//회원정보 삭제
-	public MemberVO deleteInfo(MemberVO vo) {
-		return memberDAO.updateInfo(vo);
+	public int deleteInfo(MemberVO vo) {
+		return memberDAO.deleteInfo(vo);
 	}
 }
 

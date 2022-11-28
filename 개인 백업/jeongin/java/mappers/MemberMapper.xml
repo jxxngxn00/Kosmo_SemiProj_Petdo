@@ -44,8 +44,8 @@ UPDATE user_info SET
 user_name=#{user_name},
 user_pwd=#{user_pwd},
 user_email=#{user_email},
-user_email=#{user_phone},
-user_email=#{user_address1}
+user_phone=#{user_phone},
+user_address1=#{user_address1}
 WHERE user_id=#{user_id}
 </update>
 

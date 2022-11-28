@@ -238,9 +238,9 @@
                                     <tbody>
 										<c:forEach items="${qnaList}" var="qna">
 											<tr>
-												<td>${qna.qna_seq}</td>
-												<td>${qna.qna_title}</td>
-												<td>${qna.qDate}</td>
+												<td><a href='../blog/qnaDetail.do?qna_seq=${qna.qna_seq}'>${qna.qna_seq}</a></td>
+												<td><a href='../blog/qnaDetail.do?qna_seq=${qna.qna_seq}'>${qna.qna_title}</a></td>
+												<td><a href='../blog/qnaDetail.do?qna_seq=${qna.qna_seq}'>${qna.qDate}</a></td>
 												
 												<!-- 삭제버튼 -->
 												<td style="text-align: center;"><a href="deleteQna.do?qna_seq=${qna.qna_seq }"

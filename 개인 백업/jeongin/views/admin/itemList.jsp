@@ -209,65 +209,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">상품 목록</h1>
-                    <div class="card shadow mb-4" id="searchBox" >
-                        <div class="searchOpt"><b>카테고리 검색</b>
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                전체
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                    </div>
-                        <div class="searchOpt"><b>검색어 </b>
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                전체
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">상품명</a>
-                                <a class="dropdown-item" href="#">상품 사이즈</a>
-                                <a class="dropdown-item" href="#">상품 번호</a>
-                                <a class="dropdown-item" href="#">판매 가격</a>
-                            </div>
-                            <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            </div>
-                        </form>    
-                        </div>
-                        <div class="searchOpt"><b>상품상태 </b>
-                            <fieldset>
-                                <label>
-                                  <input type="radio" name="contact" value="sale" checked />
-                                  <span>진열중</span>
-                                </label>
-                              
-                                <label>
-                                  <input type="radio" name="contact" value="soldout" />
-                                  <span>품절</span>
-                                </label>
-                              
-                                <label>
-                                  <input type="radio" name="contact" value="ready" disabled />
-                                  <span>상품 준비중</span>
-                                </label>
-                              </fieldset>
-                        </div>
-                        <div class="searchOpt"><div class="my-2"></div>
-                        <a href="#" class="btn btn-light btn-icon-split">
-                            <span class="icon text-gray-600">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="text">Search</span>
-                        </a></div>
-                    </div>
+                    
                     <p class="mb-4"></p>
 
                     <!-- 상품목록 테이블 -->

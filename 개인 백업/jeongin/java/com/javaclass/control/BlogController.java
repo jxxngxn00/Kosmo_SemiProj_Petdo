@@ -101,15 +101,6 @@ public class BlogController {
 		else return "fail";
 	}
 
-	//QnA 댓글 목록 조회
-	
-
-	//QnA 댓글 삭제
-	
-
-	//QnA 댓글 수정
-	
-
 	/****** 공지사항 ******/
 	
 	//공지사항 페이지로 이동
@@ -140,7 +131,7 @@ public class BlogController {
 		@RequestMapping(value="/faqDetail.do", method=RequestMethod.GET)
 		public String qnaDetail(FaqVO faqvo, Model m) {
 			FaqVO result = faqService.selectFaqBoard(faqvo);
-			System.out.println("result : "+result.getFaq_content());
+			//System.out.println("result : "+result.getFaq_content());
 			m.addAttribute("faq", result);
 			return "blog/FaqDetail";
 		}

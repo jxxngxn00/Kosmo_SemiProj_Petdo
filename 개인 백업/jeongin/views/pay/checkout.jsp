@@ -61,8 +61,10 @@
 								환영합니다.</li>
 							<li><a href="#" data-toggle="modal"
 								data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></a></li>
-							<li><a href="../myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
-							<li><a href="cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+							<li><a
+								href="../myPage/account.do?user_id=${sessionScope.login }"><i
+									class="fa fa-user"></i></a></li>
+							<li><a href="../cart/cartList.do"><i class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"
 										aria-hidden="true"></i></a></li>
@@ -95,79 +97,42 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=14">케어<i
+
+								<li class="dropdown"><a href="../product/getProductList.do">케어<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=14">목욕</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=15">미용</a></li>
+										<li><a href="../product/care1-shop.do">목욕</a></li>
+										<li><a href="../product/care2-shop.do">미용</a></li>
 									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=9">배변/위생<i
+								<li class="dropdown"><a href="../product/toilet-shop.do">배변/위생<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=9">배변용품</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=8">위생용품</a></li>
+										<li><a href="../product/toilet1-shop.do">배변용품</a></li>
+										<li><a href="../product/toilet2-shop.do">위생용품</a></li>
 									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=10">장난감<i
+								<li class="dropdown"><a href="../product/food-shop.do">식품<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=10">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=12">소형-야외관리</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=11">대형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=13">대형-야외관리</a></li>
+										<li><a href="../product/food1-shop.do">간식</a></li>
+										<li><a href="../product/food2-shop.do">사료</a></li>
+										<li><a href="../product/food3-shop.do">영양제</a></li>
 									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=5">식품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=5">간식</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=6">사료</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=7">영양제</a></li>
-									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=16">리빙용품<i
-										class="fa fa-angle-down"></i></a>
-									<ul role="menu" id="sub-menu-txt" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=16">소형견</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=17">대형견</a></li>
-									</ul></li>
-								<li class="dropdown"><a
-									href="../product/getCategoryList.do?category_code=1">의류<i
+								<li class="dropdown"><a href="../product/closet-shop.do">의류<i
 										class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a
-											href="../product/getCategoryList.do?category_code=1">프리미엄</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=2">아우터</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=3">상의</a></li>
-										<li><a
-											href="../product/getCategoryList.do?category_code=4">악세사리</a></li>
+										<li><a href="../product/closet1-shop.do">프리미엄</a></li>
+										<li><a href="../product/closet2-shop.do">아우터</a></li>
+										<li><a href="../product/closet3-shop.do">상의</a></li>
+										<li><a href="../product/closet4-shop.do">악세사리</a></li>
 									</ul></li>
-								<li><a href="blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
-								<li><a href="blog/faq.do" style="color: #FF9933;">FAQ</a></li>
-								<li><a href="blog/qna.do" style="color: #FF9933;">Q&A</a></li>
+								<li><a href="../blog/notice.do" style="color: #FF9933;">NOTICE</a></li>
+								<li><a href="../blog/faq.do" style="color: #FF9933;">FAQ</a></li>
+								<li><a href="../blog/qna.do" style="color: #FF9933;">Q&A</a></li>
 							</ul>
 						</div>
-
 						<div class="search_box pull-right">
 							<input type="text" placeholder="검색" /> <a
-								href="../product/searchpage.do"
+								href="product/searchpage.do"
 								style="margin-left: 140px; margin-top: 9px; position: absolute;"><i
 								class="fa-sharp fa-solid fa-magnifying-glass"></i></a>
 						</div>
@@ -197,7 +162,7 @@
 				</tr>
 				<tr>
 					<th scope="row" rowspan='2'>배송지 주소</th>
-					<td><input type='text' readonly><input
+					<td><input type='text' readonly="true"><input
 						type='button' value='우편번호'></td>
 				</tr>
 				<tr>
@@ -211,137 +176,80 @@
 		</table>
 	</div>
 
-	<div class="review-payment">
-		<h2>Review & Payment</h2>
+	<div  class="review-payment">
+		<h2 style="margin-left:30px;">Review & Payment</h2>
 	</div>
 
 	<section id="cart_items">
 
-		<div class="table-responsive cart_info" style="text-align:center;">
-			<table class="table table-condensed">
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed"
+				style="width: 900px; margin-left: 200px;">
 				<thead>
 					<tr class="cart_menu">
-						<td class="image">상품이름</td>
-						<td class="description"></td>
-						<td class="price">가격</td>
-						<td class="quantity">수량</td>
-						<td class="total">총가격</td>
-						<td></td>
+						<th class="image" style="text-align: center">상품사진</th>
+						<th class="description" style="text-align: center">상품이름</th>
+						<th class="price" style="width: 40px; text-align: center;">가격</th>
+						<th class="quantity" style="width: 40px; text-align: center;">수량</th>
+						<th class="total" style="width: 70px; text-align: center;">총가격</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="cart_product"><a href=""><img
-								src="<%=pjName%>/resources/images/cart/one.png" alt=""></a></td>
-						<td class="cart_description">
-							<h4>
-								<a href="">상품이름</a>
-							</h4>
-							<p>Web ID: 상품ID</p>
-						</td>
-						<td class="cart_price">
-							<p>써야할가격</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_down" href=""> - </a> <input
-									class="cart_quantity_input" type="text" name="quantity"
-									value="1" autocomplete="off" size="2"> <a
-									class="cart_quantity_up" href=""> + </a>
-							</div>
-						</td>
-						<td class="cart_total">
-							<p class="cart_total_price">가격</p>
-						</td>
-						<td class="cart_delete"><a class="cart_quantity_delete"
-							href=""><i class="fa fa-times"></i></a></td>
-					</tr>
+					<form id="submit" method="post" action="payment.do">
+						<c:forEach var="cart" items="${cartList}" varStatus="i">
+							<input type="hidden" name="user_id" value="${cart.user_id}" />
+							<tr>
+								<td style="width: 150px; text-align: center;">사진이들어가는데 %식으로
+									써야함</td>
+								<td style="width: 200px; text-align: left;">${cart.product_name}
+									<input type="hidden" name="product_number"
+									value="${cart.product_number}" />
+								</td>
+								<td style="width: 60px; text-align: right;"><input
+									type="text" name="product_price"
+									style="width: 50px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									readonly pattern="###,###,###" value="${cart.product_price}"  />원</td>
+								<td style="width: 50px; text-align: right; "><input
+									type="number" name="product_count"
+									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									value="${cart.product_count}" />개</td>
+								<td style="width: 55px; text-align: right;"><input
+									type="text" readonly name="product_sum"
+									style="width: 70px; border-style: none; background-color: #f5f5f5; text-align: right;"
+									value="${cart.product_price*cart.product_count}" />원</td>
+							</tr>
+						</c:forEach>
+					</form>
 
-					<tr>
-						<td class="cart_product"><a href=""><img
-								src="<%=pjName%>/resources/images/cart/two.png" alt=""></a></td>
-						<td class="cart_description">
-							<h4>
-								<a href="">상품이름</a>
-							</h4>
-							<p>Web ID: 상품ID</p>
-						</td>
-						<td class="cart_price">
-							<p>가격</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_down" href=""> - </a> <input
-									class="cart_quantity_input" type="text" name="quantity"
-									value="1" autocomplete="off" size="2"> <a
-									class="cart_quantity_up" href=""> + </a>
-							</div>
-						</td>
-						<td class="cart_total">
-							<p class="cart_total_price">$59</p>
-						</td>
-						<td class="cart_delete"><a class="cart_quantity_delete"
-							href=""><i class="fa fa-times"></i></a></td>
-					</tr>
-					<tr>
-						<td class="cart_product"><a href=""><img
-								src="<%=pjName%>/resources/images/cart/three.png" alt=""></a></td>
-						<td class="cart_description">
-							<h4>
-								<a href="">상품이름</a>
-							</h4>
-							<p>Web ID: 상품ID</p>
-						</td>
-						<td class="cart_price">
-							<p>가격</p>
-						</td>
-						<td class="cart_quantity">
-							<div class="cart_quantity_button">
-								<a class="cart_quantity_down" href=""> - </a> <input
-									class="cart_quantity_input" type="text" name="quantity"
-									value="1" autocomplete="off" size="2"> <a
-									class="cart_quantity_up" href=""> + </a>
-							</div>
-						</td>
-						<td class="cart_total">
-							<p class="cart_total_price">가격</p>
-						</td>
-
-						<td class="cart_delete"><a class="cart_quantity_delete"
-							href=""><i class="fa fa-times"></i></a></td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
+		</div>
 
 		<div class="review-payment">
-			<h2>최종 결제 금액</h2>
+			<h2  style="margin-left:30px;">최종 결제 금액</h2>
 		</div>
 		<div id='pay-total'>
-			<table>
+			<table style="margin-left: 15px">
 				<tbody>
 					<tr>
 						<td colspan="4">&nbsp;</td>
 						<td colspan="2">
 
-							<table class="table table-condensed total-result" id="payTbl">
+							<table class="table table-condensed total-result" id="payTbl"
+								style="width: 100%">
 
 								<tr>
-									<td id='totaltable'>총 상품금액</td>
-									<td></td>
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">총 상품금액</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;">${totalMoney}원</td>
 								</tr>
-								<tr class="shipping-cost">
-									<td id='totaltable'>배송비</td>
-									<td></td>
+								<tr class="shipping-cost ">
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">배송비</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;" >0원</td>
 								</tr>
 								<tr>
-									<td id='totaltable'>쿠폰</td>
-									<td></td>
-								</tr>
-
-								<tr>
-									<td id='totaltable'>총 결제금액</td>
-									<td><span></span></td>
+									<td id='totaltable' style="color: white; font-size: 17px; font-family: 'Noto Sans KR', sans-serif;">총 결제금액</td>
+									<td style="font-size: 17px; width: 300px; text-align: right;"><span>${totalMoney}원</span></td>
 								</tr>
 							</table>
 						</td>
@@ -350,44 +258,40 @@
 			</table>
 		</div>
 		<div class="review-payment">
-			<h2>결제 방법</h2>
+			<h2  style="margin-left:30px;">결제 방법</h2>
 		</div>
 
 		<div class="payment-options">
-			<table class="table table-condensed total-result">
+			<table class="table table-condensed total-result" style="margin-left:400px; margin-top:20px; width: 600px;">
 
 				<tr>
-					<td><label><input type="checkbox"> 신용카드</label></td>
+					<td><label><input type="checkbox"> &emsp; 신용카드</label></td>
 				</tr>
 				<tr>
-					<td><label><input type="checkbox">실시간 이체</label></td>
+					<td><label><input type="checkbox"> &emsp;  실시간 이체</label></td>
 
 				</tr>
 				<tr>
-					<td><label><input type="checkbox"> 무통장 입금</label></td>
+					<td><label><input type="checkbox"> &emsp; 무통장 입금</label></td>
 				</tr>
 
 			</table>
 		</div>
 	</section>
 	<!--/#cart_items-->
+	<section>
 	<div id='pay-agree'>
-		<label><input type="checkbox"> 위 주문 내용을 확인하였으며 결제를
+
+		<label><input type="checkbox" style="margin-left: 25px;"> 위 주문 내용을 확인하였으며 결제를
 			동의합니다.</label>
 	</div>
 
-	<form id='paycan-btn' style='display:inline'>
-	<a class="btn btn-default check_out" id= "pay-btn" href="payment.do">결제하기</a>
-	<a class="btn btn-default cancel" id= "cancel-btn" href="../main.do">취소하기</a>
+	<form id='paycan-btn' style='display: inline; margin-left:700px; margin-bottom:30px; background-color: #f5f5f5;'>
+		<a class="btn btn-default check_out" id="pay-btn"
+			href="../pay/moneytransfer.do" style="margin-bottom:50px">결제하기</a> <a class="btn btn-default cancel"
+			id="cancel-btn" href="../cart/cartList.do" style="margin-bottom:50px">취소하기</a>
 	</form>
-
-	<div class="check-footer-bottom">
-		<div class="container">
-			<div class="row">
-				<i class="fa fa-love"></i>
-			</div>
-		</div>
-	</div>
+	</section>
 
 	<!-- logout Modal -->
 	<div class="modal fade" id="logoutModalCenter" tabindex="-1"
@@ -417,7 +321,7 @@
 		<!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
-				<div class="row" style="padding: 3%;">
+				<div class="row" style="padding: 3%; ">
 					<div class="col-sm-4"></div>
 					<div class="col-sm-4">
 						<div class="contact-info">

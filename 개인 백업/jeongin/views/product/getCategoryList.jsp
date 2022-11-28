@@ -4,14 +4,13 @@
 <%@page import="com.javaclass.domain.ProductVO"%>
 <%@page import="com.javaclass.domain.PagingVO"%>
 <%@page import="com.javaclass.service.ProductServiceImpl"%>
+
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function() {
 		var listForm = $("#listForm");
-
 		$(".pagination_button a").on("click", function(e) {
 			e.preventDefault();
-
 			listForm.find("input[name='pageNum']").val($(this).attr("href"));
 			listForm.submit();
 		});
@@ -28,7 +27,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title></title>
+<title>상품목록</title>
 <%
 	String pjName = "/petdo";
 %>
@@ -57,6 +56,8 @@
 	href="images/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
 	href="images/ico/apple-touch-icon-57-precomposed.png">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 </head>
 <!--/head-->
 
@@ -79,7 +80,7 @@
 							<li><a
 								href="../myPage/account.do?user_id=${sessionScope.login  }"><i
 									class="fa fa-user"></i></a></li>
-							<li><a href="../pay/cart.do"><i
+							<li><a href="../cart/cartList.do"><i
 									class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"
@@ -114,7 +115,8 @@
 						<div class="mainmenu pull-left ">
 							<ul class="nav navbar-nav collapse navbar-collapse"
 								style="font-size: 0;">
-
+								<li class="dropdown"><a
+									href="../main.do">홈</a></li>
 								<li class="dropdown"><a
 									href="getCategoryList.do?category_code=14">케어<i
 										class="fa fa-angle-down"></i></a>
@@ -186,19 +188,13 @@
 					href="getCategoryList.do?category_code=9" class="button">배변/위생</a></li>
 				<li style="display: inline-block;"
 					class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a
-					href="getCategoryList.do?category_code=10" class="button">장난감</a></li>
-				<li style="display: inline-block;"
-					class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a
 					href="getCategoryList.do?category_code=5" class="button">식품</a></li>
-				<li style="display: inline-block;"
-					class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a
-					href="getCategoryList.do?category_code=16" class="button">홈/리빙</a></li>
 				<li style="display: inline-block;"
 					class="xans-element- xans-product xans-product-displaycategory  xans-record-"><a
 					href="getCategoryList.do?category_code=1" class="button">의류</a></li>
 
 			</ul>
-			<hr />
+			
 		</div>
 		<hr style="height: 30px" />
 
@@ -231,20 +227,20 @@
 									<table style="margin-left: 10px;">
 										<tr>
 											<td colspan="2" align="center">
-												<a href="product-details.do?product_number=${vo.product_number}"><img src='/resources/upload/${vo.stored_file_name}'width='300' height='200'></a>	
+												<a href="product-details.do?product_number=${vo.product_number}"><img src='<%=pjName%>/resources/images/shop/${vo.stored_file_name}' width='300' height='300'></a>	
 											</td>
 										</tr>
 										<tr>
 
 											<td align="center" valign="middle"><input
-												name="product_name" type="text" value="${vo.product_name }"
-												readonly style="border-style: none; width: 100%" /></td>
+												name="product_name" type="text" value="${vo.product_name}"
+												readonly style="border-style: none; width: 100%; text-align: center; margin-bottom: 1px; margin-top: 3px; font-family: 'Noto Sans KR', 'sans-serif'"  /></td>
 										</tr>
 										<tr>
 
 											<td align="center"><input name="product_price"
-												type="text" value="${vo.product_price }" readonly
-												style="border-style: none;" /></td>
+												type="text" value="${vo.product_price}" readonly
+												style="border-style: none; text-align: center; font-family: 'Noto Sans KR', 'sans-serif'"  /></td>
 										</tr>
 									</table>
 								</div>

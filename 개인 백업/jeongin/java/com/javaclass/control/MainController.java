@@ -11,7 +11,7 @@ public class MainController {
 	@RequestMapping("/main.do")
 	public String main() {		
 		System.out.println("controller");
-		return "main";
+		return "/main";
 	}
 	
 

@@ -45,14 +45,21 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	//회원정보 수정
-	public MemberVO updateInfo(MemberVO vo) {
-		return mybatis.selectOne("user.getUserInfo", vo);
+	public int updateInfo(MemberVO vo) {
+		System.out.println(">>>>>>update : "+vo);
+		int result=mybatis.update("user.updateInfo", vo);
+		//System.out.println(">>>>>>update 결과 : "+result);
+		return result;
 	}
 
 
 	//회원정보 삭제
-	public MemberVO deleteInfo(MemberVO vo) {
-		return mybatis.selectOne("user.getUserInfo", vo);
+	public int deleteInfo(MemberVO vo) {
+		System.out.println(">>>>>>delete : "+vo);
+		int result=mybatis.delete("user.deleteInfo", vo);
+		System.out.println(">>>>>>delete 결과 : "+result);
+		return result;
+		
 	}
 	
 	/*************************/

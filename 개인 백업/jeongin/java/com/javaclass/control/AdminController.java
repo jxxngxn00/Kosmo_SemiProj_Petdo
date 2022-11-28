@@ -237,7 +237,7 @@ public class AdminController {
 	@RequestMapping("/modifyFaq.do")
 	public String faqUpdatelist(FaqVO faqvo, Model m) {
 		FaqVO result = faqService.selectFaqBoard(faqvo);
-		System.out.println("result : " + result.getFaq_content());
+		//System.out.println("result : " + result.getFaq_content());
 		m.addAttribute("faq", result);
 		return "admin/modifyFaq";
 	}

@@ -23,10 +23,10 @@ public interface MemberDAO {
 	MemberVO getUserInfo(String user_id);
 
 	//회원정보 수정
-	public MemberVO updateInfo(MemberVO vo);
+	public int updateInfo(MemberVO vo);
 
 	//회원정보 삭제
-	public MemberVO deleteInfo(MemberVO vo);
+	public int deleteInfo(MemberVO vo);
 
 
 	

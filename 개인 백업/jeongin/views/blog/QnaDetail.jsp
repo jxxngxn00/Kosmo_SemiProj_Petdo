@@ -66,7 +66,7 @@
 							<li><a
 								href="../myPage/account.do?user_id=${sessionScope.login }"><i
 									class="fa fa-user"></i></a></li>
-							<li><a href="../pay/cart.do"><i
+							<li><a href="../cart/cartList.do"><i
 									class="fa fa-shopping-cart"></i></a></li>
 							<c:if test="${'admin' eq sessionScope.login }">
 								<li><a href="../admin.do"><i class="fa fa-cogs"

@@ -75,9 +75,9 @@ public class MyPageController {
 	// 회원 정보 수정
 	@RequestMapping("/modify.do")
 	public String modify(MemberVO vo) {
-		System.out.println(">>>>>>update : "+vo);
+		//System.out.println(">>>>>>update : "+vo);
 		memberService.updateInfo(vo);
-		return "myPage/account?user_id"+vo.getUser_id();
+		return "redirect:account.do?user_id="+vo.getUser_id();
 	}
 	
 	// 회원 정보 삭제
@@ -87,10 +87,10 @@ public class MyPageController {
 		memberService.deleteInfo(vo);
 		String id = (String) session.getAttribute("id");
 		String pwd = (String) session.getAttribute("pwd");
-		session.removeAttribute(id);
-		session.removeAttribute(pwd);
+		//session.removeAttribute(id);
+		//session.removeAttribute(pwd);
 		session.invalidate();
-		return "redirect:/login";
+		return "redirect:/loginOpen.do";
 	}
 	
 }
