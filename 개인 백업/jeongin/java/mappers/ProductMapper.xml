@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductDAO">
+
+<!-- 상품 등록 -->
+<insert id="insertProduct" parameterType="ProductVO">
+INSERT INTO PRODUCT (PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_STOCK, PRODUCT_DESC, PRODUCT_DATE, PRODUCT_HITS) 
+VALUES(PRODUCT_SEQ.nextval,#{category_code},#{product_name},#{product_price},#{product_stock},#{product_desc},SYSDATE,0
+<if test="origin_file_name != null or main_file_name != null">
+	 ,#{origin_file_name}, #{stored_file_name}, #{file_size}, #{main_file_name}, #{stored_main_file_name}, #{main_file_size}
+	</if>
+)
+</insert>
+
+<!-- 상품 수정 -->
+	 <update id="updateProduct" parameterType="ProductVO">
+	        update product set
+	            category_code = #{category_code}
+	            , product_name = #{product_name}
+	            , product_price = #{product_price}
+	            , product_stock = #{product_stock}
+	            , product_desc = #{product_desc}
+	           <if test="origin_file_name != null or main_file_name != null">
+				<!-- 메인 배너 & 상세설명 사진 파일이 업로드 되었을때 -->
+				, origin_file_name = #{origin_file_name}
+				, stored_file_name = #{stored_file_name}
+				, file_size = #{file_size}
+				, main_file_name = #{main_file_name}
+				, stored_main_file_name = #{stored_main_file_name}
+				, main_file_size = #{main_file_size}
+			  </if>
+	        where
+	            product_number = #{product_number}
+	 </update> 
+
+
+<!-- 상품 목록 조회 (관리자)-->
+<select id="selectAllProduct" resultType="ProductVO">
+SELECT product_number, product_name,product_stock,product_hits,product_date
+FROM product
+ORDER BY product_number
+</select>
+
+
+<!-- 상품 삭제 (관리자)-->
+<delete id="deleteProduct">
+        delete from product
+        where
+            product_number = #{product_number}
+    </delete> 
+    
+   
+<!-- 페이징된 상태로 상품목록 출력 -->
+<select id="getProductList" parameterType="ProductVO" resultType="ProductVO">	
+<![CDATA[
+SELECT*
+FROM product
+WHERE product_number IN(SELECT product_number
+FROM (SELECT rownum rnum, product_number FROM (SELECT product_number FROM product ORDER BY product_number DESC))
+WHERE rnum>=(#{pageNum}-1) * #{amount} AND rnum<=#{pageNum} * #{amount})
+
+]]>
+
+</select>
+
+<!-- 상품의 총갯수 -->
+<select id="getTotal" resultType="int">
+SELECT count(product_number) as total FROM product
+</select>
+
+<!--상품 카테고리 별로 출력(우선  1번 카테고리) -->
+<select id="getCategoryList" parameterType="ProductVO" resultType="ProductVO">	
+<![CDATA[
+SELECT product_number, category_code, product_name, product_price
+FROM product
+WHERE category_code =#{category_code}
+]]>
+
+</select>
+
+<!-- 상품 상세조회(상품 번호로) -->
+<select id= "getProduct" parameterType="ProductVO" resultType="ProductVO">
+<![CDATA[
+SELECT *
+FROM product
+WHERE product_number = #{product_number}
+]]>
+</select>
+
+
+
+<!-- **** 리뷰 **** -->
+<!-- 리뷰 작성 -->
+<insert id="insertReview" parameterType="ReviewVO">
+INSERT INTO reviews_board (review_seq,
+ 					 review_writer,
+ 					 review_content,
+ 					 review_date,
+ 					 product_number
+				<if test="review_name != null">
+					<!-- 업로드 된 파일이 존재할때 -->
+				, review_name , review_realname, review_size
+			    </if>
+					 ) 
+VALUES(
+	  review_seq.nextval,
+	  #{review_writer},
+	  #{review_content},
+	  SYSDATE,
+	  #{product_number}
+	<if test="review_name != null">
+	 ,#{review_name}, #{review_realname}, #{review_size}
+	</if>
+	) 
+</insert>
+    
+<!-- 리뷰 조회 -->    
+<select id="getReview" parameterType="Integer" resultType="ReviewVO">
+        select  review_seq, 
+					 review_writer, 
+					 review_content, 
+					 review_name, 
+					 review_realname, 
+					 review_size 
+        from reviews_board
+        where
+            product_number = #{product_number}
+    </select> 
+
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+</mapper>
