@@ -51,15 +51,19 @@
 				<!--header-middle-->
 				<a href="main.do"><img
 					src="<%=pjName%>/resources/images/home/logo.png" width="12%"
-					height="auto" " id="petlogo" style="margin-top: 10px;" alt="" /></a>
+					height="auto" id="petlogo" style="margin-top: 10px;" alt="" /></a>
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav" id="headerbar">
-							<li class="ment" style="margin-top: 12px;"><%=session.getAttribute("login")%>님
+							<li class="ment" style="margin-top: 12px;">${sessionScope.login}님
 								환영합니다.</li>
-							<li><a href="logOut.do"><i class="fa fa-sign-out"></i></i></a></li>
-							<li><a href="myPage/account.do"><i class="fa fa-user"></i></a></li>
-							<li><a href="pay/cart.do"><i class="fa fa-shopping-cart"></i></a></li>
+							<li><a href="#" data-toggle="modal" data-target="#logoutModalCenter"><i class="fa fa-sign-out"></i></i></a></li>
+							<li><a href="myPage/account.do?user_id=${sessionScope.login }"><i class="fa fa-user"></i></a></li>
+							<li><a href="cart/cartList.do"><i class="fa fa-shopping-cart"></i></a></li>
+							<c:if test="${'admin' eq sessionScope.login }">
+								<li><a href="admin.do"><i class="fa fa-cogs"
+										aria-hidden="true"></i></a></li>
+							</c:if>
 						</ul>
 
 					</div>
@@ -150,15 +154,15 @@
 							<div class="item active">
 
 								<div class="col-sm-6 slider1">
-									<img src="<%=pjName%>/resources/images/home/main_01.png"
-										class="girl img-responsive" alt="" />
+									<a href="product/getCategoryList.do?category_code=1"><img src="<%=pjName%>/resources/images/home/main_01.png"
+										class="girl img-responsive" alt="" /></a>
 
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<img src="<%=pjName%>/resources/images/home/main_002.png"
-										class="girl img-responsive" alt="" />
+									<a href="product/getCategoryList.do?category_code=2"><img src="<%=pjName%>/resources/images/home/main_002.png"
+										class="girl img-responsive" alt="" /></a>
 								</div>
 							</div>
 
@@ -191,202 +195,63 @@
 	<div id="top" class="col-sm-9 padding-right">
 		<div class="features_items" style="margin-left: -30px;">
 			<!--features_items-->
-			<div class="prd_more">
-				<a href="shop.html" id="view">전체보기 &nbsp+</a>
-			</div>
 			<h2 class="title text-center" style="font-size: 45px; text-align: left;">STORE BEST</h2>
 
 
-			<div class="col-sm-4" id="col-sm-4">
-				<div class="productinfo text-center">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/main/main_best1.jpg"
-								alt="" />
+				<div class="productinfo text-center" style="float:center; display: inline-block; width: 100%; margin-left: 80px;">
+					<div class="product-image-wrapper" style="float: left; display: inline-block; width: 100%;">
+					<c:forEach items ="${productList}" var="vo">
+						<div class="single-products" style="width: 30%; float: left;">
+							<a href="product/product-details.do?product_number=${vo.product_number}"><img src="<%=pjName%>/resources/images/shop/${vo.stored_file_name}" width="400px" height="400px"></a>
 							<p>
-								<a href="product/product-details.do">스펀지 타월L</a>
+								<a href="product/product-details.do">
+								<input name="product_name" type="text" value="${vo.product_name}" style="border-style: none; width: 100%; text-align: center; font-family: 'Noto Sans KR', sans-serif;"/></a>
 							</p>
 							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">5,900원 &nbsp;</span>
-							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">7,000원</span>
-							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+								style="font-size: 16px; color: #000000;" >${vo.product_price}원</span>
+							</strong> <br /> 
+							<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 								id="new" width="2px" height="auto" alt="" /> <img
 								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 								width="2px" height="auto" alt="" />
 						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
 
 
-			<div class="col-sm-4" id="col-sm-4">
-				<div class="productinfo text-center">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/main/main_best2.jpg"
-								alt="" />
-							<p>히트랩 패딩</p>
-							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">28,000원 &nbsp;</span>
-							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">32,000원</span>
-							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
-								id="new" width="2px" height="auto" alt="" /> <img
-								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
-								width="2px" height="auto" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-
-
-
-			<div class="col-sm-4" id="col-sm-4">
-				<div class="productinfo text-center">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<img src="<%=pjName%>/resources/images/main/main_best3.jpg"
-								alt="" />
-							<p>레인보우 링스/플라워 샤워 시리얼</p>
-							<strong class="product_price"> <span
-								style="font-size: 16px; color: #000000;">7,900원 &nbsp;</span>
-							</strong> <strong class="sale_price"> <span
-								style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">9,000원</span>
-							</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
-								id="new" width="2px" height="auto" alt="" /> <img
-								src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
-								width="2px" height="auto" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
+			
 	<hr/>
 
 		<div class="category-tab">
 		
 	<img src="<%=pjName%>/resources/images/home/subbanner5.png" width="100%" height="auto" style="margin-bottom: 35px; margin-top: -12px"  alt="" />
 	
-
+	<div class="col-sm-9">
 			<div class="tab-content">
 				<div class="tab-pane fade active in" id="tshirt">
 					<h2 class="text-category" style="margin-top: -5px; font-size: 45px">NEW PRODUCT</h2><br/><br/>
-					
-					<div class="col-sm-3">
-						<div class="product-image-wrapper">
-							<div class="single-products">
+					<div class="productinfo text-center" style="float: left; display: inline-block; width: 100%; margin-left: 50px; margin-right: 50px;">
+					<div class="product-image-wrapper" style="float: left; display: inline-block;">
+						<c:forEach items ="${newproductList}" var="vo">
+						<div class="single-products" style="float: left; margin-left: 40px; margin-right: 40px; width: 20%">
 								<div class="productinfo text-center">
-								
-									<img src="<%=pjName%>/resources/images/main/main_new1.png"
-										alt="" />
-									<h2>로얄캐닌 미니 인도어 퍼피 3kg</h2>
-									<p>39,900원</p>
+									<a href="product/product-details.do?product_number=${vo.product_number}"><img src="<%=pjName%>/resources/images/shop/${vo.stored_file_name}" width="207px" height="183px"></a>
+									<h2>${vo.product_name}</h2>
+									<p>${vo.product_price}원</p>
 								</div>
-							</div>
+						</div>
+							</c:forEach>
 						</div>
 					</div>
-
-					<div class="col-sm-3">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/main/main_new2.jpg"
-										alt="" />
-									<h2>어스레이티드 풉백 배변봉투</h2>
-									<p>10,700원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-3">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/main/main_new3.jpg"
-										alt="" />
-									<h2>수딩 풋클렌저</h2>
-									<p>16,900원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-3">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/main/main_new4.png"
-										alt="" />
-									<h2>하이포닉 키토산 탈취제</h2>
-									<p>11,000원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="col-sm-3">
-						<div class="product-image-wrapper">
-							<div class="single-products">
-								<div class="productinfo text-center">
-									<img src="<%=pjName%>/resources/images/main/main_new5.jpg"
-										alt="" />
-									<h2>카리나 티셔츠</h2>
-									<p>23,000원</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/main/main_new6.JPG" alt="" />
-								<h2>수딩 리무버패드(눈물자국 패드)</h2>
-								<p>16,900원</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/main/main_new7.jpg" alt="" />
-								<h2>자이언트 요기 토일렛</h2>
-								<p>22,000원</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-image-wrapper">
-						<div class="single-products">
-							<div class="productinfo text-center">
-								<img src="<%=pjName%>/resources/images/main/main_new8.JPG" alt="" />
-								<h2>코듀로이 패딩 자켓</h2>
-								<p>45,000원</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
 			</div>
 		</div>
 
 	</div>
 	<!--/category-tab-->
 
-	<a href="care-shop.html"><img
+	<a href="product/getCategoryList.do?category_code=14"><img
 		src="<%=pjName%>/resources/images/home/subbanner2.png" width="100%"
 		height="auto" alt="" /></a>
 	<div class="col-sm-9">
@@ -404,16 +269,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=232"><img
+											src="<%=pjName%>/resources/images/home/care1.jpg"
+											alt="" /></a>
+										<p>덴탈 솔루션 치약</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">14900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -425,16 +289,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=277"><img
+											src="<%=pjName%>/resources/images/home/care2.jpg"
+											alt="" /></a>
+										<p>퀵 클렌징 세트 (워터리스샴푸+타월S)</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">15900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong><br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -446,16 +309,14 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=250"><img
+											src="<%=pjName%>/resources/images/home/care3.jpg"
+											alt="" /></a>
+										<p>버블 샴푸 독스</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">21500원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -469,16 +330,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=292"><img
+											src="<%=pjName%>/resources/images/home/care4.jpg"
+											alt="" /></a>
+										<p>피니쉬 세트 (퀵클리너+브러쉬)</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">23900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -490,16 +350,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=253"><img
+											src="<%=pjName%>/resources/images/home/care5.jpg"
+											alt="" /></a>
+										<p>매직 글러브</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">21900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -511,16 +370,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=234"><img
+											src="<%=pjName%>/resources/images/home/care6.jpg"
+											alt="" /></a>
+										<p>논슬립 폴더블 욕조</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">48900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -545,7 +403,7 @@
 		<!--/recommended_items-->
 
 	</div>
-	<a href="food-shop.html"><img
+	<a href="product/getCategoryList.do?category_code=5"><img
 		src="<%=pjName%>/resources/images/home/subbanner3.png" width="100%"
 		height="auto" alt="" /></a>
 
@@ -564,16 +422,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=2"><img
+											src="<%=pjName%>/resources/images/home/food1.jpg"
+											alt="" /></a>
+										<p>텐더 저키 독스</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">12900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -585,16 +442,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=2"><img
+											src="<%=pjName%>/resources/images/home/food2.jpg"
+											alt="" /></a>
+										<p>레인보우 링스/플라워 샤워 시리얼</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">7900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -606,16 +462,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=8"><img
+											src="<%=pjName%>/resources/images/home/food3.jpg"
+											alt="" /></a>
+										<p>프레쉬 덴탈츄</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">16900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -629,16 +484,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=55"><img
+											src="<%=pjName%>/resources/images/home/food4.jpg"
+											alt="" /></a>
+										<p>오리젠 시니어 독 2kg</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">35100원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -650,16 +504,15 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=7"><img
+											src="<%=pjName%>/resources/images/home/food5.jpg"
+											alt="" /></a>
+										<p>스위트 골드바</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">12900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> 
+										<img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
@@ -671,16 +524,14 @@
 							<div class="productinfo text-center">
 								<div class="product-image-wrapper">
 									<div class="single-products">
-										<img
-											src="<%=pjName%>/resources/images/home/20_테디 블라썸 져지_2.jpg"
-											alt="" />
-										<p>테디 블라썸 져지</p>
+										<a href="product/product-details.do?product_number=68"><img
+											src="<%=pjName%>/resources/images/home/food6.jpg"
+											alt="" /></a>
+										<p>캐니비타 멀티 콜라겐</p>
 										<strong class="product_price"> <span
-											style="font-size: 16px; color: #000000;">42,000원
+											style="font-size: 16px; color: #000000;">21900원
 												&nbsp;</span>
-										</strong> <strong class="sale_price"> <span
-											style="font-size: 16px; color: #afafaf; text-decoration-line: line-through;">38,000원</span>
-										</strong><br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
+										</strong> <br /> <img src="<%=pjName%>/resources/images/home/BEST.JPG"
 											id="new" width="2px" height="auto" alt="" /> <img
 											src="<%=pjName%>/resources/images/home/NEW.JPG" id="new"
 											width="2px" height="auto" alt="" />
