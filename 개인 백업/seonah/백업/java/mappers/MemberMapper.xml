@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+<!-- 회원가입 -->
+<insert id="userInsert" parameterType="MemberVO">
+INSERT INTO USER_INFO 
+(user_id,user_pwd,user_name, user_phone, user_email,user_address1, user_role, user_grade, user_insertdate, user_totalm) 
+VALUES(#{user_id}, #{user_pwd},#{user_name}, #{user_phone},#{user_email},#{user_address1}, 0,'0', SYSDATE, 0 )
+
+</insert>
+
+
+<!-- 로그인 -->
+<select id="idCheck" parameterType="MemberVO"  resultType="MemberVO">
+		  SELECT *
+          FROM USER_INFO
+          WHERE USER_ID = #{user_id}
+          <if test ="user_pwd !=null">
+          		AND user_pwd = #{user_pwd}
+			</if>
+</select>
+
+<!-- (관리자)회원목록 조회 -->
+<select id="memberList" resultType="MemberVO">
+SELECT *
+FROM user_info
+ORDER BY user_insertdate
+</select>
+
+
+<!-- (사용자)회원 상세 정보 조회 -->
+<select id="getUserInfo" parameterType="String" resultType="MemberVO">
+	SELECT *
+	FROM user_info
+	WHERE user_id = #{user_id}
+</select>
+
+<!-- (사용자)회원 정보 수정 -->
+<update id="updateInfo" parameterType="MemberVO">
+UPDATE user_info SET
+user_name=#{user_name},
+user_pwd=#{user_pwd},
+user_email=#{user_email},
+user_phone=#{user_phone},
+user_address1=#{user_address1}
+WHERE user_id=#{user_id}
+</update>
+
+<!-- (사용자)회원 탈퇴 -->
+<delete id="deleteInfo" parameterType="MemberVO">
+DELETE FROM user_info
+WHERE user_id=#{user_id}
+</delete>
+
+<!-- (관리자)회원 상세 정보 조회 -->
+<select id="getUserInfoAdmin" parameterType="String" resultType="MemberVO">
+	SELECT *
+	FROM user_info
+	WHERE user_id = #{user_id}
+</select>
+
+<!-- (관리자)회원 상세 정보 : 리뷰내역 -->
+<select id="getReviewInfoAdmin" parameterType="String" resultType="ReviewVO">
+	SELECT p.product_name product_name, r.review_content review_content, r.review_date review_date
+	FROM reviews_board r
+   	LEFT JOIN product p
+    ON r.product_number=p.product_number
+	WHERE r.review_writer = #{user_id}
+</select>
+
+<!-- (관리자)회원 상세 정보 : 주문내역 -->
+<select id="getOrderInfoAdmin" parameterType="String" resultType="OrderVO">
+	SELECT o.order_detail_number order_detail_number, o.product_name product_name,    
+				o.order_detail_status order_detail_status, o.order_date order_date
+	FROM user_info u
+    LEFT JOIN order_detail o
+    ON u.user_id=o.user_id
+	WHERE u.user_id = #{user_id}
+</select>
+</mapper>

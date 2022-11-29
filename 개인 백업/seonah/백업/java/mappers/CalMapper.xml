@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CalDAO">
+
+	<!-- 월별 정산 -->
+	<select id="getMonthCal" resultType="hashmap">
+		SELECT order_date_m, sum(product_price) mSum
+		FROM ( SELECT product_price, TO_CHAR(order_date,'yyyy.mm') order_date_m
+		FROM order_detail
+		WHERE order_detail_status NOT IN ('환불교환','취소'))
+		GROUP BY order_date_m
+		ORDER BY order_date_m
+	</select>
+
+
+	<!-- 선택한 기간별 정산 -->
+	<select id="selectCal" parameterType="hashmap" resultType="hashmap">
+		SELECT order_date_m, sum(product_price) mSum
+		FROM ( SELECT product_price, TO_CHAR(order_date,'yyyy.mm') order_date_m
+		        FROM order_detail
+		        WHERE order_detail_status NOT IN ('환불교환','취소'))
+		WHERE order_date_m 
+					BETWEEN 	TO_CHAR(TO_DATE(#{start_date},'yyyy.mm.dd'),'yyyy.mm') AND 
+									TO_CHAR(TO_DATE(#{end_date},'yyyy.mm.dd'),'yyyy.mm')
+		GROUP BY order_date_m
+		ORDER BY order_date_m
+	</select>
+	
+	<!-- 상품별 통계 -->
+	<select id="getItemCal" resultType="hashmap">
+	SELECT product_name, sum(product_price) sum
+	FROM ( 	SELECT *
+				FROM order_detail
+				ORDER BY product_number )
+	GROUP BY product_name
+	</select>
+	
+	<!-- 상품검색 상품별 통계 -->
+	<select id="selectItemCal" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+	SELECT product_name, sum(product_price) sum
+	FROM ( SELECT *
+				FROM order_detail
+				ORDER BY product_number )
+	WHERE ${cate} LIKE '%' || #{keyword} || '%'
+	GROUP BY product_name
+	]]>
+	</select>
+
+</mapper>

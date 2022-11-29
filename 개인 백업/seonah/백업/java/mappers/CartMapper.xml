@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CartVO">
+
+<!-- 장바구니 추가 -->
+<insert id= "insertCart" parameterType="CartVO">
+
+INSERT INTO cart (cart_number, product_count,product_number, user_id) 
+VALUES (cart_seq.nextval,#{product_count},#{product_number},#{user_id})
+
+</insert>
+<!-- 장바구니 목록 -->
+<select id= "listCart" parameterType="CartVO" resultType="CartVO">
+SELECT 
+c.cart_number as cart_number,
+c.user_id as user_id,
+p.origin_file_name as origin_file_name,
+p.stored_file_name as stored_file_name,
+p.file_size as file_size,
+p.product_name as product_name,
+c.product_count as product_count,
+p.product_price as product_price,
+(product_price*product_count) as totalMoney
+FROM
+user_info m, product p, cart c
+WHERE
+m.user_id= c.user_id
+AND p.product_number = c.product_number
+AND c.user_id = #{user_id} 
+ORDER BY
+c.cart_number
+</select>
+
+<!-- 장바구니 전체 금액 -->
+<select id="sumCartMoney" resultType="int">
+SELECT NVL(SUM(product_price*product_count),0) as totalMoney
+FROM cart c, product p
+WHERE c.product_number = p.product_number AND c.user_id = #{user_id}
+
+
+</select>
+
+
+<!--장바구니 삭제  -->
+
+<delete id="deleteCart" >
+DELETE FROM cart
+WHERE cart_number = #{cart_number}
+</delete>
+
+<!-- 장바구니 수정 -->
+<update id="modifyCart" parameterType="CartVO" >
+UPDATE cart
+SET product_count = #{product_count}
+WHERE user_id = #{user_id}
+AND cart_number = #{cart_number}
+</update>
+
+<!-- 장바구니에 동일한 상품 확인 -->
+<select id="countCart" resultType="int">
+SELECT 	COUNT(*) product_count
+FROM cart
+WHERE user_id=#{user_id}
+AND product_number = #{product_number}
+</select>
+
+<!--장바구니에 동일한 상품이 있으면 수정  -->
+<update id="updateCart">
+UPDATE cart
+SET product_count = product_count + #{product_count}
+WHERE user_id = #{user_id}
+AND product_number =#{product_number}
+
+</update>
+
+
+
+
+</mapper>
