@@ -162,4 +162,45 @@ VALUES(
     </select> 
 
 
+<!-- 조회수 count+1 -->
+	<update id="hitsplus" parameterType="ProductVO">
+		UPDATE product 
+		SET	product_hits = product_hits+1
+		WHERE product_number = #{product_number}
+	</update>
+	
+<!-- 조회수 높은 상위 3개 상품  -->
+	<select id= "topProduct" parameterType="ProductVO" resultType="ProductVO">
+	SELECT product_number, product_name, product_hits, product_price, origin_file_name , stored_file_name, file_size
+	FROM 
+ 		(SELECT *
+  		 FROM product	
+  		 ORDER BY product_hits DESC)
+	<![CDATA[WHERE ROWNUM <= 3]]>
+	</select>
+	
+<!-- 최근 등록 된 상품 8개 -->	
+	<select id= "newProduct" parameterType="ProductVO" resultType="ProductVO">
+	SELECT product_number, product_name, product_price, origin_file_name , stored_file_name, file_size
+	FROM 
+ 		(SELECT *
+  		FROM product
+  		ORDER BY product_DATE DESC)
+		<![CDATA[WHERE ROWNUM <= 12]]>
+	</select>
+	
+<!-- 배송 완료 시 재고 하나씩 줄어듬 -->
+	<update id="ordercount" parameterType="ProductVO">
+	UPDATE product 
+	SET product_stock = product_stock-(
+        select    product_count 					 
+        from Order_Detail
+        where
+            product_number = #{product_number} and order_detail_status not in ('환불','취소','교환')
+        )
+	WHERE product_number = #{product_number}
+	</update>	
+	
+
+
 </mapper>
