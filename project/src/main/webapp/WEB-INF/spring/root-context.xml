@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context 
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd
+      http://www.springframework.org/schema/tx 
+      http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+      
+   <!-- Root Context: defines shared resources visible to all other web components -->
+   <!-- ##### oracle ##### -->
+   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+      <property name="url" value="jdbc:oracle:thin:@192.168.0.26:1521:xe"></property>
+      <property name="username" value="petdo"></property>
+      <property name="password" value="petdo"></property>
+   </bean>   
+   
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+     <property name="dataSource" ref="dataSource" />
+     <!-- <property name="configLocation" value="classpath:/mybatis-config.xml"></property> -->
+     <property name="mapperLocations" value="classpath:mappers/**/*.xml"></property>
+	    <property name="typeAliases">
+	  	<list>
+	  		<value>com.javaclass.domain.MemberVO</value>
+	  		<value>com.javaclass.domain.ImageVO</value>
+	  		<value>com.javaclass.domain.ProductVO</value>
+	  		<value>com.javaclass.domain.QnaVO</value>
+	  		<value>com.javaclass.domain.NoticeVO</value>
+	  		<value>com.javaclass.domain.OrderVO</value>
+	  		<value>com.javaclass.domain.PagingVO</value>
+	  		<value>com.javaclass.domain.ReplyVO</value>
+	  		<value>com.javaclass.domain.ReviewVO</value>
+	  		<value>com.javaclass.domain.CartVO</value>
+	  		<value>com.javaclass.domain.ReturnVO</value>
+	  		<value>com.javaclass.domain.ExchangeVO</value>
+	  	</list>
+	  </property>
+    </bean>
+    
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+ 
+ 
+    <!-- ###### Transaction ###### -->
+   <bean id="transactionManager"
+      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      <property name="dataSource" ref="dataSource"></property>
+   </bean>
+   <!-- transaction annoation 방식 설정 -->
+   <!-- 왼쪽에 AOP 화살표 처리가 나와야 한다 -->
+   <tx:annotation-driven transaction-manager="transactionManager"/>
+
+
+
+
+
+</beans>
+

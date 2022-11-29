@@ -10,8 +10,6 @@ public interface OrderDAO {
 	//주문내역 입력
 	int orderInsert(OrderVO vo);
 	
-	
-	
 	//사용자 아이디에 따른 주문내역 목록 조회
 	public List<OrderVO> getUserOrderList(String user_id); 
 	

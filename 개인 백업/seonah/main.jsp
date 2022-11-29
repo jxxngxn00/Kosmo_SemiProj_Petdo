@@ -220,8 +220,6 @@
 				</div>
 			</div>
 
-
-			
 	<hr/>
 
 		<div class="category-tab">

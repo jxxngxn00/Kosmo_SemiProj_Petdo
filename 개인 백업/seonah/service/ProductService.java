@@ -41,7 +41,7 @@ public interface ProductService {
 	// 조회수
 	public void hitsplus(Integer product_number);
 	
-	 // 베스트 상품 출력
+	// 베스트 상품 출력
 	public List<ProductVO> topProduct(ProductVO vo);
 	
 	// 신상품 출력

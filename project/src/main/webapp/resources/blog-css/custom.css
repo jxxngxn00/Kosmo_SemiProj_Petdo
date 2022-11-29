@@ -1,0 +1,70 @@
+
+@font-face {
+  font-family: 'SF_HambakSnow';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+ font-family: 'NanumBarunGothic';
+ font-style: normal;
+ font-weight: 400;
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+}
+
+.nanumbarungothic * {
+ font-family: 'NanumBarunGothic', sans-serif;
+}
+#detailTbl tr th{
+    width: 20%;
+    border-right:1px solid black;
+    padding: 10px;
+     text-align:center;
+}
+
+#detailTbl {
+    width: 80%;
+    font-size: 12pt;
+    margin-bottom: 20px;
+    font-family: 'NanumBarunGothic', sans-serif;
+}
+
+
+#detailTbl input[type="text"]{
+	width:100%;
+	padding:10px;
+	outline: none;
+	border: none;
+}
+
+#detailTbl input[type="text"]:focus{
+	background-color: #FDDCDF;
+}
+
+#submitBtn{
+	/*font-family:KBIZHanmaumGothic;*/
+	padding:20px;
+	border:none;
+	background: linear-gradient(#ff9933, #ff8533);
+	border-radius: 20px;
+	font-family: 'NanumBarunGothic', sans-serif;
+}
+
+#submitBtn:hover{
+	background:#ffad33
+}
+/* 교환 및 환불 사유 테이블 */
+#returnTbl {
+    width: 100%;
+}
+
+#returnTbl tr th{
+    height: 5%;
+    text-align: center;
+}
+
+#returnTbl input[type="radio"]{
+    margin: 0px 10px;
+}

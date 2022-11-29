@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Product Details | E-Shopper</title>
+<title>상품</title>
 <% String pjName="/petdo"; %>
 <link href="<%=pjName %>/resources/mCss/bootstrap.min.css"
 	rel="stylesheet">

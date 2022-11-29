@@ -1,0 +1,109 @@
+
+.input-file-button{
+  padding: 6px 25px;
+  background-color: #4e73df;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  float: bottom;
+}
+
+#itemRegisterTbl .tblTitle
+,#memberDetailTbl .tblTitle{
+  height: fit-content;
+}
+
+#itemRegisterTbl .iValue,
+#memberDetailTbl .mValue{
+  width: 60%;
+}
+
+#itemRegisterTbl th,
+#memberDetailTbl th{
+  font-size: 11pt;
+}
+
+#itemRegisterTbl textarea,
+#memberDetailTbl textarea{
+  width: 100%;
+}
+
+.searchOpt-member {
+  padding: 10pt;
+  text-align: center;
+  width: 100%;
+}
+
+#searchBox {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 35%;
+    margin: auto;
+}
+
+.searchOpt {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    width:100%;
+}
+
+.searchOpt-itemCharts {
+  margin-bottom: 10px;
+  width:100%;
+}
+
+/********회원관리상세보기(member-detail.html)**********/
+#memberInfo1{
+  width: 60%;
+  display: inline-flex;
+  float: left;
+  margin-right: 10pt;
+}
+
+#memberInfo2 {
+  width: 30%;
+  display: inline-flex;
+  float: left;
+}
+
+
+label {
+    font-size: 12px;
+    line-height: 2rem;
+    padding: 0.2em 0.4em;
+  }
+  
+  span {
+    vertical-align: middle;
+  }
+ 
+  /* Global CSS */
+  fieldset {
+    display: flex;
+    justify-content: left;
+    border: none;
+    margin: 0;
+  }
+
+  /* 날짜 선택 input box */
+  .date-picker {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .date-picker input[type="month"] {
+    height: 70px;
+    width:200px;
+    padding: 10px;
+    border: 0;
+    box-shadow: 0px 0px 10px 0.3px #c0c0c0;
+  }
+  
+/* 검색 div 너비 설정, 가운데 정렬 */
+
+  #itemChartSearch,
+  #memberSearch,
+  #calSearchBox {
+    width: 50%;
+    margin: auto;
+  }

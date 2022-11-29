@@ -1,0 +1,29 @@
+#detailTbl tr th{
+    width: 20%;
+    background-color: rgb(255, 170, 72);
+    padding: 10px;
+}
+
+#detailTbl {
+    width: 100%;
+    font-size: 12pt;
+}
+
+#detailTbl tr {
+    border-top: 1pt solid #CCC;
+    border-bottom: 1pt solid #CCC;
+}
+
+/* 교환 및 환불 사유 테이블 */
+#returnTbl {
+    width: 100%;
+}
+
+#returnTbl tr th{
+    height: 5%;
+    text-align: center;
+}
+
+#returnTbl input[type="radio"]{
+    margin: 0px 10px;
+}
