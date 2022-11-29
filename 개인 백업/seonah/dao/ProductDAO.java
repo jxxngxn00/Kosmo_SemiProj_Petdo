@@ -4,8 +4,9 @@ package com.javaclass.dao;
 import java.util.List;
 
 import com.javaclass.domain.Criteria;
-import com.javaclass.domain.FaqVO;
+import com.javaclass.domain.OrderDetailVO;
 import com.javaclass.domain.ProductVO;
+import com.javaclass.domain.ReviewVO;
 
 
 public interface ProductDAO {
@@ -24,8 +25,18 @@ public interface ProductDAO {
 	public void updateProduct(ProductVO vo);	
 	// 상품 삭제
 	public void deleteProduct(ProductVO vo);
-	
-	public List<ProductVO> GraphCount(ProductVO vo);
-	
+	// 리뷰 작성
+	public void insertReview(ReviewVO vo);
+	// 리뷰 조회
+	public List<ReviewVO> getReview(Integer product_number);
+	// 조회수 증가
+	public void hitsplus(Integer product_number);
+	// 베스트 상품 출력
+	public List<ProductVO> topProduct(ProductVO vo);
+	// 신상품 출력
+	public List<ProductVO> newProduct(ProductVO vo);
+	// 배송 완료 시 재고 하나씩 줄어듬
+	public void ordercount(ProductVO vo);
+
 
 }

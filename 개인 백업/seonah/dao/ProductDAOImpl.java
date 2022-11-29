@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaclass.domain.Criteria;
+import com.javaclass.domain.OrderDetailVO;
 import com.javaclass.domain.ProductVO;
+import com.javaclass.domain.ReviewVO;
 
 @Repository("ProductDAO")
 public class ProductDAOImpl implements ProductDAO {
-
+ 
 	@Autowired
 	//출력할 템플릿 객체  생성
 	private SqlSessionTemplate mybatis;
@@ -70,6 +72,37 @@ public class ProductDAOImpl implements ProductDAO {
 		  
 	  }
 	  
+	  // 리뷰 작성
+	  public void insertReview(ReviewVO vo) {
+		  System.out.println("====> Mybatis로 insertReview 기능 처리");
+		  System.out.println(vo);
+		  mybatis.insert("ProductDAO.insertReview",vo);
+	  }
 	  
-
+	  // 리뷰 조회
+	  public List<ReviewVO> getReview(Integer product_number) {
+		  System.out.println("====> Mybatis로 getReview 기능 처리");
+		  return mybatis.selectList("ProductDAO.getReview",product_number);
+	  }
+	  
+	  // 조회수 증가
+	  	public void hitsplus(Integer product_number) {
+	  		mybatis.update("ProductDAO.hitsplus",product_number);
+	}
+	  
+	  // 베스트 상품 출력
+	  	public List<ProductVO> topProduct(ProductVO vo) {
+	  		return mybatis.selectList("ProductDAO.topProduct",vo);
+	  	}
+	  	
+	 // 신상품 출력
+		public List<ProductVO> newProduct(ProductVO vo) {
+			return mybatis.selectList("ProductDAO.newProduct",vo);
+		}
+		
+	// 재고 수량 조절
+		public void ordercount(ProductVO vo) {
+			 System.out.println("====> Mybatis로 ordercount() 기능 처리");
+			  mybatis.update("ProductDAO.ordercount",vo);
+		}
 }
