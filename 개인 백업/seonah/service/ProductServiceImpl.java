@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.javaclass.dao.ProductDAOImpl;
 import com.javaclass.domain.Criteria;
+import com.javaclass.domain.OrderDetailVO;
 import com.javaclass.domain.ProductVO;
+import com.javaclass.domain.ReviewVO;
 
 
 @Service("productService")
 public class ProductServiceImpl implements ProductService {
-	
 
-	
 	@Autowired
 	private ProductDAOImpl productDAO;
 
@@ -56,6 +56,35 @@ public class ProductServiceImpl implements ProductService {
 		productDAO.deleteProduct(vo);
 	}
 
-
+	// 리뷰 작성
+	public void insertReview(ReviewVO vo) {
+		productDAO.insertReview(vo);
+	}
+	
+	// 리뷰 조회
+	public List<ReviewVO> getReview(Integer product_number) {
+		return productDAO.getReview(product_number);
+	}
+	
+	// 조회수+1  
+	public void hitsplus(Integer product_number) {
+		productDAO.hitsplus(product_number);
+	}
+	
+	// 베스트 상품 출력
+	public List<ProductVO> topProduct(ProductVO vo) {
+		return productDAO.topProduct(vo);
+	}
+	
+	// 신상품 출력
+	public List<ProductVO> newProduct(ProductVO vo) {
+		return productDAO.newProduct(vo);
+	}
+	
+	// 배송 완료 시 재고 하나씩 줄어듬
+	public void ordercount(ProductVO vo) {
+		productDAO.ordercount(vo);
+	}
+	
 	
 }
