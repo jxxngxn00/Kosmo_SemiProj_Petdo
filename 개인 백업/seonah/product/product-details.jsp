@@ -156,7 +156,7 @@
 			</div>
 			<div class="row" style="float: left; text-align: center; width: 35%;">
 				<img alt="productPhoto"
-					src="<%=pjName%>/resources/images/shop/${getProduct.stored_file_name}" width="150%" style="float: center;">
+					src="<%=pjName%>/resources/images/shop/${getProduct.stored_file_name}" width="150%" style="float: center;" name="stored_file_name">
 			</div>
 
 			<div class="row productInfo" style="width: 40%; float: right;">
@@ -191,7 +191,7 @@
             	<input type="hidden" name="product_name" value="${getProduct.product_name}"/>
             	<input type="hidden" name="user_id" value="${user_id}"/>
             	<input type="hidden" name="product_price" value="${getProduct.product_price}"/>
-				<input type="hidden"  value= '${getProduct.stored_main_file_name}'  name="stored_main_file_name">
+				<input type="hidden"  value= '${getProduct.stored_file_name}'  name="stored_file_name">
 																					 
 
 				<div class="row"
