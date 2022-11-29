@@ -152,7 +152,7 @@
 				<h1 class="page-header"
 					style="text-align: center; margin-bottom: 50px;">${productInfo.productName}</h1>
 				<input type="hidden" value="${getProduct.product_name}"
-					id="product_number" style="font-weight: bold">
+					id="product_number" style="font-weight: bold;">
 			</div>
 			<div class="row" style="float: left; text-align: center; width: 35%;">
 				<img alt="productPhoto"
@@ -162,17 +162,17 @@
 			<div class="row productInfo" style="width: 40%; float: right;">
 				<div class="form-group" style="text-align: left;">
 					<h3 class="page-header">
-						<span>${getProduct.product_name}</span><br>
+						<span style="font-size: 32px;  font-family: Noto Sans KR">${getProduct.product_name}</span><br>
 					</h3>
 				</div>
 				<div class="form-group" style="text-align: left;">
-					<label>가격 : </label><span>&nbsp;
-					<fmt:formatNumber name= "product_price" value="${getProduct.product_price}" type="number" /></span><span>&nbsp;${getProduct.product_price}원</span>
-					<input type="hidden" value="${getProduct.product_price}" id="price">
+					<label style="font-family: Noto Sans KR">가격 : </label><span>&nbsp;
+					<fmt:formatNumber name= "product_price" value="${getProduct.product_price}" type="number" style="font-family: Noto Sans KR"/></span><span>&nbsp;${getProduct.product_price}원</span>
+					<input type="hidden" value="${getProduct.product_price}" id="price" style="font-family: Noto Sans KR">
 				</div>
 				<div class="form-group" style="text-align: left;">
-					<label>배송비 : </label><span>&nbsp;2500원</span>
-					<p>도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
+					<label style="font-family: Noto Sans KR">배송비 : </label><span>&nbsp;2500원</span>
+					<p style="font-family: Noto Sans KR">도서산간지역 배송비 5000원 / 3만원 이상 결제시 무료배송</p>
 				</div>
 				<div class="form-horizontal" style="text-align: left;">
 					<label>구매수량 : </label> <select name= "product_count" class="form-control"
@@ -191,6 +191,8 @@
             	<input type="hidden" name="product_name" value="${getProduct.product_name}"/>
             	<input type="hidden" name="user_id" value="${user_id}"/>
             	<input type="hidden" name="product_price" value="${getProduct.product_price}"/>
+				<input type="hidden"  value= '${getProduct.stored_main_file_name}'  name="stored_main_file_name">
+																					 
 
 				<div class="row"
 					style="margin-top: 20px; margin-left: 50px;">
@@ -206,33 +208,31 @@
 		</div>
 
 
-		<hr/>							
+								
 	<div class="container">
-		<div class="row nav" style="margin-left: 200px ">
+	<hr/>
+		<div class="row nav" style="margin-left: 380px; font-size: 16px; font-weight:bold; margin-top: -5px; font-family: Noto Sans KR; letter-spacing: 6px;">
 			<nav id="middle_nav">
 				<ul class="nav nav-tabs nav-justified" style="list-style-type: none; float: left;">
 					<a href="#product-info"><li id="about" style="list-style-type: none; float: left;">상품상세</li></a>
 					<a href="#product-review"><li id="review" style="list-style-type: none; float: left; margin-left: 260px">리뷰</li></a>
-					<a href="#product-qna"><li id="qna" style="list-style-type: none; float: left;  margin-left: 260px">상품문의</li></a>
 				</ul>
 			</nav>
 		</div>
-			
 		
+			<hr style="width: 100%;"/>
 		
-			
-				
 		<img src="<%=pjName%>/resources/images/banner55.jpg" width="100%" height="auto" style="margin-top: 20px; margin-bottom: 30px;" alt="" />
 				
 			
 		
 		<div id="product-info" class="row about_product" style="text-align: center;">
-			<img src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}' width=100%; height=auto;>
+			<img src='<%=pjName%>/resources/images/product-details/${getProduct.stored_main_file_name}' width=80%; height=auto; name="stored_main_file_name">
 		</div>
 		
 		
 		<div class="view-reviews" style="text-align: center; margin: 80px 0;">
-			<h1 class="page-header" style="margin-bottom: 50px;  font-weight: bold">리뷰</h1>
+			<h1 class="page-header" style="margin-bottom: 50px;  font-weight: bold; font-family: Noto Sans KR;">리뷰</h1>
 			<!-- 리뷰 조회 -->
 			<c:forEach items="${orderReview}" var="vo">
 				<div class="form-group">
@@ -258,7 +258,7 @@
 		<hr/>
 		<div class="product-page-content" id="review" >
 		<div class="row reviews" style="text-align: center; margin: 80px 0;">
-			<h1 class="page-header" style="margin-bottom: 50px; font-weight: bold">리뷰 작성</h1>
+			<h1 class="page-header" style="margin-bottom: 50px; font-weight: bold; font-family: Noto Sans KR;">리뷰 작성</h1>
 			<!-- 리뷰 작성 -->
 	
 		<div class="product-page-content" id="review" >
